@@ -1,0 +1,12 @@
+# Temporary files
+*.swp
+
+# Vim spellcheck files
+.vim/spell/
+
+# Vim history files
+.vim/.netrwhist
+
+# Conky files containing private information
+.conky/conky-private.sed
+.conky/conkyrc
