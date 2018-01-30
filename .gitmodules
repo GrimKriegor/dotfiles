@@ -10,6 +10,10 @@
 	path = .vim/bundle/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
 
+[submodule "vim-syntastic"]
+	path = .vim/bundle/vim-syntastic
+	url = https://github.com/vim-syntastic/syntastic.git
+
 [submodule "vim-surround"]
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround
