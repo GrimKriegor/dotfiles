@@ -4,7 +4,7 @@ set -e
 shopt -s dotglob
 
 # Configurable
-installation_directory=/media/Storage/Temporary/HOME
+installation_directory="$HOME"
 blacklist=( "*" "." ".." ".git" ".gitmodules" ".gitignore" "init.sh" ".config" ".local" "README.md" "LICENSE.md")
 
 # Where is this script located?
