@@ -1,26 +1,3 @@
-[submodule "nerdtree"]
-	path = .vim/bundle/nerdtree
-	url = https://github.com/scrooloose/nerdtree.git
-
-[submodule "supertab"]
-	path = .vim/bundle/supertab
-	url = https://github.com/ervandew/supertab
-
-[submodule "vim-gitgutter"]
-	path = .vim/bundle/vim-gitgutter
-	url = https://github.com/airblade/vim-gitgutter.git
-
-[submodule "vim-syntastic"]
-	path = .vim/bundle/vim-syntastic
-	url = https://github.com/vim-syntastic/syntastic.git
-
-[submodule "vim-surround"]
-	path = .vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround
-
-[submodule "zprezto"]
-	path = .zprezto
-	url = https://github.com/grimkriegor/prezto.git
 [submodule ".vim/bundle/nerdtree"]
 	path = .vim/bundle/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
