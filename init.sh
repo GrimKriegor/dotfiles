@@ -71,7 +71,7 @@ function createLinks {
     # Create symlink
     if [ "$is_blacklisted" == "" ]; then
       echo "Linking $filename"
-      [[ $force && $subdir != "" ]] && rm -rf "$installation_directory/$subdir$filename" 2>/dev/null | true
+      [[ $force && $filename != "" ]] && rm -rf "$installation_directory/$target_subdir$target_filename" 2>/dev/null | true
       ln -sTf "$dirname/$subdir$filename" "$installation_directory/$target_subdir$target_filename" | true
     fi
 
