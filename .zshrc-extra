@@ -7,7 +7,7 @@ alias dd='dd status=progress'
 #------------------------------
 # Variables
 #------------------------------
-export BROWSER="firefox"
+export BROWSER="iceweasel"
 export EDITOR="vim"
 export PATH="${PATH}"
 
