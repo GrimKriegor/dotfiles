@@ -222,6 +222,9 @@ exec --no-startup-id xmodmap ~/.Xmodmap
 # Add wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
 
+# Polybar
+exec --no-startup-id ~/.config/polybar/launch.sh
+
 # Composite manager
 exec --no-startup-id compton --xrender-sync-fence
 
@@ -239,6 +242,9 @@ exec --no-startup-id conky --config=$HOME/.conky/conkyrc
 
 # Pulse Audio Systray
 exec --no-startup-id pasystray
+
+# Blueman applet
+exec --no-startup-id blueman-applet
 
 
 bindsym $mod+F10 exec --no-startup-id ~/.config/polybar/launch.sh
