@@ -14,7 +14,7 @@ set shiftwidth=2
 set softtabstop=2
 
 " Shared clipboard
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 " Highlight searches
 set hlsearch
@@ -55,3 +55,10 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
+" Tagbar toggle key
+nmap <F8> :TagbarToggle<CR>
+
+" Window name
+let &titlestring = @%
+set title
