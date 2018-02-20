@@ -1,6 +1,9 @@
 # Modifier Key
 set $mod Mod4
 
+# Default terminal
+set $term --no-startup-id termite
+
 # i3-gaps
 for_window [class="^.*"] border pixel 0
 gaps inner 10
@@ -35,7 +38,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+x exec rofi -show run
 
 # open a terminal window
-bindsym $mod+t exec termite
+bindsym $mod+t exec $term
 
 # open a terminal window
 bindsym $mod+m exec termite -e cmus
