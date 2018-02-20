@@ -28,9 +28,6 @@ client.background       #ffffff
 floating_modifier $mod
 bindsym $mod+o sticky toggle
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
-
 # kill focused window
 bindsym $mod+Shift+q kill
 
@@ -135,6 +132,33 @@ mode "resize" {
         bindsym Escape mode "default"
 }
 bindsym $mod+r mode "resize"
+
+
+##
+#
+# Utilities
+#
+##
+
+# Terminal scratchpad
+for_window [instance="dropdown"] floating enable
+for_window [instance="dropdown"] resize set 625 400
+for_window [instance="dropdown"] move scratchpad
+for_window [instance="dropdown"] border pixel 5
+exec --no-startup-id $term -n dropdown
+bindsym $mod+Return [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+
+# Arithmetic scratchpad
+for_window [instance="math"] floating enable
+for_window [instance="math"] resize set 800 300
+for_window [instance="math"] move scratchpad
+for_window [instance="math"] border pixel 5
+exec --no-startup-id urxvt -n math -f mono:pixelsize=24 -e R -q
+bindsym $mod+p [instance="math"] scratchpad show; [instance="math"] move position center
+
+#Luke Smith's meme bunker
+bindsym $mod+Shift+Delete exec $truemute ; exec $truepause ; works    pace 10 ; exec $term -e htop ; exec urxvt -e ranger
+
 
 ##
 #
