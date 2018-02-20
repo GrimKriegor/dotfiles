@@ -140,8 +140,8 @@ bindsym $mod+r mode "resize"
 ##
 
 #Keyboard layout
-bindsym $mod+i setxkbmap -layout us -option caps:escape
-bindsym $mod+u setxkbmap -layout us -variant intl -option caps:escape
+bindsym $mod+u exec --no-startup-id setxkbmap -layout us -option caps:escape
+bindsym $mod+i exec --no-startup-id setxkbmap -layout us -variant intl -option caps:escape
 
 #Screenshot
 bindsym Print                   exec --no-startup-id scrot
