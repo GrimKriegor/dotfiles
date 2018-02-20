@@ -61,7 +61,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal and vertical orientations
-bindsym $mod+h split h
+bindsym $mod+b split h
 bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container
@@ -79,7 +79,7 @@ bindsym $mod+Shift+space floating toggle
 bindsym $mod+space focus mode_toggle
 
 # focus the parent container
-bindsym $mod+f focus parent
+bindsym $mod+a focus parent
 
 # focus the child container
 #bindsym $mod+d focus child
@@ -138,6 +138,10 @@ bindsym $mod+r mode "resize"
 # System Keys
 #
 ##
+
+#Keyboard layout
+bindsym $mod+i setxkbmap -layout us -option caps:escape
+bindsym $mod+u setxkbmap -layout us -variant intl -option caps:escape
 
 #Screenshot
 bindsym Print                   exec --no-startup-id scrot
@@ -218,6 +222,7 @@ bindsym XF86AudioPrev           exec $prev
 
 # Modify keys
 exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id setxkbmap -layout us -option caps:escape
 
 # Add wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
