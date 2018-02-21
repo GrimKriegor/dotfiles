@@ -178,6 +178,9 @@ bindsym Shift+Print             exec --no-startup-id scrot -u
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 15
 bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 15
 
+#Lockscreen
+bindsym Control+Mod1+l exec --no-startup-id xscreensaver-command -lock
+
 
 ##
 #
