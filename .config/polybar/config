@@ -276,7 +276,7 @@ format = <ramp-coreload>
 ;   %percentage% (default) - total cpu load
 ;   %percentage-cores% - load percentage for each core
 ;   %percentage-core[1-9]% - load percentage for specific core
-label = 
+label =
 
 ramp-coreload-0 = ▁
 ramp-coreload-1 = ▂
@@ -322,7 +322,7 @@ label =
 bar-used-indicator =
 bar-used-width = 6
 bar-used-foreground-0 = #55aa55
-bar-used-foreground-1 = #557755
+bar-used-foreground-1 = #55aa55
 bar-used-foreground-2 = #f5a70a
 bar-used-foreground-3 = #ff5555
 bar-used-fill = ▐
