@@ -181,6 +181,9 @@ bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 15
 #Lockscreen compat
 bindsym Control+Mod1+l exec --no-startup-id xscreensaver-command -lock
 
+#Quick suspend
+bindsym XF86Suspend exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
+
 
 ##
 #
