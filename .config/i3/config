@@ -107,6 +107,9 @@ bindsym $mod+7 workspace 7
 bindsym $mod+8 workspace 8
 bindsym $mod+9 workspace 9
 bindsym $mod+0 workspace 10
+bindsym $mod+Tab workspace back_and_forth
+bindsym $mod+BackSpace workspace prev_on_output
+bindsym $mod+Return workspace next_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace 1
@@ -209,7 +212,7 @@ for_window [instance="dropdown"] resize set 625 400
 for_window [instance="dropdown"] move scratchpad
 for_window [instance="dropdown"] border pixel 5
 exec --no-startup-id $term -t dropdown
-bindsym $mod+Return [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+bindsym $mod+Shift+Return [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
 
 # Arithmetic scratchpad
 for_window [instance="math"] floating enable
