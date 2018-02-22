@@ -4,3 +4,4 @@ keysym Escape = Caps_Lock
 keysym Caps_Lock = Escape
 add Lock = Caps_Lock
 add Control = Escape
+keycode 135 = Super_R
