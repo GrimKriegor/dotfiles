@@ -139,7 +139,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #
 ##
 
-mode "resize" {
+mode "$mode_resize" {
         bindsym h resize shrink width 10 px or 10 ppt
         bindsym j resize grow height 10 px or 10 ppt
         bindsym k resize shrink height 10 px or 10 ppt
@@ -152,8 +152,8 @@ mode "resize" {
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
-
-bindsym $mod+r mode "resize"
+set $mode_resize [Resize Mode]
+bindsym $mod+r mode "$mode_resize"
 
 
 ##
@@ -194,7 +194,7 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps [Gap Manipulation Mode] (o) outer, (i) inner
 set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
 set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
 bindsym $mod+Shift+t mode "$mode_gaps"
@@ -233,8 +233,15 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace lmao ; exec $te
 ##
 
 #Keyboard layout
-bindsym $mod+u exec --no-startup-id setxkbmap -layout us -option caps:escape
-bindsym $mod+i exec --no-startup-id setxkbmap -layout us -variant intl -option caps:escape
+set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl
+mode "$mode_keyboard" {
+        bindsym u exec --no-startup-id setxkbmap -layout us -option caps:escape, mode "default"
+        bindsym i exec --no-startup-id setxkbmap -layout us -variant intl -option caps:escape, mode "default"
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+bindsym $mod+Shift+u mode "$mode_keyboard"
 
 #Screenshot
 bindsym Print                   exec --no-startup-id scrot
@@ -323,7 +330,7 @@ bindsym XF86AudioPrev           exec $prev
 #
 ##
 
-set $mode_system System (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
+set $mode_system [System Mode] (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
     bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
     bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
