@@ -5,7 +5,7 @@ shopt -s dotglob
 
 # Configurable
 installation_directory="$HOME"
-blacklist=( "*" "." ".." ".git" ".gitmodules" ".gitignore" "init.sh" ".config" ".local" "README.md" "LICENSE.md")
+blacklist=( "*" "." ".." ".git" ".gitmodules" ".gitignore" "init.sh" ".config" ".local" "README.md" "LICENSE.md" )
 
 # Where is this script located?
 dirname="$(cd "$(dirname "$0")"; pwd -P)"
@@ -97,6 +97,10 @@ while [ $# -ne 0 ]; do
     force=true
   ;;
 
+  # Avoid symlinking desktop environment init files
+  -d | --no-desktop )
+    echo -e "\nAvoiding desktop environment init files"
+    blacklist=( "${blacklist[@]}" ".xinitrc" )
   esac
   shift
 
