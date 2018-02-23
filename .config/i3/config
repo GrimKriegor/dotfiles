@@ -242,6 +242,7 @@ mode "$mode_keyboard" {
         bindsym Escape mode "default"
 }
 bindsym $mod+Shift+u mode "$mode_keyboard"
+bindsym Menu exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 
 #Screenshot
 bindsym Print                   exec --no-startup-id scrot
@@ -259,7 +260,7 @@ bindsym XF86TouchpadOff         exec --no-startup-id synclient TouchpadOff=1
 bindsym Control+Mod1+l exec --no-startup-id xscreensaver-command -lock
 
 #Quick suspend
-bindsym XF86Suspend exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
+bindsym XF86Suspend exec --no-startup-id ~/.config/i3/i3exit suspend
 
 
 ##
