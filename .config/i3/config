@@ -275,8 +275,7 @@ set $dec --no-startup-id amixer sset Master 2%-
 set $bigdec --no-startup-id amixer sset Master 5%-
 set $mute --no-startup-id amixer sset Master toggle
 set $truemute --no-startup-id amixer sset Master mute
-set $screencast  --no-startup-id bash ~/.config/Scripts/screencast_alsa.sh
-set $audio --no-startup-id bash ~/.config/Scripts/audio_alsa.sh
+set $micmute --no-startup-id amixer sset Capture toggle
 
 #For PULSEAUDIO/PAMIXER
 #set $inc --no-startup-id pamixer --allow-boost -i 5
