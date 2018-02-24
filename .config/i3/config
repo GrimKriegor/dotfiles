@@ -260,7 +260,10 @@ bindsym XF86TouchpadOff         exec --no-startup-id synclient TouchpadOff=1
 bindsym Control+Mod1+l exec --no-startup-id xscreensaver-command -lock
 
 #Quick suspend
-bindsym XF86Suspend exec --no-startup-id ~/.config/i3/i3exit suspend
+bindsym XF86Sleep exec --no-startup-id ~/.config/i3/i3exit suspend
+
+#Quick hibernate
+bindsym XF86Suspend exec --no-startup-id ~/.config/i3exit hibernate
 
 
 ##
