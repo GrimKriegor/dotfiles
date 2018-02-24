@@ -49,8 +49,8 @@ bindsym $mod+x exec rofi -show run
 # open a terminal window
 bindsym $mod+t exec $term
 
-# open a terminal window
-bindsym $mod+m exec termite -e cmus
+# open a music player window
+bindsym $mod+m exec termite -e $music
 
 # change focus
 bindsym $mod+h focus left
