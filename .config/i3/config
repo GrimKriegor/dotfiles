@@ -290,16 +290,28 @@ set $micmute --no-startup-id amixer sset Capture toggle
 #set $micmute --no-startup-id pamixer --allow-boost -t
 #set $truemute --no-startup-id pamixer -m
 
+# For mpc:
+set $music --no-startup-id $term -e ncmpcpp
+set $pause --no-startup-id mpc toggle
+set $trupause --no-startup-id mpc pause
+set $next --no-startup-id mpc next
+set $prev --no-startup-id mpc prev
+set $lilfor --no-startup-id mpc seek +10
+set $bigfor --no-startup-id mpc seek +120
+set $lilbak --no-startup-id mpc seek -10
+set $bigbak --no-startup-id mpc seek -120
+set $beg --no-startup-id mpc seek 0%
+
 # For cmus:
-set $music --no-startup-id st -e cmus
-set $pause --no-startup-id cmus-remote -u
-set $next --no-startup-id cmus-remote -n
-set $prev --no-startup-id cmus-remote -r
-set $lilfor --no-startup-id cmus-remote -k +10
-set $bigfor --no-startup-id cmus-remote -k +120
-set $lilbak --no-startup-id cmus-remote -k -10
-set $bigbak --no-startup-id cmus-remote -k -120
-set $beg --no-startup-id cmus-remote -k 00:00:00
+#set $music --no-startup-id $term -e cmus
+#set $pause --no-startup-id cmus-remote -u
+#set $next --no-startup-id cmus-remote -n
+#set $prev --no-startup-id cmus-remote -r
+#set $lilfor --no-startup-id cmus-remote -k +10
+#set $bigfor --no-startup-id cmus-remote -k +120
+#set $lilbak --no-startup-id cmus-remote -k -10
+#set $bigbak --no-startup-id cmus-remote -k -120
+#set $beg --no-startup-id cmus-remote -k 00:00:00
 
 # Volume keys
 bindsym $mod+plus               exec $inc
