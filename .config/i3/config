@@ -207,20 +207,20 @@ bindsym $mod+Shift+t mode "$mode_gaps"
 ##
 
 # Terminal scratchpad
-for_window [instance="dropdown"] floating enable
-for_window [instance="dropdown"] resize set 625 400
-for_window [instance="dropdown"] move scratchpad
-for_window [instance="dropdown"] border pixel 5
 exec --no-startup-id $term -t dropdown
-bindsym $mod+Shift+Return [instance="dropdown"] scratchpad show; [instance="dropdown"] move position center
+for_window [title="dropdown"] floating enable
+for_window [title="dropdown"] resize set 625 400
+for_window [title="dropdown"] move scratchpad
+for_window [title="dropdown"] border pixel 5
+bindsym $mod+Shift+Return [title="dropdown"] scratchpad show; [title="dropdown"] move position center
 
 # Arithmetic scratchpad
-for_window [instance="math"] floating enable
-for_window [instance="math"] resize set 800 300
-for_window [instance="math"] move scratchpad
-for_window [instance="math"] border pixel 5
-exec --no-startup-id $term -t math -e R -q
-bindsym $mod+p [instance="math"] scratchpad show; [instance="math"] move position center
+exec --no-startup-id $term -t math -e "R -q"
+for_window [title="math"] floating enable
+for_window [title="math"] resize set 800 300
+for_window [title="math"] move scratchpad
+for_window [title="math"] border pixel 5
+bindsym $mod+Shift+m [title="math"] scratchpad show; [title="math"] move position center
 
 #Luke Smith's meme bunker
 bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec urxvt -e ranger
