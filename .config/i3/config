@@ -408,3 +408,6 @@ exec --no-startup-id pasystray
 
 # Blueman applet
 exec --no-startup-id blueman-applet
+
+# MPD
+exec --no-startup-id mpd
