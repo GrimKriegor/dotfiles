@@ -101,6 +101,8 @@ while [ $# -ne 0 ]; do
   -d | --no-desktop )
     echo -e "\nAvoiding desktop environment init files"
     blacklist=( "${blacklist[@]}" ".xinitrc" )
+  ;;
+
   esac
   shift
 
