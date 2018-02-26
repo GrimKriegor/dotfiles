@@ -318,10 +318,14 @@ bindsym $mod+plus               exec $inc
 bindsym $mod+Shift+plus         exec $biginc
 bindsym $mod+minus              exec $dec
 bindsym $mod+Shift+minus        exec $bigdec
+bindsym $mod+Shift+slash        exec $mute
+
+# Navigation keys
 bindsym $mod+less               exec $prev
 bindsym $mod+Shift+less         exec $beg
 bindsym $mod+greater            exec $next
 bindsym $mod+Shift+greater      exec $next
+bindsym $mod+slash              exec $pause
 
 # For advancing forward/backward in an mpd song
 bindsym $mod+bracketleft        exec $lilbak
