@@ -21,7 +21,7 @@ font-3 = NotoSans:pixelsize=11;-2
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu separator memory separator date
+modules-right = cpu separator memory date battery
 tray-position=right
 
 ; MODULES
@@ -136,14 +136,14 @@ type = internal/battery
 
 full-at = 99
 
-battery = BAT1
+battery = BAT0
 adapter = AC0
 
 poll-interval = 5
 
-format-charging = <animation-charging>  <label-charging>
-format-discharging = <ramp-capacity>  <label-discharging>
-format-full = <ramp-capacity>  <label-full>
+format-charging = <animation-charging>
+format-discharging = <ramp-capacity>
+format-full = <ramp-capacity>
 label-charging = %percentage%%
 label-discharging = %percentage%%
 label-full = %percentage%%
@@ -156,6 +156,11 @@ ramp-capacity-1 = 
 ramp-capacity-2 = 
 ramp-capacity-3 = 
 ramp-capacity-4 = 
+ramp-capacity-0-foreground = #ff0000
+ramp-capacity-1-foreground = #ff0000
+ramp-capacity-2-foreground = #ffff00
+ramp-capacity-3-foreground = #55aa55
+ramp-capacity-4-foreground = #55aa55
 
 animation-charging-0 = 
 animation-charging-1 = 
@@ -163,6 +168,11 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
+animation-charging-0-foreground = #0000ff
+animation-charging-1-foreground = #0000ff
+animation-charging-2-foreground = #0000ff
+animation-charging-3-foreground = #0000ff
+animation-charging-4-foreground = #0000ff
 
 [module/backlight]
 type = internal/backlight
