@@ -267,7 +267,7 @@ bindsym XF86TouchpadOn          exec --no-startup-id synclient TouchpadOff=0
 bindsym XF86TouchpadOff         exec --no-startup-id synclient TouchpadOff=1
 
 #Lockscreen compat
-bindsym Control+Mod1+l exec --no-startup-id xscreensaver-command -lock
+bindsym Control+Mod1+l exec --no-startup-id ~/.config/i3/i3exit lock
 
 #Quick suspend
 bindsym XF86Sleep exec --no-startup-id ~/.config/i3/i3exit suspend
