@@ -416,7 +416,7 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
 
 # Polybar
 exec --no-startup-id ~/.config/polybar/launch.sh
-bindsym $mod+F10 exec --no-startup-id ~/.config/polybar/launch.sh
+bindsym $mod+F12 exec --no-startup-id ~/.config/polybar/launch.sh
 
 # Composite manager
 exec --no-startup-id compton --xrender-sync-fence
