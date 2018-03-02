@@ -156,6 +156,12 @@ workspace 3 gaps outer 0
 workspace 4 gaps inner 0
 workspace 4 gaps outer 0
 
+# move workspace to other output
+bindsym $mod+Mod1+h move workspace to output left
+bindsym $mod+Mod1+j move workspace to output bottom
+bindsym $mod+Mod1+k move workspace to output top
+bindsym $mod+Mod1+l move workspace to output right
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 
