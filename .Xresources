@@ -82,11 +82,11 @@ URxvt.resize-font.bigger:	C-Up
 URxvt.colorUL:		#4682B4
 
 !                       'background', 'border', 'dividing line'
-rofi.color-window:	#000000, #333333, #000000
-!                       'bg',   'fg'    'bgalt'   'hlbg'   'hlfg'
-rofi.color-normal:	#2E3440, #D8DEE9, #2E3440, #5E81AC, #2E3440
-rofi.color-active:	#D8DEE9, #5E81AC, #00000000, #D8DEE9, #000000
-rofi.color-urgent:	#D8DEE9, #5E81AC, #00000000, #D8DEE9, #000000
+rofi.color-window:	#000000, #000000, #000000
+!                       'bg',    'fg',    'bgalt', 'hlbg',  'hlfg'
+rofi.color-normal:	#111111, #D8DEE9, #111111, #444444, #ffffff
+rofi.color-active:	#D8DEE9, #5E81AC, #000000, #D8DEE9, #000000
+rofi.color-urgent:	#D8DEE9, #5E81AC, #000000, #D8DEE9, #000000
 
 rofi.font:              mono 14
 rofi.fullscreen:        false
