@@ -1,5 +1,6 @@
 " Load plugins through Pathogen
     execute pathogen#infect()
+    execute pathogen#helptags()
 
 " Syntax highlighting
     syntax on
@@ -72,7 +73,6 @@
 
 " Navigating with guides
     inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-    inoremap <Space><Space> <Esc>/<++><Enter>"_c4l
     vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
     map <Space><Tab> <Esc>/<++><Enter>"_c4l
     inoremap ;gui <++>
