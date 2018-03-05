@@ -14,7 +14,7 @@
     inoremap <buffer> ;ul <ul><Enter><li></li><Enter></ul><Enter><Enter><++><Esc>03kf<i
     inoremap <buffer> ;li <Esc>o<li></li><Esc>F>a
     inoremap <buffer> ;ol <ol><Enter><li></li><Enter></ol><Enter><Enter><++><Esc>03kf<i
-    inoremap <buffer> ;im <table<Space>class="image"><Enter><caption align="bottom"></caption      ><Enter><tr><td><a<space>href="pix/<++>"><img<Space>src="pix/<++>"<Space>width="<++>"></a></td></tr><Enter></t      able><Enter><Enter><++><Esc>4kf>a
+    inoremap <buffer> ;im <table<Space>class="image"><Enter><caption align="bottom"></caption><Enter><tr><td><a<space>href="pix/<++>"><img<Space>src="pix/<++>"<Space>width="<++>"></a></td></tr><Enter></table><Enter><Enter><++><Esc>4kf>a
     inoremap <buffer> ;td <td></td><++><Esc>Fdcit
     inoremap <buffer> ;tr <tr></tr><Enter><++><Esc>kf<i
     inoremap <buffer> ;th <th></th><++><Esc>Fhcit
@@ -24,4 +24,3 @@
     inoremap <buffer> ;yl <font color="yellow"></font><Esc>F>a
     inoremap <buffer> ;dt <dt></dt><Enter><dd><++></dd><Enter><++><esc>2kcit
     inoremap <buffer> ;dl <dl><Enter><Enter></dl><enter><enter><++><esc>3kcc
-
