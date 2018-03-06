@@ -281,6 +281,7 @@ bindsym $mod+Shift+u mode "$mode_keyboard"
 bindsym Menu exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 
 #Screenshot
+exec_always --no-startup-id mkdir -p ~/Pictures/Screenshots
 bindsym Print                   exec --no-startup-id scrot -m -e 'mv $f ~/Pictures/Screenshots'
 bindsym Shift+Print             exec --no-startup-id scrot -m -u -e 'mv $f ~/Pictures/Screenshots'
 bindsym Control+Print           exec --no-startup-id scrot -m -s -e 'mv $f ~/Pictures/Screenshots'
@@ -423,7 +424,7 @@ exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
 bindsym $mod+F11 exec --no-startup-id feh --bg-scale ~/.config/wall.jpg
 
 # Polybar
-exec --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 bindsym $mod+F12 exec --no-startup-id ~/.config/polybar/launch.sh
 
 # Composite manager
