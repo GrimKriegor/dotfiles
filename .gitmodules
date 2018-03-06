@@ -16,3 +16,6 @@
 [submodule ".zprezto"]
 	path = .zprezto
 	url = https://github.com/grimkriegor/prezto.git
+[submodule ".themes/numix-black"]
+	path = .themes/numix-black
+	url = https://github.com/grimkriegor/numix-black.git
