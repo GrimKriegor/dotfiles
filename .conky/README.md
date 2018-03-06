@@ -2,7 +2,7 @@
 
 The Conky setup I've been using and improving since 2009
 
--> ![](https://raw.githubusercontent.com/GrimKriegor/Misc/master/Conky/preview.png) <-
+![](https://raw.githubusercontent.com/GrimKriegor/Misc/master/Conky/preview.png)
 
 
 ## Configuration
@@ -24,7 +24,7 @@ Enable the following modules by creating a file with their name in **$HOME/.conf
 **Hard drives**
 
 - lvm (Logical partitions instead of physical ones)
-- hdd_auxiliary (Extra hdd)
+- hdd_depot (Extra hdd)
 
 **Extra hardware**
 
@@ -36,11 +36,11 @@ Enable the following modules by creating a file with their name in **$HOME/.conf
 - eth0 (Ethernet)
 - wlan0 (WiFi)
 - tethering (USB Tethering)
-- zalkeen (VPN)
+- vpn (Private Network)
 
 **Network Status**
 
-- zalkeenstatus (Information about VPS conectivity)
+- servers (Information about VPS conectivity)
 - hyperboria (Information about the Hyperboria link)
 
 
