@@ -1,0 +1,120 @@
+#!/bin/bash
+
+##########################################
+# SSH+SFTP connect script
+# by Grim Kriegor (grimkriegor@krutt.org)
+##########################################
+# Last Revision: Dec 2017
+##########################################
+
+
+# Config
+CONFIG_FILE="$HOME/.config/scn.conf"
+ONUSER=$(cat /etc/passwd | grep :${UID}: | cut -d ':' -f 1)
+
+if [ -f "$CONFIG_FILE" ]; then
+  source "$CONFIG_FILE"
+else
+  echo -e "No config found. Generating new one.\nEdit \"$CONFIG_FILE\"."
+  CONFIG_FILE_SKEL="LOCALMOUNT=\"\$HOME/mount\"\nDOMAIN=\"network.net\"\nVPN=\"network\"\nEXTERNALPORT=\"22\"\nDEFAULTMACHINE=\"server\"\nPROXYPORT=\"6543\""
+  echo -e "$CONFIG_FILE_SKEL" > "$CONFIG_FILE"
+  chmod 640 "$CONFIG_FILE"
+  exit 0
+fi
+
+# Help text
+if [[ "$1" = "-h" || "$1" = "--help" ]]; then
+  echo "Usage: $(basename $0) [machine] [user] [folder]"
+  exit 0
+fi
+
+# Default machine
+if [[ "$1" = "" || "$1" = "-" ]]; then
+    MACHINE="$DEFAULTMACHINE"
+else
+    MACHINE="$1"
+fi
+
+# Default user
+if [[ "$2" = "" || "$2" = "-" ]]; then
+    USER="$ONUSER"
+else
+    USER="$2"
+fi
+
+# Default folder
+if [ "$3" = "" ]; then
+  if [ "$USER" == "root" ]; then
+    FOLDER="/root"
+  else
+    FOLDER="/home/$USER"
+  fi
+else
+  FOLDER="$3"
+fi
+
+# Default Port
+PORT="22"
+if [ $EXTERNALPORT ]; then
+  PORT="$EXTERNALPORT"
+fi
+
+# Machine Specific
+case "$MACHINE" in
+    "kpt" )
+        PORT="22"
+        PROXYPORT="54777"
+    ;;
+esac
+
+# Define Mountpoint
+if [ "$USER" = "$(whoami)" ]; then
+  MOUNT=$LOCALMOUNT/$MACHINE
+else
+  MOUNT=$LOCALMOUNT/$USER\@$MACHINE
+fi
+
+# Pre-connection Info
+echo -e "Machine:	$MACHINE"
+echo -e "User:		$USER"
+echo -e "Remote Folder:	$FOLDER"
+echo -e "Local Folder:	$MOUNT"
+echo -e "------------>   $MACHINE.$DOMAIN:$PORT\n"
+
+# Check if the machine is in the local network, internet or vpn
+ping -c 3 "$MACHINE.lan" > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+  echo "Found machine on local network"
+  ADDRESS="$MACHINE.lan"
+  PORT=22
+else
+  ping -c 3 "$MACHINE.$DOMAIN" > /dev/null 2>&1
+  if [ $? -eq 0 ]; then
+    ADDRESS="$MACHINE.$DOMAIN"
+    PORT="$EXTERNALPORT"
+  else
+    echo "Machine not accessible via the Internet, trying the VPN"
+    ping -c 3 "$MACHINE.$VPN" > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+      ADDRESS="$MACHINE.$VPN"
+      PORT=22
+    else
+      echo "Machine not found on the VPN, checking Virtual Machines"
+      ADDRESS="$MACHINE.vm"
+    fi
+  fi
+  ping -c 3 "$ADDRESS" > /dev/null 2>&1 || ( echo "Couldnt connect. Is the Machine Down?" ; exit 1 )
+fi
+
+# SFTP
+if [ ! -d "$MOUNT" ]; then
+  mkdir -p "$MOUNT"
+fi
+sshfs -o transform_symlinks,follow_symlinks ${USER}@${ADDRESS}:${FOLDER} $MOUNT -p ${PORT}
+
+# SSH
+ssh ${ADDRESS} -p "$PORT" -l "$USER" -D "$PROXYPORT" -X
+
+sleep 3
+
+fusermount -u "$MOUNT"
