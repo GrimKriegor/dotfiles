@@ -23,7 +23,7 @@ font-3 = NotoSans:pixelsize=11;-2
 
 modules-left = i3
 modules-center = xwindow
-modules-right = cpu separator memory date battery
+modules-right = cpu memory date battery
 tray-position=right
 
 ; MODULES
