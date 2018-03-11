@@ -38,7 +38,7 @@ imlib_cache_size 0
 # Use double buffering? Reduces flicker.
 double_buffer yes
 
-##Draw shades?
+# Draw shades?
 draw_shades no
 
 # Draw outlines?
@@ -50,12 +50,11 @@ draw_borders no
 # Draw borders around graphs?
 draw_graph_borders no
 
-# Print text to stdout?
-# Print text in console?
+# Print text
 out_to_ncurses no
 out_to_console no
 
-# Text alignment.
+# Text alignment
 alignment top_right
 
 # Minimum size of text area. 240 0
@@ -142,7 +141,7 @@ ${voffset -6}${color #382D2C}${swapbar 3.5}
 ##################################
 ${if_existing /home/user/.config/conky/battery}\
 ${voffset 6}${font Monospace:bold:size=9}${color Tan1}BATTERY${offset 8}${color DarkSlateGray}${voffset -2}${hr 2}${font}${color}
-${voffset 4}${battery_percent BAT0}% ${battery_time BAT0} ${color yellow}${battery_bar BAT0}${color}
+${voffset 4}${battery_percent BAT0}% ${color #3fc2f3}${battery_time BAT0} ${color yellow}${battery_bar BAT0}${color}
 ${else}\
 ${endif}\
 ##################################
@@ -207,13 +206,13 @@ ${endif}\
 #################################
 ##          SERVERS            ##
 #################################
-${if_existing /home/user/.config/conky/vps}\
+${if_existing /home/user/.config/conky/servers}\
 ${voffset 5}${if_match "${execi 120 if ping -c 1 -W 2 desktop.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}desktop ${if_match "${execi 120 if ping -c 1 -W 2 laptop.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif} laptop ${if_match "${execi 120 if ping -c 1 -W 2 phone.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif} phone\
 ${alignr}${if_match "${execi 120 if ping -c 1 -W 2 reprap.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}reprap
 ${voffset 5}${if_match "${execi 120 if ping -c 1 -W 2 server1.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}server1 ${alignr}${color #3fc2f3}${execi 300 ssh -o ConnectTimeout=10 -q server1.domain.vpn uptime | rev | awk '{print $1 " " $2 " " $3}' | rev} ${color gray}${execi 300 ssh -o ConnectTimeout=10 -q server1.domain.netstat -tuna | wc -l} ${color #3fc2f3}${texeci 120 sh -c "ping -c 1 server1.domain.net | grep time= | cut -d "=" -f 4"}
 ${voffset 2}${if_match "${execi 120 if ping -c 1 -W 2 server2.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}server2 ${alignr}${color #3fc2f3}${execi 300 ssh -o ConnectTimeout=10 -q server2.domain.vpn uptime | rev | awk '{print $1 " " $2 " " $3}' | rev} ${color gray}${execi 300 ssh -o ConnectTimeout=10 -q server2.domain.netstat -tuna | wc -l} ${color #3fc2f3}${texeci 120 sh -c "ping -c 1 server2.domain.net | grep time= | cut -d "=" -f 4"}
 ${voffset 2}${if_match "${execi 120 if ping -c 1 -W 2 server3.domain.vpn > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}server3 ${alignr}${color #3fc2f3}${execi 300 ssh -o ConnectTimeout=10 -q server3.domain.vpn uptime | rev | awk '{print $1 " " $2 " " $3}' | rev} ${color gray}${execi 300 ssh -o ConnectTimeout=10 -q server3.domain.netstat -tuna | wc -l} ${color #3fc2f3}${texeci 120 sh -c "ping -c 1 server3.domain.net | grep time= | cut -d "=" -f 4"}
-${if_existing /home/user/.config/conky/vps_extra}\
+${if_existing /home/user/.config/conky/servers_extra}\
 ${voffset 2}${if_match "${execi 120 if ping -c 1 -W 2 server5.domain.net > /dev/null; then echo "1"; fi}" == "1"}${color green}${else}${color red}${endif}server5 ${alignr}${color #3fc2f3}${execi 300 ssh -o ConnectTimeout=10 -q server5.domain.net uptime | rev | awk '{print $1 " " $2 " " $3}' | rev} ${color gray}${execi 300 ssh -o ConnectTimeout=10 -q server5.domain.net netstat -tuna | wc -l} ${color #3fc2f3}${texeci 120 sh -c "ping -c 1 server5.domain.net | grep time= | cut -d "=" -f 4"}
 ${else}\
 ${endif}\
