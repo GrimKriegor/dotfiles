@@ -40,7 +40,7 @@ Changelog:
 --	local bg_alpha = 0.50
 
 	local bg_colour = 0x000000
-	local bg_alpha = 0.70
+	local bg_alpha = 0.85
 
 -- Tweaks the height of your background, in pixels. If you don't need to adjust the height, use 0.
 
