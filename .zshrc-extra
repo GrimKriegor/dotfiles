@@ -1,4 +1,10 @@
 #------------------------------
+# .dotfiles operations
+#------------------------------
+alias dfc='cd ~/.dotfiles'
+alias dfu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git pull && cd $workdir'
+
+#------------------------------
 # User scripts
 #------------------------------
 export PATH="${PATH}:$HOME/.scripts"
