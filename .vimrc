@@ -76,3 +76,7 @@
     vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
     map <Space><Tab> <Esc>/<++><Enter>"_c4l
     inoremap ;gui <++>
+
+" Goyo plugin for writing distraction free
+    map <F10> :Goyo<CR>
+    inoremap <F10> <esc>:Goyo<CR>a

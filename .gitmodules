@@ -19,3 +19,6 @@
 [submodule ".themes/numix-black"]
 	path = .themes/numix-black
 	url = https://github.com/grimkriegor/numix-black.git
+[submodule ".vim/bundle/goyo.vim"]
+	path = .vim/bundle/goyo.vim
+	url = https://github.com/junegunn/goyo.vim.git
