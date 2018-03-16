@@ -21,6 +21,14 @@
 " Shared clipboard
     set clipboard=unnamedplus
 
+" Copy and paste on X clipboard
+    map <leader>cc :w !xsel -i -b<CR>
+    map <leader>cp :w !xsel -i -p<CR>
+    map <leader>cs :w !xsel -i -s<CR>
+    map <leader>pp :r!xsel -p<CR>
+    map <leader>ps :r!xsel -s<CR>
+    map <leader>pb :r!xsel -b<CR>
+
 " Highlight searches
     set hlsearch
 
