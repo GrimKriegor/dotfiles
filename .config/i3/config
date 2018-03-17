@@ -116,8 +116,6 @@ bindsym $mod+F5 workspace 15
 bindsym $mod+F6 workspace 16
 bindsym $mod+F7 workspace 17
 bindsym $mod+F8 workspace 18
-bindsym $mod+F9 workspace 19
-bindsym $mod+F10 workspace 20
 
 bindsym $mod+Tab workspace back_and_forth
 bindsym $mod+BackSpace workspace prev_on_output
@@ -143,8 +141,6 @@ bindsym $mod+Shift+F5 move container to workspace 15
 bindsym $mod+Shift+F6 move container to workspace 16
 bindsym $mod+Shift+F7 move container to workspace 17
 bindsym $mod+Shift+F8 move container to workspace 18
-bindsym $mod+Shift+F9 move container to workspace 19
-bindsym $mod+Shift+F10 move container to workspace 20
 
 # workspace pre-configuration
 workspace 2 gaps inner 0
