@@ -267,8 +267,8 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace lmao ; exec $te
 #Keyboard layout
 set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl
 mode "$mode_keyboard" {
-        bindsym u exec --no-startup-id setxkbmap -layout us -option caps:escape, mode "default"
-        bindsym i exec --no-startup-id setxkbmap -layout us -variant intl -option caps:escape, mode "default"
+        bindsym u exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape, mode "default"
+        bindsym i exec --no-startup-id setxkbmap -layout us -variant intl -option -option caps:swapescape, mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
@@ -410,7 +410,7 @@ exec --no-startup-id xrdb ~/.Xresources
 
 # Modify keys
 exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id setxkbmap -layout us -option caps:escape
+exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape
 
 # Disable touchpad
 exec --no-startup-id synclient TouchpadOff=1
