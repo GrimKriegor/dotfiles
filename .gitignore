@@ -10,3 +10,10 @@
 # Conky files containing private information
 .conky/conky-private.sed
 .conky/conkyrc
+
+# Ranger volatile files
+.config/ranger/tagged
+.config/ranger/bookmarks
+
+# MPD volatile files
+.config/mpd/state
