@@ -45,6 +45,7 @@ bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+x exec rofi -show run
+bindsym $mod+Shift+x exec rofi -show drun
 
 # open a terminal window
 bindsym $mod+t exec $term
