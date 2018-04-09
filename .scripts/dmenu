@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper for using Rofi as a drop-in replacement to dmenu
+
+eval rofi -dmenu $@
