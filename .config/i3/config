@@ -407,7 +407,7 @@ bindsym $mod+Shift+Delete mode "$mode_system"
 ##
 
 # Reload .Xresources
-exec --no-startup-id xrdb ~/.Xresources
+exec_always --no-startup-id xrdb ~/.Xresources
 
 # Modify keys
 exec --no-startup-id xmodmap ~/.Xmodmap
