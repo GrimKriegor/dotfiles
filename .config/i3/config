@@ -44,8 +44,9 @@ bindsym $mod+o sticky toggle
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-bindsym $mod+x exec rofi -show run
-bindsym $mod+Shift+x exec rofi -show drun
+bindsym $mod+space exec rofi -show run
+bindsym $mod+Shift+space exec rofi -show drun
+bindsym $mod+Mod1+space exec rofi -show window
 
 # open a terminal window
 bindsym $mod+t exec $term
@@ -86,10 +87,10 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+x floating toggle
 
 # change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
+bindsym $mod+x focus mode_toggle
 
 # focus the parent container
 bindsym $mod+a focus parent
