@@ -46,6 +46,7 @@ bindsym $mod+o sticky toggle
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym Mod1+F4 kill
 
 # start dmenu (a program launcher)
 bindsym $mod+space exec rofi -show run
