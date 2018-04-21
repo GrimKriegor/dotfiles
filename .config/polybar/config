@@ -16,10 +16,8 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Noto Sans:pixelsize=10;0
-font-1 = FontAwesome:size=11;0
-font-2 = siji:pixelsize=11;0
-font-3 = NotoSans:pixelsize=11;-2
+font-0 = FontAwesome:size=11;0
+font-1 = Sans:size=10;2
 
 modules-left = i3
 modules-center = xwindow
@@ -150,9 +148,9 @@ format-full = <ramp-capacity>
 label-charging = %percentage%%
 label-discharging = %percentage%%
 label-full = %percentage%%
-format-charging-padding = 2
-format-discharging-padding = 2
-format-full-padding = 2
+format-charging-padding = 0
+format-discharging-padding = 0
+format-full-padding = 0
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -195,18 +193,20 @@ ramp-4 = 🌑
 [module/volume]
 type = internal/volume
 
-format-volume = <ramp-volume>  <label-volume>
+format-volume = <ramp-volume>
 format-muted = <label-muted>
 label-volume = %percentage%
-label-muted =   muted
-label-muted-foreground = #aaa
-format-volume-padding = 3
-format-muted-padding = 3
+label-muted = 
+label-muted-foreground = #555
+format-volume-padding = 0
+format-muted-padding = 0
 
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-ramp-headphones-0 = 
+ramp-headphones-0 = 
+ramp-headphones-1 = 
+ramp-headphones-2 = 
 
 [module/powermenu]
 type = custom/menu
@@ -341,3 +341,28 @@ bar-used-foreground-3 = #ff5555
 bar-used-fill = ▐
 bar-used-empty = ▐
 bar-used-empty-foreground = #444444
+
+[module/temperature]
+type = internal/temperature
+
+interval = 10
+thermal-zone = 0
+hwmon-path = /sys/devices/platform/coretemp.0/hwmon/hwmon2/temp1_input
+
+warn-temperature = 80
+units = false
+format = <ramp>
+format-warn = <ramp> <label-warn>
+
+label = %temperature%
+label-warn = %temperature%
+label-warn-foreground = #f00
+
+ramp-0 = 　 ▂
+ramp-1 = 　 ▄
+ramp-2 = 　 ▆
+ramp-3 = 　 █
+ramp-0-foreground = #55aa55
+ramp-1-foreground = #55aa55
+ramp-2-foreground = #f5a70a
+ramp-3-foreground = #ff0000
