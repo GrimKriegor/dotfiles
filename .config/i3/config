@@ -294,8 +294,8 @@ bindsym Shift+Print             exec --no-startup-id scrot -m -u -e 'mv $f ~/Pic
 bindsym Control+Print           exec --no-startup-id scrot -m -s -e 'mv $f ~/Pictures/Screenshots'
 
 #Display brighteness
-bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 15
-bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 15
+bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 5
+bindsym XF86MonBrightnessUp     exec --no-startup-id xbacklight -inc 5
 
 #Touchpad
 bindsym XF86TouchpadOn          exec --no-startup-id synclient TouchpadOff=0
