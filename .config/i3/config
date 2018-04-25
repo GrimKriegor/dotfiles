@@ -61,7 +61,8 @@ bindsym $mod+y exec $filemanager
 bindsym $mod+Shift+y exec $filemanager_gui
 
 # open a music player window
-bindsym $mod+m exec --no-startup-id $term -e $music
+bindsym $mod+m exec --no-startup-id $term -e "$music -S visualizer"
+bindsym $mod+Shift+m exec --no-startup-id $term -e $music
 
 # change focus
 bindsym $mod+h focus left
@@ -263,7 +264,7 @@ for_window [title="math"] floating enable
 for_window [title="math"] resize set 800 300
 for_window [title="math"] move scratchpad
 for_window [title="math"] border pixel 5
-bindsym $mod+Shift+m [title="math"] scratchpad show; [title="math"] move position center
+bindsym $mod+Shift+n [title="math"] scratchpad show; [title="math"] move position center
 
 #Luke Smith's meme bunker
 bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec urxvt -e ranger
