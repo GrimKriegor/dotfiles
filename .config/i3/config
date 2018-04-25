@@ -443,8 +443,8 @@ exec --no-startup-id unclutter
 # Network Manager applet
 exec --no-startup-id nm-applet
 
-# XScreenSaver
-exec --no-startup-id xscreensaver
+# xautolock
+exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/i3exit lock'
 
 # Conky
 exec --no-startup-id conky --config=$HOME/.conky/conkyrc

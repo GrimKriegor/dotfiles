@@ -1,12 +1,29 @@
 #!/bin/sh
+
 lock() {
-    xscreensaver-command -lock
+
+    revert() {
+	xset dpms 0 0 0
+    }
+    trap revert HUP INT TERM
+
+    xset +dpms dpms 10 10 10
+    sleep 1 && blackout
+
+    (i3lock -n -c 000000 -e -f; revert) &
+}
+
+blackout() {
+    xset dpms force off
 }
 
 case "$1" in
     lock)
         lock
         ;;
+    blackout)
+        blackout
+	;;
     logout)
         i3-msg exit
         ;;
@@ -25,6 +42,7 @@ case "$1" in
     *)
         echo "Usage: $0 {lock|logout|suspend|hibernate|reboot|shutdown}"
         exit 2
+        ;;
 esac
 
 exit 0
