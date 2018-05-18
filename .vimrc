@@ -80,9 +80,9 @@
     let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
 " Navigating with guides
-    inoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-    vnoremap <Space><Tab> <Esc>/<++><Enter>"_c4l
-    map <Space><Tab> <Esc>/<++><Enter>"_c4l
+    inoremap ;;<Space> <Esc>/<++><Enter>"_c4l
+    vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
+    map ;;<Space> <Esc>/<++><Enter>"_c4l
     inoremap ;gui <++>
 
 " Goyo plugin for writing distraction free
