@@ -100,3 +100,6 @@
 " Goyo plugin for writing distraction free
     map <F10> :Goyo<CR>
     inoremap <F10> <esc>:Goyo<CR>a
+
+" vim-javacomplete2
+    autocmd FileType java setlocal omnifunc=javacomplete#Complete

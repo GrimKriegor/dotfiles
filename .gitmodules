@@ -22,3 +22,6 @@
 [submodule ".vim/bundle/goyo.vim"]
 	path = .vim/bundle/goyo.vim
 	url = https://github.com/junegunn/goyo.vim.git
+[submodule ".vim/bundle/vim-javacomplete2"]
+	path = .vim/bundle/vim-javacomplete2
+	url = https://github.com/artur-shaik/vim-javacomplete2.git
