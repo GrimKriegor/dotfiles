@@ -48,6 +48,18 @@
     hi TabLine ctermfg=Blue ctermbg=Black
     hi TabLineSel ctermfg=Red ctermbg=Black
 
+" Splits
+    hi VertSplit ctermfg=Black ctermbg=White
+    set fillchars+=vert:\ 
+
+" Status line
+    hi Statusline ctermbg=Gray ctermfg=234
+    hi StatusLineNC ctermbg=Gray ctermfg=234
+
+" Cursor line
+    hi CursorLine cterm=NONE ctermbg=233
+    nnoremap <Leader>c :set cursorline!<CR>
+
 " NERDTree toggle key
     map <C-m> :NERDTreeToggle<CR>
 
