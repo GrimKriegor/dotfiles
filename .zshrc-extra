@@ -47,10 +47,19 @@ case $TERM in
 esac
 
 #------------------------------
-# Hacks
+# Program configuration
 #------------------------------
+
+# GTK Theme
+export GTK_THEME=numix-black:dark
+
+# Android home
 export ANDROID_HOME=/opt/android-sdk
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin
 
-export GTK_THEME=numix-black:dark
+# Vagrant provider
+export VAGRANT_DEFAULT_PROVIDER=libvirt
+
+# Node modules location
+export NODE_PATH="$HOME"/.node_modules
