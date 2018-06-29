@@ -63,3 +63,6 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Node modules location
 export NODE_PATH="$HOME"/.node_modules
+
+# Include Ruby Gems in PATH
+export PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin
