@@ -365,6 +365,7 @@ bindsym $mod+Shift+plus         exec $biginc
 bindsym $mod+minus              exec $dec
 bindsym $mod+Shift+minus        exec $bigdec
 bindsym $mod+Shift+slash        exec $mute
+bindsym $mod+Shift+backslash    exec $micmute
 
 # Navigation keys
 bindsym $mod+less               exec $prev
