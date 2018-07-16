@@ -76,7 +76,7 @@ def_key "left"
 def_key "-"
  volume_down
 
-def_key "ö"
+def_key "e"
  show_lyrics
 
 def_key "o"
@@ -193,7 +193,7 @@ def_key "e"
 def_key "e"
  edit_playlist_name
 
-def_key "e"
+def_key "ẽ"
  edit_lyrics
 
 def_key "i"
