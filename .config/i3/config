@@ -281,7 +281,7 @@ set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl (U) en_us-nor
 mode "$mode_keyboard" {
         bindsym u exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape, mode "default"
         bindsym i exec --no-startup-id setxkbmap -layout us -variant intl -option -option caps:swapescape, mode "default"
-        bindsym Shift+u exec --no-startup-id setxkbmap -layout us, mode "default"
+        bindsym Shift+u exec --no-startup-id setxkbmap -layout us -option, mode "default"
 
         bindsym Return mode "default"
         bindsym Escape mode "default"
