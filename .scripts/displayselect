@@ -1,29 +1,68 @@
 #!/bin/sh
 
-choices="Manual selection
+# Display Select
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2018
+
+menu="\
+Manual selection
 Laptop
 VGA
 HDMI
+Projector
 Laptop | VGA
 VGA | Laptop
 Laptop | HDMI
-HDMI | Laptop"
+HDMI | Laptop
+VGA Mirrored
+HDMI Mirrored"
+
+display_list=("LVDS1" "VGA1" "HDMI1") # Please make this dynamic
 
 if [ "$1" == "" ]; then
-  chosen=$(echo -e "$choices" | dmenu -i -p "Display\ select")
+  menu_option=$(echo -e "$menu" | dmenu -i -p "Display\ select")
 else
-  chosen="$1"
+  menu_option="$1"
 fi
 
-case "$chosen" in
+function exclusive {
+  display="$1"
+  xrandr --output "$display" --auto
+  for output in "${display_list[@]}"; do
+    if [ "$output" != "$display" ]; then
+      xrandr --output $output --off
+    fi
+  done
+}
+
+function side_by_side {
+  display="$1"
+  display2="$2"
+  xrandr --output "$display" --auto --output "$display2" --auto --right-of "$display"
+}
+
+function mirror {
+  #WIP
+  exit 1
+}
+
+function projector {
+  projector="$1"
+  xrandr --output "$projector" --mode 1024x768 --output LVDS1 --mode 1024x768 --same-as "$projector"
+}
+
+case "$menu_option" in
   "Manual selection")   arandr ;;
-  "Laptop")             xrandr --output LVDS1 --auto --output VGA1  --off  --output HDMI1 --off;;
-  "VGA")                xrandr --output VGA1  --auto --output LVDS1 --off ;;
-  "HDMI")               xrandr --output HDMI1 --auto --output LVDS1 --off ;;
-  "Laptop | VGA")       xrandr --output LVDS1 --auto --output VGA1  --auto --right-of LVDS1 ;;
-  "VGA | Laptop")       xrandr --output LVDS1 --auto --output VGA1  --auto --left-of LVDS1 ;;
-  "Laptop | HDMI")      xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1 ;;
-  "HDMI | Laptop")      xrandr --output LVDS1 --auto --output HDMI1 --auto --left-of LVDS1 ;;
+  "Laptop")             exclusive LVDS1 ;;
+  "VGA")                exclusive VGA1 ;;
+  "HDMI")               exclusive HDMI1 ;;
+  "Projector")          projector VGA1 ;;
+  "Laptop | VGA")       side_by_side LVDS1 VGA1 ;;
+  "VGA | Laptop")       side_by_side VGA1 LVDS1 ;;
+  "Laptop | HDMI")      side_by_side LVDS1 HDMI1 ;;
+  "HDMI | Laptop")      side_by_side HDMI1 LVDS1 ;;
+  "VGA Mirrored")       mirror VGA1 LVDS1 ;;
+  "HDMI Mirrored")      mirror HDMI1 LVDS1 ;;
   *)                    exit 0 ;;
 esac
 
