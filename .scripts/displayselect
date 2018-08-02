@@ -27,4 +27,6 @@ case "$chosen" in
   *)                    exit 0 ;;
 esac
 
+setxkbmap -option -option caps:swapescape
 $HOME/.config/polybar/launch.sh
+sleep 2 && killall -9 conky; conky --config $HOME/.conky/conkyrc
