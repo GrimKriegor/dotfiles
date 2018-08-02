@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PASS="$(pwgen 64 1)"
+FILENAME_OBF="$(pwgen 24 1)"
+FILE="$1"
+FILENAME="$(basename $FILE)"
+
+cp -r "$FILENAME" "$FILENAME_OBF"
+echo "$PASS" | gpg --batch --passphrase-fd - -c "$FILENAME_OBF"
+rm "$FILENAME_OBF"
+
+echo "$FILENAME -> $FILENAME_OBF.gpg :: $PASS"
+echo -n "$PASS" | xclip -selection clipboard
