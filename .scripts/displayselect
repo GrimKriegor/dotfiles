@@ -1,0 +1,30 @@
+#!/bin/sh
+
+choices="Manual selection
+Laptop
+VGA
+HDMI
+Laptop | VGA
+VGA | Laptop
+Laptop | HDMI
+HDMI | Laptop"
+
+if [ "$1" == "" ]; then
+  chosen=$(echo -e "$choices" | dmenu -i -p "Display\ select")
+else
+  chosen="$1"
+fi
+
+case "$chosen" in
+  "Manual selection")   arandr ;;
+  "Laptop")             xrandr --output LVDS1 --auto --output VGA1  --off  --output HDMI1 --off;;
+  "VGA")                xrandr --output VGA1  --auto --output LVDS1 --off ;;
+  "HDMI")               xrandr --output HDMI1 --auto --output LVDS1 --off ;;
+  "Laptop | VGA")       xrandr --output LVDS1 --auto --output VGA1  --auto --right-of LVDS1 ;;
+  "VGA | Laptop")       xrandr --output LVDS1 --auto --output VGA1  --auto --left-of LVDS1 ;;
+  "Laptop | HDMI")      xrandr --output LVDS1 --auto --output HDMI1 --auto --right-of LVDS1 ;;
+  "HDMI | Laptop")      xrandr --output LVDS1 --auto --output HDMI1 --auto --left-of LVDS1 ;;
+  *)                    exit 0 ;;
+esac
+
+$HOME/.config/polybar/launch.sh
