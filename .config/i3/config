@@ -253,20 +253,20 @@ bindsym $mod+Shift+t mode "$mode_gaps"
 ##
 
 # Terminal scratchpad
-exec --no-startup-id $term -t dropdown
-for_window [title="dropdown"] floating enable
-for_window [title="dropdown"] resize set 625 400
-for_window [title="dropdown"] move scratchpad
-for_window [title="dropdown"] border pixel 5
-bindsym $mod+Shift+Return [title="dropdown"] scratchpad show; [title="dropdown"] move position center
+exec --no-startup-id $term -t ScratchpadTerminal
+for_window [title="ScratchpadTerminal"] floating enable
+for_window [title="ScratchpadTerminal"] resize set 625 400
+for_window [title="ScratchpadTerminal"] move scratchpad
+for_window [title="ScratchpadTerminal"] border pixel 5
+bindsym $mod+Shift+Return [title="ScratchpadTerminal"] scratchpad show; [title="ScratchpadTerminal"] move position center
 
 # Arithmetic scratchpad
-exec --no-startup-id $term -t math -e "R -q"
-for_window [title="math"] floating enable
-for_window [title="math"] resize set 800 300
-for_window [title="math"] move scratchpad
-for_window [title="math"] border pixel 5
-bindsym $mod+Shift+n [title="math"] scratchpad show; [title="math"] move position center
+exec --no-startup-id $term -t ScratchpadMath -e "R -q"
+for_window [title="ScratchpadMath"] floating enable
+for_window [title="ScratchpadMath"] resize set 800 300
+for_window [title="ScratchpadMath"] move scratchpad
+for_window [title="ScratchpadMath"] border pixel 5
+bindsym $mod+Shift+n [title="ScratchpadMath"] scratchpad show; [title="ScratchpadMath"] move position center
 
 #Luke Smith's meme bunker
 bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace lmao ; exec $term -e htop ; exec urxvt -e ranger
