@@ -25,7 +25,7 @@ else
   menu_option="$1"
 fi
 
-function exclusive {
+function exclusive() {
   display="$1"
   xrandr --output "$display" --auto
   for output in "${display_list[@]}"; do
@@ -35,20 +35,31 @@ function exclusive {
   done
 }
 
-function side_by_side {
+function get_resolution() {
+  display="$1"
+  resolution=$(xrandr | grep -w connected | awk -F'[ +]' '{print $1,$3}' | grep "$display" | awk '{print $2}')
+  echo "$resolution"
+}
+
+function side_by_side() {
   display="$1"
   display2="$2"
-  xrandr --output "$display" --auto --output "$display2" --auto --right-of "$display"
+  xrandr --output "$display" --auto \
+    --output "$display2" --auto --right-of "$display"
 }
 
-function mirror {
-  #WIP
-  exit 1
+function mirror() {
+  display="$1"
+  display2="$2"
+  display_resolution=$(get_resolution "$display")
+  xrandr --output "$display" --auto \
+    --output "$display2" --same-as "$display" --scale-from "$display_resolution"
 }
 
-function projector {
+function projector() {
   projector="$1"
-  xrandr --output "$projector" --mode 1024x768 --output LVDS1 --mode 1024x768 --same-as "$projector"
+  xrandr --output "$projector" --mode 1024x768 \
+    --output LVDS1 --mode 1024x768 --same-as "$projector"
 }
 
 case "$menu_option" in
@@ -61,8 +72,8 @@ case "$menu_option" in
   "VGA | Laptop")       side_by_side VGA1 LVDS1 ;;
   "Laptop | HDMI")      side_by_side LVDS1 HDMI1 ;;
   "HDMI | Laptop")      side_by_side HDMI1 LVDS1 ;;
-  "VGA Mirrored")       mirror VGA1 LVDS1 ;;
-  "HDMI Mirrored")      mirror HDMI1 LVDS1 ;;
+  "VGA Mirrored")       mirror LVDS1 VGA1 ;;
+  "HDMI Mirrored")      mirror LVDS1 HDMI1 ;;
   *)                    exit 0 ;;
 esac
 
