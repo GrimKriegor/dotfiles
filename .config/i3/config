@@ -314,6 +314,8 @@ bindsym XF86Sleep exec --no-startup-id ~/.config/i3/i3exit suspend
 #Quick hibernate
 bindsym XF86Suspend exec --no-startup-id ~/.config/i3exit hibernate
 
+#Touchpad toggle
+bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/toggletouchpad
 
 ##
 #
