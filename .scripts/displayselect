@@ -4,7 +4,7 @@
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2018
 
-display_list=($(xrandr | grep -w connected | awk -F'[ +]' '{print $1}'))
+display_list=($(xrandr | grep -w "connected\|disconnected" | awk -F'[ +]' '{print $1}'))
 
 menu="\
 Manual selection
