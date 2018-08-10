@@ -1,0 +1,31 @@
+#!/bin/bash
+
+scihub="http://sci-hub.tw/"
+
+# List of sites that will be opened in mpv.
+vidsites="youtube.com
+	\|hooktube.com
+	\|bitchute.com
+	"
+
+# List of academic sites whose pdfs can be dled via sci-hub.
+academic="springer.com"
+
+ext="${1##*.}"
+mpvFiles="mkv mp4 gif webm"
+fehFiles="png jpg jpeg jpe"
+wgetFiles="mp3 flac opus mp3?source=feed pdf"
+
+if echo $fehFiles | grep -w $ext > /dev/null; then
+	setsid nohup feh "$1" >/dev/null & disown
+elif echo $mpvFiles | grep -w $ext > /dev/null; then
+	setsid nohup mpv -quiet "$1" > /dev/null & disown
+elif echo $wgetFiles | grep -w $ext > /dev/null; then
+	wget "$1" >/dev/null & disown
+elif echo "$@" | grep "$vidsites">/dev/null; then
+	setsid nohup mpv -quiet "$1" > /dev/null & disown
+elif echo "$@" | grep "$academic">/dev/null; then
+	curl -sO $(curl -s "$scihub""$@" | grep location.href | grep -o http.*pdf) & disown
+else
+	setsid nohup $BROWSER "$1" 2>/dev/null & disown
+fi
