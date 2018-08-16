@@ -88,6 +88,19 @@
     let &titlestring = @%
     set title
 
+" Spell-check:
+    let g:myLang = 0
+    let g:myLangList = ['nospell', 'en_us', 'pt_pt']
+    function! MySpellLang()
+	if g:myLang == 0 | setlocal nospell | endif
+	if g:myLang == 1 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+	if g:myLang == 2 | let &l:spelllang = g:myLangList[g:myLang] | setlocal spell | endif
+	echomsg 'Spellcheck language:' g:myLangList[g:myLang]
+	let g:myLang = g:myLang + 1
+	if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
+    endfunction
+    map <F7> :<C-U>call MySpellLang()<CR>
+
 " Interpret .md files, etc. as .markdown
     let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
