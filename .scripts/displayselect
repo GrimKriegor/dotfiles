@@ -24,7 +24,7 @@ Mirrored HDMI
 Mirrored Dock HDMI"
 
 if [ "$1" == "" ]; then
-  menu_option=$(echo -e "$menu" | dmenu -i -p "Display\ select")
+  menu_option=$(echo -e "$menu" | dmenu -i -p "display")
 else
   menu_option="$1"
 fi
