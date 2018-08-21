@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# Mail and Calendar tmux spawner
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org> 2018
+
+SESSION_NAME="Mailcal"
+CALENDAR_SPLIT_SIZE=70
+TASKS_SPLIT_SIZE=12
+
+function spawn() {
+  tmux new-session -s $SESSION_NAME \; \
+    send-keys 'neomutt' C-m \; \
+    split-window -h -l $CALENDAR_SPLIT_SIZE \; \
+    send-keys 'ikhal' C-m \; \
+    split-window -v -l $TASKS_SPLIT_SIZE \; \
+    send-keys 'todo' C-m \; \
+    select-pane -t 1 \;
+}
+
+tmux attach-session -t $SESSION_NAME || \
+spawn
