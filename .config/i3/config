@@ -34,6 +34,7 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #ffffff
 
+
 ##
 #
 # Navigation
@@ -179,6 +180,7 @@ bindsym $mod+Shift+r restart
 # default display mode
 bindsym XF86Display exec --no-startup-id ~/.scripts/displayselect Laptop
 
+
 ##
 #
 # Resize window mode
@@ -317,6 +319,7 @@ bindsym XF86Suspend exec --no-startup-id ~/.config/i3exit hibernate
 #Touchpad toggle
 bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/toggletouchpad
 
+
 ##
 #
 # Multimedia Keys
@@ -415,6 +418,16 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 bindsym $mod+Shift+Delete mode "$mode_system"
+
+
+##
+#
+# Program specific options
+#
+##
+
+# Always float Android Emulator windows
+for_window [class="Emulator"] floating enable
 
 
 ##
