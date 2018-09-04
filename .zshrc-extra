@@ -12,16 +12,13 @@ export PATH="$HOME/.scripts:${PATH}"
 #------------------------------
 # Aliases
 #------------------------------
-if [ -f $HOME/.shell_aliases ]; then
-  source $HOME/.shell_aliases
-fi
-
+[[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
 alias x='startx'
 
 #------------------------------
 # Variables
 #------------------------------
-export BROWSER="iceweasel"
+[[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
 export EDITOR="vim"
 
 #------------------------------
