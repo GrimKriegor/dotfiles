@@ -89,6 +89,14 @@
     set title
 
 " Spell-check:
+    hi clear SpellBad
+    hi SpellBad cterm=underline ctermfg=1
+    hi clear SpellRare
+    hi SpellRare cterm=underline
+    hi clear SpellCap
+    hi SpellCap cterm=underline
+    hi clear SpellLocal
+    hi SpellLocal cterm=underline
     let g:myLang = 0
     let g:myLangList = ['nospell', 'en_us', 'pt_pt']
     function! MySpellLang()
