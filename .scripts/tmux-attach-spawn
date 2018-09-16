@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# tmux attach or spawn
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org> 2018
+
+tmux_session_name="$1"; shift
+arguments=$(echo "$@")
+tmux attach-session -t "$tmux_session_name" || \
+  tmux new-session -s "$tmux_session_name" \; \
+  send-keys "$arguments" \; \
+  send-keys C-m \;
