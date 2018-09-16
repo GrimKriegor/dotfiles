@@ -271,7 +271,7 @@ for_window [title="ScratchpadMath"] border pixel 5
 bindsym $mod+Shift+n [title="ScratchpadMath"] scratchpad show; [title="ScratchpadMath"] move position center
 
 # Notepad scratchpad
-exec --no-startup-id $term -t ScratchpadNotepad vim
+exec --no-startup-id $term -t ScratchpadNotepad -e "tmux-attach-spawn Notepad vim"
 for_window [title="ScratchpadNotepad"] floating enable
 for_window [title="ScratchpadNotepad"] resize set 400 625
 for_window [title="ScratchpadNotepad"] move scratchpad
