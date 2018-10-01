@@ -14,6 +14,11 @@ export PATH="$HOME/.scripts:${PATH}"
 #------------------------------
 [[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
 alias x='startx'
+alias ddd='sudo dd status=progress'
+alias sc='sudo systemctl'
+alias p='sudo pacman'
+alias v='vim'
+alias V='sudo vim'
 
 #------------------------------
 # Variables
