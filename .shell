@@ -3,6 +3,7 @@
 #------------------------------
 alias dfc='cd ~/.dotfiles'
 alias dfu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git pull && cd $workdir'
+alias dfuu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git pull --recurse-submodules && cd $workdir'
 
 #------------------------------
 # User scripts
