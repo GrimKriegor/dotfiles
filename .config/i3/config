@@ -158,12 +158,12 @@ bindsym $mod+Shift+F8 move container to workspace 18
 # workspace pre-configuration
 workspace 2 gaps inner 0
 workspace 2 gaps outer 0
-
 workspace 3 gaps inner 0
 workspace 3 gaps outer 0
-
 workspace 4 gaps inner 0
 workspace 4 gaps outer 0
+workspace 18 gaps inner 0
+workspace 18 gaps outer 0
 
 # move workspace to other output
 bindsym $mod+Mod1+h move workspace to output left
