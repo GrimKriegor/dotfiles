@@ -20,6 +20,7 @@ alias sc='sudo systemctl'
 alias p='sudo pacman'
 alias v='vim'
 alias V='sudo vim'
+alias kc='kubectl'
 
 #------------------------------
 # Variables
