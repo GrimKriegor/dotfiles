@@ -1,0 +1,4 @@
+#!/bin/bash
+
+davwizard_dir="$HOME/.config/davwizard"
+$davwizard_dir/davwizard.sh

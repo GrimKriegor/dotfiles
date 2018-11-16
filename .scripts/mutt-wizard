@@ -1,0 +1,4 @@
+#!/bin/bash
+
+mutt_dir="$HOME/.config/mutt"
+$mutt_dir/mutt-wizard.sh
