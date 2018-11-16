@@ -1,7 +1,3 @@
-" Load plugins through Pathogen
-    execute pathogen#infect()
-    execute pathogen#helptags()
-
 " Syntax highlighting
     syntax on
 
