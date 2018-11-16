@@ -17,3 +17,7 @@
 
 # MPD volatile files
 .config/mpd/state
+
+# Mutt and DAV wizards
+.config/mutt
+.config/davwizard
