@@ -1,5 +1,7 @@
 # Temporary files
 *.swp
+__pycache__
+*.sync-conflict*
 
 # Vim spellcheck files
 .vim/spell/
