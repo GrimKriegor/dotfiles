@@ -72,6 +72,11 @@ kubectl () {
 # GTK Theme
 export GTK_THEME=numix-black:dark
 
+# Qt Theme
+export QT_PLATFORMTHEME=qt5ct
+export QT_PLATFORM_PLUGIN=qt5ct
+export QT_QPA_PLATFORMTHEME=qt5ct
+
 # Android home
 export ANDROID_HOME=/opt/android-sdk
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
