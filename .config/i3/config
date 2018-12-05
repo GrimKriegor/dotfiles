@@ -463,7 +463,7 @@ bar {
     separator_symbol        "·"
     workspace_buttons       yes
     strip_workspace_numbers yes
-    font pango:Sans 10, FontAwesome 11
+    font pango:Sans, Awesome 11
 
     colors {
         background  #000000
