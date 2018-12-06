@@ -1,0 +1,23 @@
+command=/usr/libexec/i3blocks/$BLOCK_NAME
+align=center
+separator=true
+separator_block_width=25
+color=#cccccc
+markup=none
+
+[windowname]
+align=center
+command=sleep .25; xdotool getwindowfocus getwindowname
+interval=repeat
+min_width=0
+
+[time]
+command=date '+%b %d - %H:%M'
+interval=5
+
+[battery]
+command=$SCRIPT_DIR/battery2
+markup=pango
+interval=30
+
+[tray]
