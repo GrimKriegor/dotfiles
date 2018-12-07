@@ -467,9 +467,9 @@ bar {
     colors {
         background  #000000
         statusline  #DDDDDD
-        separator   #444444
+        separator   #333333
         # class             border  backgr. text
-        focused_workspace   #222222 #222222 #FFFFFF
+        focused_workspace   #333333 #333333 #FFFFFF
         active_workspace    #212121 #212121 #FFFFFF
         inactive_workspace  #000000 #000000 #ffffff
         urgent_workspace    #D64E4E #D64E4E #FFFFFF
