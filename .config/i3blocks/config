@@ -15,6 +15,11 @@ min_width=0
 command=date '+%b %d - %H:%M'
 interval=5
 
+[muttmail]
+command=$SCRIPT_DIR/muttmail
+interval=60
+markup=pango
+
 [battery]
 command=$SCRIPT_DIR/battery2
 markup=pango

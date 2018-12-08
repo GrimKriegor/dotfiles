@@ -1,0 +1,28 @@
+#!/bin/bash
+
+# ~/.config/i3blocks/config
+#[muttmail]
+#command=$SCRIPT_DIR/muttmail
+#interval=60
+#markup=pango
+
+MAIL_ICON=""
+MAIL_ICON_NEW=""
+MAIL_ICON_REFRESH=""
+
+[[ $(du -a ~/.mail/*/INBOX/new/* | sed -n '$=') ]] && state="new"
+
+[[ -f ~/.config/mutt/.dl ]] && refreshing="true"
+
+case $state in
+  "new" )
+    output="<span color=\"#FF0000\">$MAIL_ICON_NEW</span>"
+  ;;
+  * )
+    output="$MAIL_ICON"
+  ;;
+esac
+
+[[ $refreshing ]] && output+="$MAIL_ICON_REFRESH"
+
+echo $output
