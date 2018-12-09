@@ -10,7 +10,12 @@ MAIL_ICON=""
 MAIL_ICON_NEW=""
 MAIL_ICON_REFRESH=""
 
-[[ -d ~/.config/mutt ]] || exit 0
+case $BLOCK_BUTTON in
+	1) "$TERMINAL" -e neomutt ;;
+	3) setsid $HOME/.config/mutt/etc/mailsync.sh >/dev/null & ;;
+esac
+
+[[ ! -d ~/.config/mutt ]] && exit 0
 
 [[ $(du -a ~/.mail/*/INBOX/new/* | sed -n '$=') ]] && state="new"
 
