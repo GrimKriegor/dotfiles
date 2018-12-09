@@ -10,6 +10,8 @@ MAIL_ICON=""
 MAIL_ICON_NEW=""
 MAIL_ICON_REFRESH=""
 
+[[ -d ~/.config/mutt ]] || exit 0
+
 [[ $(du -a ~/.mail/*/INBOX/new/* | sed -n '$=') ]] && state="new"
 
 [[ -f ~/.config/mutt/.dl ]] && refreshing="true"
