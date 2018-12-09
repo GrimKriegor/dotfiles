@@ -26,8 +26,9 @@ alias kc='kubectl'
 #------------------------------
 # Variables
 #------------------------------
-[[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
+export TERMINAL="termite"
 export EDITOR="vim"
+[[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
 
 #------------------------------
 # Window title
