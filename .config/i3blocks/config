@@ -21,7 +21,7 @@ interval=60
 markup=pango
 
 [battery]
-command=$SCRIPT_DIR/battery2
+command=$SCRIPT_DIR/battery
 markup=pango
 interval=30
 
