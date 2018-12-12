@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# ~/.config/i3blocks/config
+#[cpubars]
+#command=$SCRIPT_DIR/cpubars
+#interval=1
+
+bar_array=( "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" )
+bar_array_size=${#bar_array[@]}
+bar_array_step=$(( 100 / $bar_array_size ))
+bar_spacing=" "
+
+function get_usage() {
+  core="$1"
+  echo ${loads[$(( $core ))]}
+}
+
+function get_bar() {
+  usage="$1"
+  bar_position=$(( $usage / $bar_array_step ))
+  [[ $bar_position -lt 0 ]] && bar_position=0
+  [[ $bar_position -gt $(($bar_array_size-1)) ]] && bar_position=$(($bar_array_size-1))
+  echo ${bar_array[$bar_position]}
+}
+
+loads=($(mpstat -P ALL 1 1 | awk '/Average:/ && $2 ~ /[0-9]/ {print int($3)}'))
+cpu_thread_number="$(nproc)"
+for i in `seq 0 $cpu_thread_number`; do
+  usage=$(get_usage $i)
+  bar=$(get_bar $usage)
+  output+="$bar$bar_spacing"
+done
+
+echo $output

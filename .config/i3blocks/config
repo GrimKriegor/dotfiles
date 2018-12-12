@@ -11,6 +11,10 @@ command=sleep .25; xdotool getwindowfocus getwindowname
 interval=repeat
 min_width=0
 
+[cpubars]
+command=$SCRIPT_DIR/cpubars
+interval=2
+
 [time]
 command=date '+%b %d - %H:%M'
 interval=5
