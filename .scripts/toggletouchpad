@@ -1,13 +1,16 @@
 #!/bin/bash
-# Toggle touchpad. Requires xf86-input-synaptics.
+# Toggle touchpad. Requires xorg-xinput.
 
 set -e
 
-if [[ $(synclient | grep TouchpadOff.*1) ]]; then
-  synclient TouchpadOff=0
-  echo "TouchPad reactivated."
-else
-  synclient TouchpadOff=1
+touchpad="SynPS/2 Synaptics TouchPad"
+enabled="Device Enabled"
+
+if (($(xinput list-props "$touchpad" | grep "$enabled" | cut -f3))); then
+  xinput set-prop "$touchpad" "$enabled" 0
   echo "TouchPad deactivated."
+else
+  xinput set-prop "$touchpad" "$enabled" 1
+  echo "TouchPad activated."
 fi
 
