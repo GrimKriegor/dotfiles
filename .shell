@@ -78,6 +78,9 @@ export QT_PLATFORMTHEME=qt5ct
 export QT_PLATFORM_PLUGIN=qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 
+#xz multithread
+export XZ_OPT="-T 0"
+
 # Android home
 export ANDROID_HOME=/opt/android-sdk
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
