@@ -18,10 +18,13 @@ alias x='startx'
 alias ddd='sudo dd status=progress'
 alias sc='sudo systemctl'
 alias p='sudo pacman'
-alias P='pacaur'
+alias pp='pacaur'
 alias v='vim'
 alias V='sudo vim'
+alias dk='docker'
 alias kc='kubectl'
+alias kn='kubens'
+alias kx='kubectx'
 
 #------------------------------
 # Variables
