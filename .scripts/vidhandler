@@ -1,0 +1,43 @@
+#!/bin/bash
+
+function getVideoTitle() {
+  title=$(youtube-dl --get-title "$1")
+  echo "$title"
+}
+
+args="$@"
+clipboard_contents="$(xclip -selection c -o)"
+type=""
+
+path="$args"
+if [[ $args == "" ]]; then
+  path="$clipboard_contents"
+fi
+
+echo "$path" | grep -i 'youtube.com' && type=youtube
+echo "$path" | grep -i 'twitch.tv'   && type=twitch
+echo "$path" | grep -i '^magnet'     && type=magnet
+
+case "$type" in
+
+  youtube )
+    title="YouTube"
+    message="$(getVideoTitle $path)"
+    mpv "$path" &
+  ;;
+
+  twitch )
+    title="Twitch"
+    message="$(getVideoTitle $path)"
+    mpv "$path" &
+  ;;
+
+  magnet )
+    title="Magnet link"
+    message="Now streaming..."
+    $TERMINAL -e "peerflix --mpv $path" &
+  ;;
+
+esac
+
+notify-send "${title:-Video Handler}" "${message:-Nothing to play}"
