@@ -35,7 +35,7 @@ case "$type" in
   magnet )
     title="Magnet link"
     message="Now streaming..."
-    $TERMINAL -e "peerflix --mpv $path" &
+    peerflix --mpv $path &
   ;;
 
 esac

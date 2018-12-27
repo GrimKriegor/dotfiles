@@ -1,16 +1,14 @@
 #!/bin/bash
 
-scihub="http://sci-hub.tw/"
-
-# List of sites that will be opened in mpv.
 vidsites="youtube.com
 	\|hooktube.com
 	\|bitchute.com
+	\|twitch.tv
+	\|^magnet
 	"
 
-# List of academic sites whose pdfs can be dled via sci-hub.
+scihub="http://sci-hub.tw/"
 academic="springer.com"
-
 ext="${1##*.}"
 mpvFiles="mkv mp4 gif webm"
 fehFiles="png jpg jpeg jpe"
@@ -23,7 +21,7 @@ elif echo $mpvFiles | grep -w $ext > /dev/null; then
 elif echo $wgetFiles | grep -w $ext > /dev/null; then
 	wget "$1" >/dev/null & disown
 elif echo "$@" | grep "$vidsites">/dev/null; then
-	setsid nohup mpv -quiet "$1" > /dev/null & disown
+	setsid nohup vidhandler "$1" > /dev/null & disown
 elif echo "$@" | grep "$academic">/dev/null; then
 	curl -sO $(curl -s "$scihub""$@" | grep location.href | grep -o http.*pdf) & disown
 else
