@@ -27,8 +27,8 @@ bindsym $mod+Shift+x gaps inner current set 10; gaps outer current set 10
 font pango:monospace 9
 
 # colors                border  backgr. text    indicator child_border
-client.focused          #17181b #17181b #ffffff #2e9ef4   #285577
-client.focused_inactive #000000 #111111 #ffffff #484e50   #5f676a
+client.focused          #17181b #17181b #ffffff #2e9ef4   #222222
+client.focused_inactive #000000 #111111 #ffffff #484e50   #111111
 client.unfocused        #000000 #000000 #888888 #292d2e   #222222
 client.urgent           #900000 #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
