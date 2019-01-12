@@ -121,15 +121,15 @@ set $ws7  "7:    "
 set $ws8  "8:    "
 set $ws9  "9:    "
 set $ws10 "10:    "
-set $ws11 "11:    "
-set $ws12 "12:    "
-set $ws13 "13:    "
-set $ws14 "14:    "
-set $ws15 "15:    "
+set $ws11 "11:    "
+set $ws12 "12:    "
+set $ws13 "13:    "
+set $ws14 "14:    "
+set $ws15 "15:    "
 set $ws16 "16:    "
 set $ws17 "17:    "
 set $ws18 "18:    "
-set $ws00 "19:    "
+set $ws00 "99:    "
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -268,27 +268,27 @@ bindsym $mod+Shift+t mode "$mode_gaps"
 
 # Terminal scratchpad
 exec --no-startup-id $term -t ScratchpadTerminal
-for_window [title="ScratchpadTerminal"] floating enable
-for_window [title="ScratchpadTerminal"] resize set 625 400
-for_window [title="ScratchpadTerminal"] move scratchpad
-for_window [title="ScratchpadTerminal"] border pixel 5
-bindsym $mod+Shift+Return [title="ScratchpadTerminal"] scratchpad show; [title="ScratchpadTerminal"] move position center
+for_window [title="^ScratchpadTerminal$"] floating enable
+for_window [title="^ScratchpadTerminal$"] resize set 625 400
+for_window [title="^ScratchpadTerminal$"] move scratchpad
+for_window [title="^ScratchpadTerminal$"] border pixel 5
+bindsym $mod+Shift+Return [title="^ScratchpadTerminal$"] scratchpad show; [title="^ScratchpadTerminal$"] move position center
 
 # Arithmetic scratchpad
 exec --no-startup-id $term -t ScratchpadMath -e "R -q"
-for_window [title="ScratchpadMath"] floating enable
-for_window [title="ScratchpadMath"] resize set 800 300
-for_window [title="ScratchpadMath"] move scratchpad
-for_window [title="ScratchpadMath"] border pixel 5
-bindsym $mod+Shift+n [title="ScratchpadMath"] scratchpad show; [title="ScratchpadMath"] move position center
+for_window [title="^ScratchpadMath$"] floating enable
+for_window [title="^ScratchpadMath$"] resize set 800 300
+for_window [title="^ScratchpadMath$"] move scratchpad
+for_window [title="^ScratchpadMath$"] border pixel 5
+bindsym $mod+Shift+n [title="^ScratchpadMath$"] scratchpad show; [title="^ScratchpadMath$"] move position center
 
 # Notepad scratchpad
 exec --no-startup-id $term -t ScratchpadNotepad -e "tmux-attach-spawn Notepad vim"
-for_window [title="ScratchpadNotepad"] floating enable
-for_window [title="ScratchpadNotepad"] resize set 400 625
-for_window [title="ScratchpadNotepad"] move scratchpad
-for_window [title="ScratchpadNotepad"] border pixel 5
-bindsym $mod+Shift+p [title="ScratchpadNotepad"] scratchpad show; [title="ScratchpadNotepad"] move position center
+for_window [title="^ScratchpadNotepad$"] floating enable
+for_window [title="^ScratchpadNotepad$"] resize set 400 625
+for_window [title="^ScratchpadNotepad$"] move scratchpad
+for_window [title="^ScratchpadNotepad$"] border pixel 5
+bindsym $mod+Shift+p [title="^ScratchpadNotepad$"] scratchpad show; [title="^ScratchpadNotepad$"] move position center
 
 #Luke Smith's meme bunker
 bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec urxvt -e ranger
