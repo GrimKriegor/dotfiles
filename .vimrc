@@ -84,6 +84,9 @@
     let &titlestring = @%
     set title
 
+" Insert real tab characters
+    inoremap <S-Tab> <C-V><Tab>
+
 " Spell-check:
     hi clear SpellBad
     hi SpellBad cterm=underline ctermfg=1
