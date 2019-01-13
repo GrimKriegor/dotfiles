@@ -1,6 +1,7 @@
 #!/bin/bash
 
 vidsites="youtube.com
+        \|vimeo.com
 	\|hooktube.com
 	\|bitchute.com
 	\|twitch.tv

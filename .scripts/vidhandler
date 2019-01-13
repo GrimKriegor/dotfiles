@@ -14,20 +14,23 @@ if [[ $args == "" ]]; then
   path="$clipboard_contents"
 fi
 
-echo "$path" | grep -i 'youtube.com' && type=youtube
-echo "$path" | grep -i 'twitch.tv'   && type=twitch
-echo "$path" | grep -i '^magnet'     && type=magnet
+echo "$path" | grep -i 'youtube.com\|vimeo.com' \
+  && type=webvideo
+echo "$path" | grep -i 'twitch.tv' \
+  && type=livestream
+echo "$path" | grep -i '^magnet' \
+  && type=magnet
 
 case "$type" in
 
-  youtube )
-    title="YouTube"
+  webvideo )
+    title="Web video"
     message="$(getVideoTitle $path)"
     mpv "$path" &
   ;;
 
-  twitch )
-    title="Twitch"
+  livestream )
+    title="Livestream"
     message="$(getVideoTitle $path)"
     mpv "$path" &
   ;;
