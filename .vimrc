@@ -57,7 +57,10 @@
     nnoremap <Leader>c :set cursorline!<CR>
 
 " NERDTree toggle key
-    map <C-m> :NERDTreeToggle<CR>
+    map <C-n> :NERDTreeToggle<CR>
+
+" Switchbuf preferences
+    set switchbuf+=usetab,newtab
 
 " Highlight trailing whitespaces
     highlight ExtraWhitespace ctermbg=red guibg=red
