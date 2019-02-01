@@ -111,15 +111,15 @@ bindsym $mod+a focus parent
 #bindsym $mod+d focus child
 
 # define names for workspaces
-set $ws1  "1:    "
-set $ws2  "2:    "
-set $ws3  "3:    "
-set $ws4  "4:    "
-set $ws5  "5:    "
-set $ws6  "6:    "
-set $ws7  "7:    "
-set $ws8  "8:    "
-set $ws9  "9:    "
+set $ws1   "1:    "
+set $ws2   "2:    "
+set $ws3   "3:    "
+set $ws4   "4:    "
+set $ws5   "5:    "
+set $ws6   "6:    "
+set $ws7   "7:    "
+set $ws8   "8:    "
+set $ws9   "9:    "
 set $ws10 "10:    "
 set $ws11 "11:    "
 set $ws12 "12:    "
@@ -275,7 +275,7 @@ for_window [title="^ScratchpadTerminal$"] border pixel 5
 bindsym $mod+Shift+Return [title="^ScratchpadTerminal$"] scratchpad show; [title="^ScratchpadTerminal$"] move position center
 
 # Arithmetic scratchpad
-exec --no-startup-id $term -t ScratchpadMath -e "R -q"
+exec --no-startup-id $term -t ScratchpadMath -e "calc -d"
 for_window [title="^ScratchpadMath$"] floating enable
 for_window [title="^ScratchpadMath$"] resize set 800 300
 for_window [title="^ScratchpadMath$"] move scratchpad
