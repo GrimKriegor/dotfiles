@@ -192,6 +192,9 @@ bindsym $mod+Shift+r restart
 # default display mode
 bindsym XF86Display exec --no-startup-id ~/.scripts/displayselect Laptop
 
+# toggle freeze a window
+bindsym $mod+q exec --no-startup-id ~/.scripts/toggle-freeze-window
+
 
 ##
 #
