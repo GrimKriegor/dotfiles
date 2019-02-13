@@ -128,7 +128,7 @@ live_config_reload: true
 
 enable_experimental_conpty_backend: false
 
-alt_send_esc: false
+alt_send_esc: true
 
 key_bindings:
   # (Windows/Linux only)
