@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Originally from Aebae7ee at:
+# https://www.reddit.com/r/i3wm/comments/anbtzn/powersaving_idea/efsf9u8
+
+# To debug:
+# - uncomment `exec`
+# - uncomment `echo`
+# - add `-x` flag to the shebang line
+# Then check `/tmp/ptoggle.log` file
+
+# exec &>> /tmp/ptoggle.log
+set -euo pipefail
+IFS=$'\n\t'
+
+# Get windows PID
+# From https://unix.stackexchange.com/questions/38867/is-it-possible-to-retrieve-the-active-window-process-title-in-gnome
+WINID=$(xdotool getactivewindow)
+WMPID=$(xdotool getwindowpid "$WINID")
+# echo $WMPID
+
+# Get PID status
+CURRENTSTATUS=$(awk '/^State:/ {print $2}' /proc/"$WMPID"/status)
+# echo $CURRENTSTATUS
+
+if [ "$CURRENTSTATUS" == "T" ]; then
+  # echo $WMPID Currently stopped, going on
+  kill -CONT "$WMPID"
+else
+  # echo $WMPID Currently running, stopping
+  kill -STOP "$WMPID"
+fi
