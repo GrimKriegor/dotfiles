@@ -8,11 +8,7 @@
 set $mod Mod4
 
 # Default terminal
-set $term --no-startup-id termite
-
-# Default file manager
-set $filemanager --no-startup-id urxvt -e ranger
-set $filemanager_gui --no-startup-id pcmanfm
+set $term --no-startup-id alacritty
 
 # i3-gaps
 for_window [class="^.*"] border pixel 0
@@ -59,8 +55,8 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+t exec $term
 
 # open a file manager window
-bindsym $mod+y exec $filemanager
-bindsym $mod+Shift+y exec $filemanager_gui
+bindsym $mod+y exec --no-startup-id $term -e ranger
+bindsym $mod+Shift+y exec --no-startup-id pcmanfm
 
 # open a music player window
 bindsym $mod+m exec --no-startup-id $term -e "$music -S visualizer"
@@ -291,7 +287,7 @@ for_window [title="^ScratchpadNotepad$"] border pixel 5
 bindsym $mod+Shift+p [title="^ScratchpadNotepad$"] scratchpad show; [title="^ScratchpadNotepad$"] move position center
 
 #Luke Smith's meme bunker
-bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec urxvt -e ranger
+bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec $term -e ranger
 
 
 ##
