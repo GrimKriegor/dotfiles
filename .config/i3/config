@@ -494,7 +494,6 @@ exec --no-startup-id synclient TouchpadOff=1
 
 # Add wallpaper
 exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
-bindsym $mod+F11 exec --no-startup-id feh --bg-scale ~/.config/wall.jpg
 
 # Composite manager
 exec --no-startup-id compton --xrender-sync-fence
