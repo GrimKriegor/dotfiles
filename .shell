@@ -23,6 +23,7 @@ alias v='vim'
 alias V='sudo vim'
 alias dk='docker'
 alias kc='kubectl'
+alias ka='kubeadm'
 alias kn='kubens'
 alias kx='kubectx'
 
