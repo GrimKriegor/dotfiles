@@ -32,6 +32,8 @@ alias kx='kubectx'
 #------------------------------
 export TERMINAL="alacritty"
 export EDITOR="vim"
+export FILEMAN="ranger"
+export FILEMAN_GUI="pcmanfm"
 [[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
 
 #------------------------------
