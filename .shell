@@ -74,10 +74,13 @@ kubectl () {
 # Program configuration
 #------------------------------
 
-# GTK Theme
+# Force HIDPI factor
+export WINIT_HIDPI_FACTOR=1.0
+
+# GTK theme
 export GTK_THEME=numix-black:dark
 
-# Qt Theme
+# Qt theme
 export QT_PLATFORMTHEME=qt5ct
 export QT_PLATFORM_PLUGIN=qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
