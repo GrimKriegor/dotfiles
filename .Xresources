@@ -1,7 +1,7 @@
 *foreground: #dddddd
 *foreground_bold: #a8a19f
 *cursor: #a8a19f
-!!background = #1b1918
+*background: #000000
 !!*background: rgba(0, 0, 0, .92)
 
 !! black
@@ -29,6 +29,10 @@
 !! white
 *color7: #f1efee
 *color15: #f1efee
+
+!!sxiv
+Sxiv.foreground: #666666
+Sxiv.background: #000000
 
 xscreensaver.splash: false
 
