@@ -1,9 +1,13 @@
+"""
+""" General
+"""
+
+" Window name
+    let &titlestring = @%
+    set title
+
 " Syntax highlighting
     syntax on
-
-" Filetype plugin
-    set nocompatible
-    filetype plugin on
 
 " Line numbers
     set number
@@ -14,19 +18,23 @@
     set shiftwidth=2
     set softtabstop=2
 
+" Highlight searches
+    set hlsearch
+
+" Status line
+    hi Statusline ctermbg=Gray ctermfg=234
+    hi StatusLineNC ctermbg=Gray ctermfg=234
+
 " Shared clipboard
     set clipboard=unnamedplus
 
-" Copy and paste on X clipboard
-    map <leader>cc :w !xsel -i -b<CR>
-    map <leader>cp :w !xsel -i -p<CR>
-    map <leader>cs :w !xsel -i -s<CR>
-    map <leader>pp :r!xsel -p<CR>
-    map <leader>ps :r!xsel -s<CR>
-    map <leader>pb :r!xsel -b<CR>
 
-" Highlight searches
-    set hlsearch
+"""
+""" Navigation and workflow
+"""
+
+" Switchbuf preferences
+    set switchbuf+=usetab,newtab
 
 " Pane navigation
     nnoremap <c-j> <c-w>j
@@ -48,19 +56,16 @@
     hi VertSplit ctermfg=Black ctermbg=White
     set fillchars+=vert:\ 
 
-" Status line
-    hi Statusline ctermbg=Gray ctermfg=234
-    hi StatusLineNC ctermbg=Gray ctermfg=234
+" Navigating with guides
+    inoremap ;;<Space> <Esc>/<++><Enter>"_c4l
+    vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
+    map ;;<Space> <Esc>/<++><Enter>"_c4l
+    inoremap ;gui <++>
 
-" Cursor line
-    hi CursorLine cterm=NONE ctermbg=233
-    nnoremap <Leader>c :set cursorline!<CR>
 
-" NERDTree toggle key
-    map <C-n> :NERDTreeToggle<CR>
-
-" Switchbuf preferences
-    set switchbuf+=usetab,newtab
+"""
+""" Utilities
+"""
 
 " Highlight trailing whitespaces
     highlight ExtraWhitespace ctermbg=red guibg=red
@@ -70,25 +75,17 @@
     autocmd InsertLeave * match ExtraWhitespace /\s\+$/
     autocmd BufWinLeave * call clearmatches()
 
-" Syntastic settings
-    set statusline+=%#warningmsg#
-    set statusline+=%{SyntasticStatuslineFlag()}
-    set statusline+=%*
+" Cursor line
+    hi CursorLine cterm=NONE ctermbg=233
+    nnoremap <Leader>c :set cursorline!<CR>
 
-    let g:syntastic_always_populate_loc_list = 1
-    let g:syntastic_auto_loc_list = 1
-    let g:syntastic_check_on_open = 1
-    let g:syntastic_check_on_wq = 0
-
-" Tagbar toggle key
-    nmap <F8> :TagbarToggle<CR>
-
-" Window name
-    let &titlestring = @%
-    set title
-
-" Insert real tab characters
-    inoremap <S-Tab> <C-V><Tab>
+" Copy and paste on X clipboard
+    map <leader>cc :w !xsel -i -b<CR>
+    map <leader>cp :w !xsel -i -p<CR>
+    map <leader>cs :w !xsel -i -s<CR>
+    map <leader>pp :r!xsel -p<CR>
+    map <leader>ps :r!xsel -s<CR>
+    map <leader>pb :r!xsel -b<CR>
 
 " Spell-check:
     hi clear SpellBad
@@ -111,16 +108,35 @@
     endfunction
     map <F7> :<C-U>call MySpellLang()<CR>
 
-" Interpret .md files, etc. as .markdown
+" Insert real tab characters
+    inoremap <S-Tab> <C-V><Tab>
+
+
+"""
+""" Plugin specific
+"""
+
+" Filetype
+    set nocompatible
+    filetype plugin on
     let g:vimwiki_ext2syntax = {'.Rmd': 'markdown', '.rmd': 'markdown','.md': 'markdown', '.markdown': 'markdown', '.mdown': 'markdown'}
 
-" Navigating with guides
-    inoremap ;;<Space> <Esc>/<++><Enter>"_c4l
-    vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
-    map ;;<Space> <Esc>/<++><Enter>"_c4l
-    inoremap ;gui <++>
+" NERDTree
+    map <C-n> :NERDTreeToggle<CR>
 
-" Goyo plugin for writing distraction free
+" Syntastic
+    set statusline+=%#warningmsg#
+    set statusline+=%{SyntasticStatuslineFlag()}
+    set statusline+=%*
+    let g:syntastic_always_populate_loc_list = 1
+    let g:syntastic_auto_loc_list = 1
+    let g:syntastic_check_on_open = 1
+    let g:syntastic_check_on_wq = 0
+
+" Tagbar
+    nmap <F8> :TagbarToggle<CR>
+
+" goyo.vim
     map <F10> :Goyo<CR>
     inoremap <F10> <esc>:Goyo<CR>a
 
