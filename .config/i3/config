@@ -62,6 +62,10 @@ bindsym $mod+Shift+y exec --no-startup-id pcmanfm
 bindsym $mod+m exec --no-startup-id $term -e $music -S visualizer
 bindsym $mod+Shift+m exec --no-startup-id $term -e $music
 
+# open an email client window
+bindsym $mod+comma exec --no-startup-id $term -e neomutt
+bindsym $mod+Shift+comma exec --no-startup-id $term -e mailcal
+
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
