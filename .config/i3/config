@@ -274,7 +274,7 @@ for_window [title="^ScratchpadTerminal$"] border pixel 5
 bindsym $mod+Shift+Return [title="^ScratchpadTerminal$"] scratchpad show; [title="^ScratchpadTerminal$"] move position center
 
 # Arithmetic scratchpad
-exec --no-startup-id $term -t ScratchpadMath -e "calc -d"
+exec --no-startup-id $term -t ScratchpadMath -e calc -d
 for_window [title="^ScratchpadMath$"] floating enable
 for_window [title="^ScratchpadMath$"] resize set 800 300
 for_window [title="^ScratchpadMath$"] move scratchpad
@@ -282,7 +282,7 @@ for_window [title="^ScratchpadMath$"] border pixel 5
 bindsym $mod+Shift+n [title="^ScratchpadMath$"] scratchpad show; [title="^ScratchpadMath$"] move position center
 
 # Notepad scratchpad
-exec --no-startup-id $term -t ScratchpadNotepad -e "tmux-attach-spawn Notepad vim"
+exec --no-startup-id $term -t ScratchpadNotepad -e tmux-attach-spawn Notepad vim
 for_window [title="^ScratchpadNotepad$"] floating enable
 for_window [title="^ScratchpadNotepad$"] resize set 400 625
 for_window [title="^ScratchpadNotepad$"] move scratchpad
