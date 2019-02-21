@@ -307,11 +307,12 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $t
 exec --no-startup-id xmodmap ~/.Xmodmap
 exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape -option compose:paus
 
-set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl (U) en_us-normie
+set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl (p) pt_pt
 mode "$mode_keyboard" {
         bindsym u       exec --no-startup-id setxkbmap -layout us               -option -option caps:swapescape -option compose:paus, mode "default"
         bindsym i       exec --no-startup-id setxkbmap -layout us -variant intl -option -option caps:swapescape -option compose:paus, mode "default"
         bindsym Shift+u exec --no-startup-id setxkbmap -layout us               -option                         -option compose:paus, mode "default"
+        bindsym p       exec --no-startup-id setxkbmap -layout pt               -option -option caps:swapescape -option compose:paus, mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
