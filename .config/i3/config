@@ -304,12 +304,14 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $t
 ##
 
 #Keyboard layout
+exec --no-startup-id xmodmap ~/.Xmodmap
+exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape -option compose:paus
+
 set $mode_keyboard [Keyboard Layout Mode] (u) en_us (i) en_us-intl (U) en_us-normie
 mode "$mode_keyboard" {
-        bindsym u exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape, mode "default"
-        bindsym i exec --no-startup-id setxkbmap -layout us -variant intl -option -option caps:swapescape, mode "default"
-        bindsym Shift+u exec --no-startup-id setxkbmap -layout us -option, mode "default"
-
+        bindsym u       exec --no-startup-id setxkbmap -layout us               -option -option caps:swapescape -option compose:paus, mode "default"
+        bindsym i       exec --no-startup-id setxkbmap -layout us -variant intl -option -option caps:swapescape -option compose:paus, mode "default"
+        bindsym Shift+u exec --no-startup-id setxkbmap -layout us               -option                         -option compose:paus, mode "default"
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -488,10 +490,6 @@ bar {
 
 # Reload .Xresources
 exec_always --no-startup-id xrdb ~/.Xresources
-
-# Modify keys
-exec --no-startup-id xmodmap ~/.Xmodmap
-exec --no-startup-id setxkbmap -layout us -option -option caps:swapescape
 
 # Disable touchpad
 exec --no-startup-id synclient TouchpadOff=1

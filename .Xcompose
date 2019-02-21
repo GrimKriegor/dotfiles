@@ -1,0 +1,5 @@
+include "/usr/share/X11/locale/en_US.UTF-8/Compose"
+<Multi_key> <underscore> <a> : "ª" ordfeminine # FEMININE ORDINAL INDICATOR
+<Multi_key> <a> <underscore> : "ª" ordfeminine # FEMININE ORDINAL INDICATOR
+<Multi_key> <underscore> <o> : "º" masculine   # MASCULINE ORDINAL INDICATOR
+<Multi_key> <o> <underscore> : "º" masculine   # MASCULINE ORDINAL INDICATOR
