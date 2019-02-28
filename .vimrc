@@ -48,11 +48,6 @@
     nnoremap <c-h> <c-w>h
     nnoremap <c-l> <c-w>l
 
-" Tab navigation
-    map <C-k> :tabn<CR>
-    map <C-j> :tabp<CR>
-    map <C-n> :tabnew<CR>
-
 " Tab bar
     hi TabLineFill ctermfg=Black ctermbg=White
     hi TabLine ctermfg=Blue ctermbg=Black
