@@ -31,3 +31,6 @@
 [submodule ".vim/pack/plugins/start/vim-focus-autocmd"]
 	path = .vim/pack/plugins/start/vim-focus-autocmd
 	url = https://github.com/amerlyq/vim-focus-autocmd.git
+[submodule ".vim/pack/plugins/start/tagbar"]
+	path = .vim/pack/plugins/start/tagbar
+	url = https://github.com/majutsushi/tagbar.git
