@@ -28,6 +28,9 @@
     hi Statusline ctermbg=Gray ctermfg=234
     hi StatusLineNC ctermbg=Gray ctermfg=234
 
+" Wild menu
+    set wildmenu
+
 " Shared clipboard
     set clipboard=unnamedplus
 
