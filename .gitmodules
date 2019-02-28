@@ -28,3 +28,6 @@
 [submodule ".vim/pack/plugins/start/grep"]
 	path = .vim/pack/plugins/start/grep
 	url = https://github.com/yegappan/grep.git
+[submodule ".vim/pack/plugins/start/vim-focus-autocmd"]
+	path = .vim/pack/plugins/start/vim-focus-autocmd
+	url = https://github.com/amerlyq/vim-focus-autocmd.git
