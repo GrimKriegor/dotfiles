@@ -28,6 +28,10 @@
     hi Statusline ctermbg=Gray ctermfg=234
     hi StatusLineNC ctermbg=Gray ctermfg=234
 
+" Popup colors
+    hi Pmenu ctermfg=Gray ctermbg=Black guibg=Black
+    hi PmenuSel ctermfg=Black ctermbg=Gray guibg=Gray
+
 " Wild menu
     set wildmenu
 
