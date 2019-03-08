@@ -31,6 +31,7 @@
 " Popup colors
     hi Pmenu ctermfg=Gray ctermbg=Black guibg=Black
     hi PmenuSel ctermfg=Black ctermbg=Gray guibg=Gray
+    hi PmenuSbar ctermfg=Black ctermbg=Gray guibg=Gray
 
 " Wild menu
     set wildmenu
