@@ -144,3 +144,24 @@
 
 " vim-javacomplete2
     autocmd FileType java setlocal omnifunc=javacomplete#Complete
+
+" YouCompleteMe
+    nnoremap <Leader>gt :YcmCompleter GoTo<CR>
+    nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
+    nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
+    nnoremap <leader>gdf :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    let g:ycm_filetype_blacklist = {
+        \ 'text': 1,
+        \ 'conf': 1,
+        \ 'markdown': 1,
+        \ 'vim': 1,
+        \ 'gitcommit': 1,
+        \ 'mail': 1,
+        \ 'tagbar': 1,
+        \ 'qf': 1,
+        \ 'notes': 1,
+        \ 'unite': 1,
+        \ 'vimwiki': 1,
+        \ 'pandoc': 1,
+        \ 'infolog': 1
+    \}
