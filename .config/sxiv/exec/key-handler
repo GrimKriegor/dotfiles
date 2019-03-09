@@ -3,15 +3,17 @@ while read file
 do
   case "$1" in
 
-  # Rotate 90 degrees clockwise
+  # Edit
+  "C-e")
+    gimp "$file" ;;
+
+  # Rotate 90 degrees
   "C-r")
     convert -rotate 90 "$file" "$file" ;;
 
+  # Share
   "C-s")
     share "$file" ;;
-
-  "C-e")
-    gimp "$file" ;;
 
   esac
 done
