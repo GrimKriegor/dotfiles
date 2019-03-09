@@ -1,0 +1,67 @@
+#!/bin/bash
+
+set -e
+
+
+#
+# Information gathering
+#
+
+# Arguments
+corner="$1"
+relative_size_delta_percent="$2"
+relative_size_delta_absolute="$(( 100 / $relative_size_delta_percent ))"
+relative_size_delta_percent_decimal="$(( $relative_size_delta_percent / 100 ))"
+
+# Current display geometry
+display_geometry="$(xdotool getdisplaygeometry)"
+display_length="$(echo $display_geometry | awk '{print $1}')"
+display_width="$(echo $display_geometry | awk '{print $2}')"
+
+# Current window geometry
+current_window="$(xdotool getwindowfocus)"
+current_window_geometry="$(xdotool getwindowgeometry $current_window | grep Geometry | sed -e 's/x/ /g' | sed -e 's/  Geometry: //g')"
+current_window_length="$(echo $current_window_geometry | awk '{print $1}')"
+current_window_width="$(echo $current_window_geometry | awk '{print $2}')"
+
+
+#
+# Transformation
+#
+
+# New size
+new_window_length="$(( $display_length / $relative_size_delta_absolute ))"
+new_window_width="$(( $display_width / $relative_size_delta_absolute ))"
+
+# New position
+case $corner in
+
+  "top_left")
+    new_window_vpos="0"
+    new_window_hpos="0"
+  ;;
+
+  "top_right")
+    new_window_vpos="0"
+    new_window_hpos="$(( $display_length - $new_window_length ))"
+  ;;
+
+  "bottom_left")
+    new_window_vpos="$(( $display_width - $new_window_width ))"
+    new_window_hpos="0"
+  ;;
+
+  "bottom_right")
+    new_window_vpos="$(( $display_width - $new_window_width ))"
+    new_window_hpos="$(( $display_length - $new_window_length ))"
+  ;;
+
+esac
+
+
+#
+# Execution
+#
+
+xdotool windowsize "$current_window" "$new_window_length" "$new_window_width"
+xdotool windowmove "$current_window" "$new_window_hpos" "$new_window_vpos"
