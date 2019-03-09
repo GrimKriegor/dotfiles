@@ -10,20 +10,21 @@ set -e
 # Arguments
 corner="$1"
 relative_size_delta_percent="$2"
-relative_size_delta_absolute="$(( 100 / $relative_size_delta_percent ))"
+relative_size_delta_absolute=$(bc -l <<< "scale=2; 100 / $relative_size_delta_percent")
 target_window="$3"
 
 # Display geometry
 display_geometry="$(xdotool getdisplaygeometry)"
-display_length="$(echo $display_geometry | awk '{print $1}')"
-display_width="$(echo $display_geometry | awk '{print $2}')"
+display_size_x="$(echo $display_geometry | awk '{print $1}')"
+display_size_y="$(echo $display_geometry | awk '{print $2}')"
 
 # Window geometry
 [[ -z "$target_window" ]] && target_window="$(xdotool getwindowfocus)"
 current_window="$target_window"
 current_window_geometry="$(xdotool getwindowgeometry $current_window | grep Geometry | sed -e 's/x/ /g' | sed -e 's/  Geometry: //g')"
-current_window_length="$(echo $current_window_geometry | awk '{print $1}')"
-current_window_width="$(echo $current_window_geometry | awk '{print $2}')"
+current_window_size_x="$(echo $current_window_geometry | awk '{print $1}')"
+current_window_size_y="$(echo $current_window_geometry | awk '{print $2}')"
+current_window_ratio=$(bc -l <<< "scale=2; $current_window_size_x / $current_window_size_y")
 
 
 #
@@ -31,30 +32,30 @@ current_window_width="$(echo $current_window_geometry | awk '{print $2}')"
 #
 
 # New size
-new_window_length="$(( $display_length / $relative_size_delta_absolute ))"
-new_window_width="$(( $display_width / $relative_size_delta_absolute ))"
+new_window_size_x=$(bc -l <<< "scale=2; $display_size_x / $relative_size_delta_absolute")
+new_window_size_y=$(bc -l <<< "scale=2; $new_window_size_x / $current_window_ratio")
 
 # New position
 case $corner in
 
   "top_left")
-    new_window_vpos="0"
-    new_window_hpos="0"
+    new_window_pos_x="0"
+    new_window_pos_y="0"
   ;;
 
   "top_right")
-    new_window_vpos="0"
-    new_window_hpos="$(( $display_length - $new_window_length ))"
+    new_window_pos_x=$(bc -l <<< "scale=1; $display_size_x - $new_window_size_x")
+    new_window_pos_y="0"
   ;;
 
   "bottom_left")
-    new_window_vpos="$(( $display_width - $new_window_width ))"
-    new_window_hpos="0"
+    new_window_pos_x="0"
+    new_window_pos_y=$(bc -l <<< "scale=1; $display_size_y - $new_window_size_y")
   ;;
 
   "bottom_right")
-    new_window_vpos="$(( $display_width - $new_window_width ))"
-    new_window_hpos="$(( $display_length - $new_window_length ))"
+    new_window_pos_x=$(bc -l <<< "scale=1; $display_size_x - $new_window_size_x")
+    new_window_pos_y=$(bc -l <<< "scale=1; $display_size_y - $new_window_size_y")
   ;;
 
 esac
@@ -64,5 +65,5 @@ esac
 # Execution
 #
 
-xdotool windowsize "$current_window" "$new_window_length" "$new_window_width"
-xdotool windowmove "$current_window" "$new_window_hpos" "$new_window_vpos"
+xdotool windowsize "$current_window" "$new_window_size_x" "$new_window_size_y"
+xdotool windowmove "$current_window" "$new_window_pos_x" "$new_window_pos_y"
