@@ -496,7 +496,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id synclient TouchpadOff=1
 
 # Add wallpaper
-exec_always --no-startup-id feh --bg-scale ~/.config/wall.jpg
+exec_always --no-startup-id ~/.scripts/set-wallpaper
 
 # Composite manager
 exec --no-startup-id compton --xrender-sync-fence

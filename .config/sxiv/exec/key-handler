@@ -11,6 +11,10 @@ do
   "C-r")
     convert -rotate 90 "$file" "$file" ;;
 
+  # Set as wallpaper
+  "C-w")
+    set-wallpaper "$file" ;;
+
   # Share
   "C-s")
     share "$file" ;;

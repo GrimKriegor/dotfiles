@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+wallpaper="$HOME/.config/wallpaper"
+
+image="$@"
+[[ ! -z "$image" ]] && \
+  cp "$image" "$wallpaper"
+
+feh --bg-scale "$wallpaper"
