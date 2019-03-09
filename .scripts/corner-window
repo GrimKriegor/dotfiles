@@ -11,15 +11,16 @@ set -e
 corner="$1"
 relative_size_delta_percent="$2"
 relative_size_delta_absolute="$(( 100 / $relative_size_delta_percent ))"
-relative_size_delta_percent_decimal="$(( $relative_size_delta_percent / 100 ))"
+target_window="$3"
 
-# Current display geometry
+# Display geometry
 display_geometry="$(xdotool getdisplaygeometry)"
 display_length="$(echo $display_geometry | awk '{print $1}')"
 display_width="$(echo $display_geometry | awk '{print $2}')"
 
-# Current window geometry
-current_window="$(xdotool getwindowfocus)"
+# Window geometry
+[[ -z "$target_window" ]] && target_window="$(xdotool getwindowfocus)"
+current_window="$target_window"
 current_window_geometry="$(xdotool getwindowgeometry $current_window | grep Geometry | sed -e 's/x/ /g' | sed -e 's/  Geometry: //g')"
 current_window_length="$(echo $current_window_geometry | awk '{print $1}')"
 current_window_width="$(echo $current_window_geometry | awk '{print $2}')"
