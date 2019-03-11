@@ -149,9 +149,6 @@
     map <F10> :Goyo<CR>
     inoremap <F10> <esc>:Goyo<CR>a
 
-" vim-javacomplete2
-    autocmd FileType java setlocal omnifunc=javacomplete#Complete
-
 " YouCompleteMe
     nnoremap <Leader>gt :YcmCompleter GoTo<CR>
     nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
