@@ -73,6 +73,9 @@
 """ Utilities
 """
 
+" Reload Vim config file
+    nnoremap <Leader>sv :so ~/.vimrc<CR>
+
 " Highlight trailing whitespaces
     highlight ExtraWhitespace ctermbg=red guibg=red
     match ExtraWhitespace /\s\+$/
