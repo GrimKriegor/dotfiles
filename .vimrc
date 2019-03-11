@@ -135,6 +135,12 @@
     let g:syntastic_auto_loc_list = 0
     let g:syntastic_check_on_open = 1
     let g:syntastic_check_on_wq = 0
+    let g:syntastic_error_symbol = "E"
+    let g:syntastic_style_error_symbol = "sE"
+    let g:syntastic_warning_symbol = "W"
+    let g:syntastic_style_warning_symbol = "sW"
+    let g:syntastic_java_checkers = []
+    let g:syntastic_javascript_checkers = ['eslint']
 
 " Tagbar
     nmap <F8> :TagbarToggle<CR>
@@ -151,6 +157,7 @@
     nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
     nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
     nnoremap <leader>gdf :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    let g:ycm_always_populate_location_list = 1
     let g:ycm_filetype_blacklist = {
         \ 'text': 1,
         \ 'conf': 1,
