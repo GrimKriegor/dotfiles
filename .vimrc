@@ -117,6 +117,9 @@
 " Insert real tab characters
     inoremap <S-Tab> <C-V><Tab>
 
+" Find (grep)
+    nnoremap <Leader>fg :exec ":Grep ".input("")<CR>
+    nnoremap <Leader>fr :exec ":Rg ".input("")<CR>
 
 """
 """ Plugin specific
