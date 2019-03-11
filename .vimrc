@@ -118,8 +118,8 @@
     inoremap <S-Tab> <C-V><Tab>
 
 " Find (grep)
-    nnoremap <Leader>fg :exec ":Grep ".input("")<CR>
-    nnoremap <Leader>fr :exec ":Rg ".input("")<CR>
+    nnoremap <Leader>fg :exec ":Grep ".input("grep: ")<CR>
+    nnoremap <Leader>fr :exec ":Rg ".input("ripgrep: ")<CR>
 
 """
 """ Plugin specific
