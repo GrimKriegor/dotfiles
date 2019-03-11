@@ -154,9 +154,9 @@
 
 " YouCompleteMe
     nnoremap <Leader>gt :YcmCompleter GoTo<CR>
-    nnoremap <leader>gd :YcmCompleter GoToDeclaration<CR>
-    nnoremap <leader>gf :YcmCompleter GoToDefinition<CR>
-    nnoremap <leader>gdf :YcmCompleter GoToDefinitionElseDeclaration<CR>
+    nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
+    nnoremap <Leader>gd :YcmCompleter GetDoc<CR>
+    nnoremap <Leader>rr :exec ":YcmCompleter RefactorRename ".input("RefactorRename: ")<CR>
     let g:ycm_always_populate_location_list = 1
     let g:ycm_filetype_blacklist = {
         \ 'text': 1,
