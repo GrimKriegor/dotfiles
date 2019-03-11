@@ -23,6 +23,7 @@
 
 " Highlight searches
     set hlsearch
+    hi Search cterm=bold ctermfg=black ctermbg=yellow
 
 " Status line
     hi Statusline ctermbg=Gray ctermfg=234
