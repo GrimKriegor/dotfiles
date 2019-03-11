@@ -18,8 +18,7 @@
 
 " Identation
     filetype plugin indent on
-    set shiftwidth=2
-    set softtabstop=2
+    set softtabstop=2 shiftwidth=2 expandtab
 
 " Highlight searches
     set hlsearch
