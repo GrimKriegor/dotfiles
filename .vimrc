@@ -149,8 +149,6 @@ let g:syntastic_error_symbol = "E"
 let g:syntastic_style_error_symbol = "sE"
 let g:syntastic_warning_symbol = "W"
 let g:syntastic_style_warning_symbol = "sW"
-let g:syntastic_java_checkers = []
-let g:syntastic_javascript_checkers = ['eslint']
 
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
