@@ -68,6 +68,9 @@ vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
 map ;;<Space> <Esc>/<++><Enter>"_c4l
 inoremap ;gui <++>
 
+" Lists
+noremap <leader>lo :lopen<CR>
+noremap <leader>lc :lclose<CR>
 
 """
 """ Utilities
