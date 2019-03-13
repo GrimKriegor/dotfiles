@@ -2,25 +2,29 @@
 *.swp
 swap/
 __pycache__
+*.pyc
 *.sync-conflict*
 
-# Vim spellcheck files
+# Vim
 .vim/spell/
-
-# Vim history files
 .vim/.netrwhist
 
-# Conky files containing private information
-.conky/conky-private.sed
-.conky/conkyrc
-
-# Ranger volatile files
+# Ranger
 .config/ranger/tagged
 .config/ranger/bookmarks
 
-# MPD volatile files
+# MPD
 .config/mpd/state
+
+# MPV
+.config/mpv/watch_later
+
+# Conky
+.conky/conky-private.sed
+.conky/conkyrc
 
 # Mutt and DAV wizards
 .config/mutt
 .config/davwizard
+.config/khal
+.config/khard
