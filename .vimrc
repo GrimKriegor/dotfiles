@@ -158,10 +158,6 @@ let g:syntastic_style_warning_symbol = "sW"
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" goyo.vim
-map <F10> :Goyo<CR>
-inoremap <F10> <esc>:Goyo<CR>a
-
 " YouCompleteMe
 nnoremap <Leader>gt :YcmCompleter GoTo<CR>
 nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
