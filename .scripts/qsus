@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# qsus - Quick suspension with RTC resume
+# Particularly useful when dealing with VFIO power reset issues
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org> 2018
+
+sudo rtcwake -u -s 1 -m mem
