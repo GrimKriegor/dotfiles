@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# ASpawn - Android Emulator quickspawner
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org> 2017
+
+PATH=$PATH:/opt/android-sdk/tools/bin/:/opt/android-sdk/tools
+ANDROID_HOME="/opt/android-sdk"
+
+cd "$ANDROID_HOME/tools/"
+emulator -avd "$1" -use-system-libs -qemu -m 512 -enable-kvm
