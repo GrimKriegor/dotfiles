@@ -1,13 +1,13 @@
-[submodule ".vim/bundle/nerdtree"]
+[submodule ".vim/pack/plugins/start/nerdtree"]
 	path = .vim/pack/plugins/start/nerdtree
 	url = https://github.com/scrooloose/nerdtree.git
-[submodule ".vim/bundle/vim-gitgutter"]
+[submodule ".vim/pack/plugins/start/vim-gitgutter"]
 	path = .vim/pack/plugins/start/vim-gitgutter
 	url = https://github.com/airblade/vim-gitgutter.git
-[submodule ".vim/bundle/vim-syntastic"]
+[submodule ".vim/pack/plugins/start/vim-syntastic"]
 	path = .vim/pack/plugins/start/vim-syntastic
 	url = https://github.com/vim-syntastic/syntastic.git
-[submodule ".vim/bundle/vim-surround"]
+[submodule ".vim/pack/plugins/start/vim-surround"]
 	path = .vim/pack/plugins/start/vim-surround
 	url = https://github.com/tpope/vim-surround
 [submodule ".zprezto"]
