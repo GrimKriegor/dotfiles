@@ -37,3 +37,6 @@
 [submodule ".vim/pack/plugins/start/auto-pairs"]
 	path = .vim/pack/plugins/start/auto-pairs
 	url = https://github.com/jiangmiao/auto-pairs.git
+[submodule ".vim/pack/plugins/start/vim-openscad"]
+	path = .vim/pack/plugins/start/vim-openscad
+	url = https://github.com/sirtaj/vim-openscad.git
