@@ -86,5 +86,5 @@ case "$menu_option" in
 esac
 
 setxkbmap -option -option caps:swapescape
-feh --bg-scale $HOME/.config/wall.jpg
+set-wallpaper
 sleep 2 && killall -9 conky; conky --config $HOME/.conky/conkyrc
