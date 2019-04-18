@@ -299,6 +299,9 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $t
 # Float, sticky, resize and corner window
 bindsym $mod+Shift+o floating toggle; sticky toggle; exec corner-window top_right 25
 
+# Invert window class colors via Compton
+bindsym $mod+Shift+i exec --no-startup-id ~/.scripts/invert-window-color
+
 
 ##
 #
