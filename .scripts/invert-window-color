@@ -1,12 +1,19 @@
 #!/bin/bash
 
-if [ "$(pidof compton)" ]; then
+# Invert an entire window class' colors via Compton
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+PID_FILE="/tmp/compton-inverted.pid"
+
+if [[ -f $PID_FILE ]]; then
   pkill compton
+  rm "$PID_FILE"
+  compton &
 else
+  pkill compton
   ID=$(xdotool getactivewindow)
   CLASS=$(xprop -id "$ID"  | grep "WM_CLASS" | awk '{print $4}')
   COND="class_g=${CLASS}"
-  compton --invert-color-include "$COND" &
+  compton --write-pid-path "$PID_FILE" --invert-color-include "$COND" &
 fi
-
-exit
