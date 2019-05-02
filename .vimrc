@@ -67,6 +67,14 @@ hi TabLineSel ctermfg=Red ctermbg=Black
 hi VertSplit ctermfg=Black ctermbg=White
 set fillchars+=vert:\ 
 
+" Buffers
+set hidden
+nmap <leader>bl :ls<CR>
+nmap <leader>j :bnext<CR>
+nmap <leader>k :bprevious<CR>
+nmap <leader>bc :enew<cr>
+nmap <leader>bq :bp <BAR> bd #<CR>
+
 " Navigating with guides
 inoremap ;;<Space> <Esc>/<++><Enter>"_c4l
 vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
