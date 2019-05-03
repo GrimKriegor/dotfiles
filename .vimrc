@@ -23,7 +23,7 @@ augroup END
 
 " Identation
 filetype plugin indent on
-set softtabstop=2 shiftwidth=2 expandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 
 " Highlight searches
 set hlsearch
@@ -102,7 +102,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"autocmd BufWinLeave * call clearmatches()
 
 " Cursor line
 hi CursorLine cterm=NONE ctermbg=233
