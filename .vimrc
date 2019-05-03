@@ -38,6 +38,10 @@ hi Pmenu ctermfg=Gray ctermbg=Black guibg=Black
 hi PmenuSel ctermfg=Black ctermbg=Gray guibg=Gray
 hi PmenuSbar ctermfg=Black ctermbg=Gray guibg=Gray
 
+" Invisible characters
+set list
+set listchars=tab:ᐅ\ 
+
 " Wild menu
 set wildmenu
 
