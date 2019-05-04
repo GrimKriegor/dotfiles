@@ -23,7 +23,10 @@ augroup END
 
 " Identation
 filetype plugin indent on
-set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 " Highlight searches
 set hlsearch
