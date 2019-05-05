@@ -28,6 +28,7 @@ set softtabstop=2 shiftwidth=2 expandtab
 " Highlight searches
 set hlsearch
 hi Search cterm=bold ctermfg=black ctermbg=yellow
+set ignorecase smartcase
 
 " Status line
 hi Statusline ctermbg=Gray ctermfg=234
