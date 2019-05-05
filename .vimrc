@@ -23,7 +23,10 @@ augroup END
 
 " Identation
 filetype plugin indent on
-set softtabstop=2 shiftwidth=2 expandtab
+set tabstop=8
+set softtabstop=2
+set shiftwidth=2
+set expandtab
 
 " Highlight searches
 set hlsearch
@@ -38,6 +41,10 @@ hi StatusLineNC ctermbg=Gray ctermfg=234
 hi Pmenu ctermfg=Gray ctermbg=Black guibg=Black
 hi PmenuSel ctermfg=Black ctermbg=Gray guibg=Gray
 hi PmenuSbar ctermfg=Black ctermbg=Gray guibg=Gray
+
+" Invisible characters
+set list
+set listchars=tab:ᐅ\ 
 
 " Wild menu
 set wildmenu
@@ -99,7 +106,7 @@ match ExtraWhitespace /\s\+$/
 autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
 autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
 autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-autocmd BufWinLeave * call clearmatches()
+"autocmd BufWinLeave * call clearmatches()
 
 " Cursor line
 hi CursorLine cterm=NONE ctermbg=233
