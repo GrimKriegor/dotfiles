@@ -58,7 +58,7 @@ set clipboard=unnamedplus
 """
 
 " Switchbuf preferences
-set switchbuf+=usetab,newtab
+set switchbuf=useopen,split,usetab
 
 " Pane navigation
 nnoremap <c-j> <c-w>j
