@@ -40,3 +40,6 @@
 [submodule ".vim/pack/plugins/start/vim-openscad"]
 	path = .vim/pack/plugins/start/vim-openscad
 	url = https://github.com/sirtaj/vim-openscad.git
+[submodule ".vim/pack/plugins/start/nerdtree-git-plugin"]
+	path = .vim/pack/plugins/start/nerdtree-git-plugin
+	url = https://github.com/Xuyuanp/nerdtree-git-plugin.git
