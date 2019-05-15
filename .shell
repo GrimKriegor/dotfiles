@@ -91,10 +91,10 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 #xz multithread
 export XZ_OPT="-T 0"
 
-# Android home
+# Android
 export ANDROID_HOME=/opt/android-sdk
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
-export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-toos
+export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
 # Vagrant provider
 export VAGRANT_DEFAULT_PROVIDER=libvirt
