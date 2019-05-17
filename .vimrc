@@ -37,10 +37,22 @@ set ignorecase smartcase
 hi Statusline ctermbg=Gray ctermfg=234
 hi StatusLineNC ctermbg=Gray ctermfg=234
 
-" Popup colors
+" Popup
 hi Pmenu ctermfg=Gray ctermbg=Black guibg=Black
 hi PmenuSel ctermfg=Black ctermbg=Gray guibg=Gray
 hi PmenuSbar ctermfg=Black ctermbg=Gray guibg=Gray
+function! InsertTabWrapper(direction)
+  let col = col('.') - 1
+  if !col || getline('.')[col - 1] !~ '\k'
+    return "\<tab>"
+  elseif "backward" == a:direction
+    return "\<c-p>"
+  else
+    return "\<c-n>"
+  endif
+endfunction
+inoremap <Tab> <c-r>=InsertTabWrapper("forward")<CR>
+inoremap <S-Tab> <c-r>=InsertTabWrapper("backward")<CR>
 
 " Invisible characters
 set list
@@ -140,9 +152,6 @@ function! MySpellLang()
   if g:myLang >= len(g:myLangList) | let g:myLang = 0 | endif
 endfunction
 map <F7> :<C-U>call MySpellLang()<CR>
-
-" Insert real tab characters
-inoremap <S-Tab> <C-V><Tab>
 
 " Find (grep)
 nnoremap <Leader>fg :exec ":Grep ".input("grep: ")<CR>
