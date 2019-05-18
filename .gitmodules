@@ -40,3 +40,6 @@
 [submodule ".vim/pack/plugins/start/kotlin-vim"]
 	path = .vim/pack/plugins/start/kotlin-vim
 	url = https://github.com/udalov/kotlin-vim.git
+[submodule ".vim/pack/plugins/start/ale"]
+	path = .vim/pack/plugins/start/ale
+	url = https://github.com/w0rp/ale.git
