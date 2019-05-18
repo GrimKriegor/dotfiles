@@ -11,6 +11,7 @@ __pycache__
 # Vim
 .vim/spell/
 .vim/.netrwhist
+.vim/after/ftplugin/workspace/
 
 # Ranger
 .config/ranger/tagged
