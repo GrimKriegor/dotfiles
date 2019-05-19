@@ -340,13 +340,13 @@ bindsym XF86TouchpadOn          exec --no-startup-id synclient TouchpadOff=0
 bindsym XF86TouchpadOff         exec --no-startup-id synclient TouchpadOff=1
 
 #Lockscreen compat
-bindsym Control+Mod1+l exec --no-startup-id ~/.config/i3/i3exit lock
+bindsym Control+Mod1+l exec --no-startup-id powerhandler lock
 
 #Quick suspend
-bindsym XF86Sleep exec --no-startup-id ~/.config/i3/i3exit suspend
+bindsym XF86Sleep exec --no-startup-id powerhandler suspend
 
 #Quick hibernate
-bindsym XF86Suspend exec --no-startup-id ~/.config/i3exit hibernate
+bindsym XF86Suspend exec --no-startup-id powerhandler hibernate
 
 #Touchpad toggle
 bindsym XF86TouchpadToggle exec --no-startup-id toggletouchpad
@@ -438,12 +438,12 @@ bindsym XF86AudioPrev           exec $prev
 
 set $mode_system [System Mode] (l) lock, (e) logout, (s) suspend, (h) hibernate, (r) reboot, (Shift+s) shutdown
 mode "$mode_system" {
-    bindsym l exec --no-startup-id ~/.config/i3/i3exit lock, mode "default"
-    bindsym e exec --no-startup-id ~/.config/i3/i3exit logout, mode "default"
-    bindsym s exec --no-startup-id ~/.config/i3/i3exit suspend, mode "default"
-    bindsym h exec --no-startup-id ~/.config/i3/i3exit hibernate, mode "default"
-    bindsym r exec --no-startup-id ~/.config/i3/i3exit reboot, mode "default"
-    bindsym Shift+s exec --no-startup-id ~/.config/i3/i3exit shutdown, mode "default"
+    bindsym l exec --no-startup-id powerhandler lock, mode "default"
+    bindsym e exec --no-startup-id powerhandler logout, mode "default"
+    bindsym s exec --no-startup-id powerhandler suspend, mode "default"
+    bindsym h exec --no-startup-id powerhandler hibernate, mode "default"
+    bindsym r exec --no-startup-id powerhandler reboot, mode "default"
+    bindsym Shift+s exec --no-startup-id powerhandler shutdown, mode "default"
 
     # back to normal: Enter or Escape
     bindsym Return mode "default"
@@ -514,7 +514,7 @@ exec --no-startup-id unclutter
 exec --no-startup-id nm-applet
 
 # xautolock
-exec --no-startup-id xautolock -time 5 -locker '~/.config/i3/i3exit lock'
+exec --no-startup-id xautolock -time 5 -locker 'powerhandler lock'
 
 # Conky
 exec --no-startup-id conky --config=$HOME/.conky/conkyrc
