@@ -190,10 +190,10 @@ bindsym $mod+Shift+c reload
 bindsym $mod+Shift+r restart
 
 # default display mode
-bindsym XF86Display exec --no-startup-id ~/.scripts/displayselect Laptop
+bindsym XF86Display exec --no-startup-id displayselect Laptop
 
 # toggle freeze a window
-bindsym $mod+q exec --no-startup-id ~/.scripts/toggle-freeze-window
+bindsym $mod+q exec --no-startup-id toggle-freeze-window
 
 
 ##
@@ -300,7 +300,7 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $t
 bindsym $mod+Shift+o floating toggle; sticky toggle; exec corner-window top_right 25
 
 # Invert window class colors via Compton
-bindsym $mod+Shift+i exec --no-startup-id ~/.scripts/invert-window-color
+bindsym $mod+Shift+i exec --no-startup-id invert-window-color
 
 
 ##
@@ -349,7 +349,7 @@ bindsym XF86Sleep exec --no-startup-id ~/.config/i3/i3exit suspend
 bindsym XF86Suspend exec --no-startup-id ~/.config/i3exit hibernate
 
 #Touchpad toggle
-bindsym XF86TouchpadToggle exec --no-startup-id ~/.scripts/toggletouchpad
+bindsym XF86TouchpadToggle exec --no-startup-id toggletouchpad
 
 
 ##
@@ -502,7 +502,7 @@ exec_always --no-startup-id xrdb ~/.Xresources
 exec --no-startup-id synclient TouchpadOff=1
 
 # Add wallpaper
-exec_always --no-startup-id ~/.scripts/set-wallpaper
+exec_always --no-startup-id set-wallpaper
 
 # Composite manager
 exec --no-startup-id compton --xrender-sync-fence
