@@ -176,37 +176,16 @@ let g:vimwiki_ext2syntax = {
 " NERDTree
 map <C-n> :NERDTreeToggle<CR>
 
-" Syntastic
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_error_symbol = "E"
-let g:syntastic_style_error_symbol = "sE"
-let g:syntastic_warning_symbol = "W"
-let g:syntastic_style_warning_symbol = "sW"
-
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
-" YouCompleteMe
-nnoremap <Leader>gt :YcmCompleter GoTo<CR>
-nnoremap <Leader>gr :YcmCompleter GoToReferences<CR>
-nnoremap <Leader>gd :YcmCompleter GetDoc<CR>
-nnoremap <Leader>rr :exec ":YcmCompleter RefactorRename ".input("RefactorRename: ")<CR>
-let g:ycm_always_populate_location_list = 1
-let g:ycm_filetype_blacklist = {
-  \ 'text': 1,
-  \ 'conf': 1,
-  \ 'markdown': 1,
-  \ 'vim': 1,
-  \ 'gitcommit': 1,
-  \ 'mail': 1,
-  \ 'tagbar': 1,
-  \ 'qf': 1,
-  \ 'notes': 1,
-  \ 'unite': 1,
-  \ 'vimwiki': 1,
-  \ 'pandoc': 1,
-  \ 'infolog': 1
-\}
+" ALE
+nnoremap <Leader>gt :ALEGoToDefinition<CR>
+nnoremap <Leader>gr :ALEFindReferences<CR>
+nnoremap <Leader>gd :ALEHover<CR>
+nnoremap <Leader>gs :ALESymbolSearch<CR>
+let g:ale_completion_enabled = 1
+let g:ale_set_balloons=1
+let g:ale_sign_error = 'E'
+let g:ale_sign_warning = 'W'
+let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
