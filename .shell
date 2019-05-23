@@ -91,8 +91,11 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 #xz multithread
 export XZ_OPT="-T 0"
 
+# Gradle
+export GRADLE_HOME="$HOME/.gradle"
+
 # Android
-export ANDROID_HOME=/opt/android-sdk
+export ANDROID_HOME="/opt/android-sdk"
 export ANDROID_SDK_ROOT="$ANDROID_HOME"
 export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
