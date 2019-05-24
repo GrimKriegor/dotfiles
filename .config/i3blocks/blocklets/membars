@@ -1,0 +1,25 @@
+#!/bin/bash
+
+# ~/.config/i3blocks/config
+#[membars]
+#command=$SCRIPT_DIR/membars
+#interval=1
+
+bar_array=( "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" )
+bar_array_size=${#bar_array[@]}
+bar_array_step=$(( 100 / $bar_array_size ))
+bar_spacing=" "
+
+function get_bar() {
+  usage="$1"
+  bar_position=$(( $usage / $bar_array_step ))
+  [[ $bar_position -lt 0 ]] && bar_position=0
+  [[ $bar_position -gt $(($bar_array_size-1)) ]] && bar_position=$(($bar_array_size-1))
+  echo ${bar_array[$bar_position]}
+}
+
+load=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | cut -d . -f 1)
+bar=$(get_bar $load)
+output+="$bar$bar_spacing"
+
+echo $output
