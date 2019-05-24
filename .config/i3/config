@@ -470,7 +470,7 @@ for_window [class="Emulator"] floating enable
 bar {
     status_command          SCRIPT_DIR=$HOME/.config/i3blocks/blocklets i3blocks
     position                top
-    height                  25
+    height                  24
     separator_symbol        "|"
     workspace_buttons       yes
     strip_workspace_numbers yes
