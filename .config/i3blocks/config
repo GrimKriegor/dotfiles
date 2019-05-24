@@ -29,10 +29,14 @@ interval=5
 command=$SCRIPT_DIR/muttmail
 interval=60
 markup=pango
+separator=false
+separator_block_width=12
 
 [battery]
 command=$SCRIPT_DIR/battery
 markup=pango
 interval=30
+separator=false
+separator_block_width=12
 
 [tray]
