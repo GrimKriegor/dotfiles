@@ -6,9 +6,9 @@
 #interval=60
 #markup=pango
 
-MAIL_ICON=""
+#MAIL_ICON=""
 MAIL_ICON_NEW=""
-MAIL_ICON_REFRESH=""
+#MAIL_ICON_REFRESH=""
 
 case $BLOCK_BUTTON in
 	1) "$TERMINAL" -e neomutt ;;
