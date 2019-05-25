@@ -20,6 +20,7 @@ separator_block_width=4
 [membars]
 command=$SCRIPT_DIR/membars
 interval=5
+markup=pango
 
 [time]
 command=date '+%b %d - %H:%M'

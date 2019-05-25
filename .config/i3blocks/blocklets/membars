@@ -4,11 +4,13 @@
 #[membars]
 #command=$SCRIPT_DIR/membars
 #interval=1
+#markup=pango
 
 bar_array=( "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" )
 bar_array_size=${#bar_array[@]}
 bar_array_step=$(( 100 / $bar_array_size ))
 bar_spacing=" "
+color="${COLOR:-#888}"
 
 function get_bar() {
   usage="$1"
@@ -20,6 +22,5 @@ function get_bar() {
 
 load=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | cut -d . -f 1)
 bar=$(get_bar $load)
-output+="$bar$bar_spacing"
 
-echo $output
+echo "<span color=\"$color\">$bar</span>"
