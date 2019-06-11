@@ -19,7 +19,6 @@ project_path="$PWD"
 android_sdk_path="$ANDROID_HOME"
 
 if [[ ! -f build.gradle ]]; then
-  echo "Couldn't find build.gradle in the working directory."
   exit 1
 fi
 
