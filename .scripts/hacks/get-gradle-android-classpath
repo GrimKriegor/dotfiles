@@ -1,0 +1,93 @@
+#!/bin/bash
+
+# get-gradle-android-classpath
+#
+# Super dirty hack I use to get a Gradle Android project classpath
+# in a format that can be consumed by java-language-server
+# through ALE on Vim
+#
+# Add the following to ~/.vim/after/ftplugin/java.vim or ~/.vimrc
+# let g:ale_java_javalsp_classpaths = split(system("get-gradle-android-classpath"))
+#
+# Gradle script heavily derived from hsanson's vim-android (https://github.com/hsanson/vim-android)
+# Grim Kriegor <grimkriegor@krutt.org>
+#
+# Apache License, Version 2.0
+# 2019
+
+project_path="$PWD"
+android_sdk_path="$ANDROID_HOME"
+
+if [[ ! -f build.gradle ]]; then
+  echo "Couldn't find build.gradle in the working directory."
+  exit 1
+fi
+
+cat <<EOF >| /tmp/getclasspath.gradle
+allprojects { project ->
+
+  task vim {
+    task -> doLast {
+      if(project.hasProperty('android')) {
+
+        if(project.android.defaultConfig.targetSdkVersion != null) {
+          def level = project.android.defaultConfig.targetSdkVersion.getApiLevel()
+          System.err.println "android-" + level
+        }
+
+        if(project.android.hasProperty('applicationVariants')) {
+          project.android.applicationVariants.all { variant ->
+            variant.getCompileClasspath().each {
+              System.err.println it
+            }
+          }
+        }
+      } else {
+        // Print the list of all dependencies jar files. This allows vim to parse
+        // the list and fill the CLASSPATH with the list of dependencies.
+        project.configurations.findAll {
+          it.metaClass.respondsTo(it, "isCanBeResolved") ? it.isCanBeResolved() : false
+        }.each {
+          it.resolve().each {
+            if(it.inspect().endsWith("jar")) {
+              System.err.println it
+            } else if(it.inspect().endsWith("aar")) {
+              // If the dependency is an AAR file we try to determine the location
+              // of the classes.jar file in the exploded aar folder.
+              def splitted = it.inspect().split("/")
+              def namespace = splitted[-5]
+              def name = splitted[-4]
+              def version = splitted[-3]
+              def explodedPath = "$project.buildDir/intermediates/exploded-aar" +
+                                 "/$namespace/$name/$version/jars/classes.jar"
+              System.err.println explodedPath
+            }
+          }
+        }
+      }
+    }
+  }
+}
+EOF
+
+function join_by {
+  local d=$1
+  shift
+  echo -n "$1"
+  shift
+  printf "%s" "${@/#/$d}"
+}
+
+gradle_output=($( \
+  "$project_path/gradlew" -q \
+  -b ./app/build.gradle \
+  -I /tmp/getclasspath.gradle \
+  vim \
+  2>&1 > /dev/null \
+))
+
+android_api_level="${gradle_output[0]}"
+android_jar_path="$android_sdk_path/platforms/$android_api_level/android.jar"
+dependency_array=( ${gradle_output[@]:1} $android_jar_path )
+
+echo "${dependency_array[@]}"
