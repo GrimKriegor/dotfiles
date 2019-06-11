@@ -91,6 +91,9 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 #xz multithread
 export XZ_OPT="-T 0"
 
+# Java
+export JAVA_HOME="/usr/lib/jvm/default"
+
 # Gradle
 export GRADLE_HOME="$HOME/.gradle"
 
