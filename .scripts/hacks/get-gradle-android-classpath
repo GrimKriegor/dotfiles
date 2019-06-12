@@ -9,9 +9,10 @@
 # Add the following to ~/.vim/after/ftplugin/java.vim or ~/.vimrc
 # let g:ale_java_javalsp_classpaths = split(system("get-gradle-android-classpath"))
 #
-# Gradle script heavily derived from hsanson's vim-android (https://github.com/hsanson/vim-android)
-# Grim Kriegor <grimkriegor@krutt.org>
+# Gradle script copied, pruned and slightly modified from hsanson's vim-android
+# https://github.com/hsanson/vim-android
 #
+# Grim Kriegor <grimkriegor@krutt.org>
 # Apache License, Version 2.0
 # 2019
 
