@@ -19,10 +19,6 @@
 project_path="$PWD"
 android_sdk_path="$ANDROID_HOME"
 
-if [[ ! -f build.gradle ]]; then
-  exit 1
-fi
-
 cat <<EOF >| /tmp/getclasspath.gradle
 allprojects { project ->
 
@@ -70,17 +66,19 @@ allprojects { project ->
 }
 EOF
 
-function join_by {
-  local d=$1
-  shift
-  echo -n "$1"
-  shift
-  printf "%s" "${@/#/$d}"
-}
+subproject="app" #TODO: needs to be dynamic
+
+gradle_file=$(\
+  find $project_path/$subproject \
+  -maxdepth 1 \
+  -type f \
+  -name "*.gradle*" \
+  -exec basename {} \;
+)
 
 gradle_output=($( \
   "$project_path/gradlew" -q \
-  -b ./app/build.gradle \
+  -b $gradle_file \
   -I /tmp/getclasspath.gradle \
   vim \
   2>&1 > /dev/null \
