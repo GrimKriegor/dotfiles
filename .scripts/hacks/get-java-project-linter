@@ -1,0 +1,20 @@
+#!/bin/bash
+
+linter_android="javalsp"
+linter_java="eclipselsp"
+
+project_path="$PWD"
+
+if grep -q -r \
+  --include="*.gradle*" \
+  --include="pom.xml" \
+  --include="project.properties" \
+  "android" \
+  "$project_path"
+then
+    echo "$linter_android"
+    exit 0
+fi
+
+echo "$linter_java"
+exit 0
