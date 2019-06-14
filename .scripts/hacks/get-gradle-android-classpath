@@ -21,7 +21,6 @@ android_sdk_path="$ANDROID_HOME"
 
 cat <<EOF >| /tmp/getclasspath.gradle
 allprojects { project ->
-
   task vim {
     task -> doLast {
       if(project.hasProperty('android')) {
@@ -30,7 +29,6 @@ allprojects { project ->
           def level = project.android.defaultConfig.targetSdkVersion.getApiLevel()
           System.err.println "android-" + level
         }
-
         if(project.android.hasProperty('applicationVariants')) {
           project.android.applicationVariants.all { variant ->
             variant.getCompileClasspath().each {
