@@ -12,6 +12,7 @@ container_name="$2"
 
 container_storage_directory="$HOME/.nspawn"
 container_path="$container_storage_directory/$container_name"
+container_user="$(whoami)"
 
 function installContainer() {
   mkdir -p "$container_path"
@@ -78,19 +79,18 @@ EOF
     -D $container_path \
     passwd root
 
-  user="$(whoami)"
-  echo -e "\nCreating a new unprivileged user named $user"
+  echo -e "\nCreating a new unprivileged user named $container_user"
   sudo systemd-nspawn \
     -D $container_path \
     useradd -m \
     -g users \
     -G audio,lp,optical,storage,video,wheel,games,power \
-    -s /bin/bash "$user"
+    -s /bin/bash "$container_user"
 
   echo -e "\nDefine a password for the unprivileged user:"
   sudo systemd-nspawn \
     -D $container_path \
-    passwd "$user"
+    passwd "$container_user"
 
 }
 
@@ -103,18 +103,32 @@ function stopContainer() {
 }
 
 function attachContainer() {
-  user="$(whoami)"
-  sudo machinectl shell "$user@$container_name"
+  sudo machinectl shell "$container_user@$container_name"
 }
 
 function attachContainerXorg() {
-  trap detachContainerXorg HUP INT TERM
-  xhost +local:
+  linkXorg
   attachContainer
 }
 
-function detachContainerXorg() {
+function linkXorg() {
+  trap unlinkXorg HUP INT TERM
+  xhost +local:
+}
+
+function unlinkXorg() {
   xhost -
+}
+
+function runCommand() {
+  command="$@"
+  sudo machinectl shell "$container_user@$container_name" /usr/bin/bash -c "$command"
+}
+
+function runCommandXorg() {
+  command="$@"
+  linkXorg
+  runCommand "$command"
 }
 
 
@@ -145,9 +159,24 @@ case "$container_operation" in
     attachContainerXorg
     ;;
 
+  "run" )
+    command="${@:3}"
+    echo -e "Running in container $container_name"
+    echo -e "$ $command"
+   runCommand "$command"
+    ;;
+
+  "runX" )
+    command="${@:3}"
+    echo -e "Running in container $container_name with Xorg support"
+    echo -e "$ $command"
+    runCommandXorg "$command"
+    ;;
 
   * )
     echo -e "No operation specified."
     ;;
 
 esac
+
+exit 0
