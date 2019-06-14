@@ -14,13 +14,22 @@ container_storage_directory="$HOME/.nspawn"
 container_path="$container_storage_directory/$container_name"
 container_user="$(whoami)"
 
-function installContainer() {
-  mkdir -p "$container_path"
+function bootstrapArch() {
   sudo pacstrap -i -M -c -d \
     "$container_path" \
     base \
     sudo \
     --ignore linux
+}
+
+function installContainer() {
+  container_distro="$1"
+  mkdir -p "$container_path"
+  case "$container_distro" in
+    "arch" )
+      bootstrapArch
+      ;;
+  esac
 
   sudo bash -c "cat >| $container_path/etc/asound.conf" <<EOF
 pcm.!default {
@@ -135,8 +144,9 @@ function runCommandXorg() {
 case "$container_operation" in
 
   "install" )
-    echo -e "Installing container $container_name"
-    installContainer
+    container_distro="$3"
+    echo -e "Installing distro $container_distro on container $container_name"
+    installContainer "$container_distro"
     ;;
 
   "start" )
