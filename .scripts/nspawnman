@@ -1,0 +1,153 @@
+#!/bin/bash
+
+# A way to make managing my peculiar nspawn containers less troublesome
+#
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+set -e
+
+container_operation="$1"
+container_name="$2"
+
+container_storage_directory="$HOME/.nspawn"
+container_path="$container_storage_directory/$container_name"
+
+function installContainer() {
+  mkdir -p "$container_path"
+  sudo pacstrap -i -M -c -d \
+    "$container_path" \
+    base \
+    sudo \
+    --ignore linux
+
+  sudo bash -c "cat >| $container_path/etc/asound.conf" <<EOF
+pcm.!default {
+  type pulse
+  fallback "sysdefault"
+  hint {
+    show on
+    description "Default ALSA Output (currently PulseAudio Sound Server)"
+  }
+}
+ctl.!default {
+  type pulse
+  fallback "sysdefault"
+}
+EOF
+
+  sudo bash -c "cat >| $container_path/etc/environment" <<EOF
+DISPLAY=:0
+PULSE_SERVER=unix:/run/user/host/pulse/native
+EOF
+
+  sudo mkdir -p "/etc/systemd/system/systemd-nspawn@$container_name.service.d"
+  sudo bash -c "cat >| /etc/systemd/system/systemd-nspawn@$container_name.service.d/override.conf" <<EOF
+[Service]
+DeviceAllow=/dev/dri rw
+DeviceAllow=/dev/shm rw
+DeviceAllow=/dev/nvidia0 rw
+DeviceAllow=/dev/nvidiactl rw
+DeviceAllow=/dev/nvidia-modeset rw
+DeviceAllow=char-usb_device rwm
+DeviceAllow=char-input rwm
+DeviceAllow=char-alsa rwm
+ExecStart=
+ExecStart=/usr/bin/systemd-nspawn -D $container_path --quiet --keep-unit --boot
+EOF
+
+  sudo mkdir -p "/etc/systemd/nspawn"
+  sudo bash -c "cat >| /etc/systemd/nspawn/$container_name.nspawn" <<EOF
+[Exec]
+Boot=1
+
+[Files]
+Bind=/tmp/.X11-unix
+Bind=/dev/dri
+Bind=/dev/shm
+#Bind=/dev/nvidia0
+#Bind=/dev/nvidiactl
+#Bind=/dev/nvidia-modeset
+Bind=/dev/input
+Bind=/run/user/1000/pulse:/run/user/host/pulse
+Bind=/dev/snd
+EOF
+
+  echo -e "\nInsert password for user root:"
+  sudo systemd-nspawn \
+    -D $container_path \
+    passwd root
+
+  user="$(whoami)"
+  echo -e "\nCreating a new unprivileged user named $user"
+  sudo systemd-nspawn \
+    -D $container_path \
+    useradd -m \
+    -g users \
+    -G audio,lp,optical,storage,video,wheel,games,power \
+    -s /bin/bash "$user"
+
+  echo -e "\nDefine a password for the unprivileged user:"
+  sudo systemd-nspawn \
+    -D $container_path \
+    passwd "$user"
+
+}
+
+function startContainer() {
+  sudo systemctl restart "systemd-nspawn@$container_name"
+}
+
+function stopContainer() {
+  sudo systemctl stop "systemd-nspawn@$container_name"
+}
+
+function attachContainer() {
+  user="$(whoami)"
+  sudo machinectl shell "$user@$container_name"
+}
+
+function attachContainerXorg() {
+  trap detachContainerXorg HUP INT TERM
+  xhost +local:
+  attachContainer
+}
+
+function detachContainerXorg() {
+  xhost -
+}
+
+
+case "$container_operation" in
+
+  "install" )
+    echo -e "Installing container $container_name"
+    installContainer
+    ;;
+
+  "start" )
+    echo -e "Starting container $container_name"
+    startContainer
+    ;;
+
+  "stop" )
+    echo -e "Stopping container $container_name"
+    stopContainer
+    ;;
+
+  "attach" )
+    echo -e "Attaching to container $container_name"
+    attachContainer
+    ;;
+
+  "attachXorg" )
+    echo -e "Attaching to container $container_name with Xorg support"
+    attachContainerXorg
+    ;;
+
+
+  * )
+    echo -e "No operation specified."
+    ;;
+
+esac
