@@ -15,10 +15,11 @@ container_path="$container_storage_directory/$container_name"
 container_user="$(whoami)"
 
 function bootstrapArch() {
-  sudo pacstrap -i -M -c -d \
+  sudo pacstrap -i -c -d \
     "$container_path" \
     base \
     sudo \
+    ttf-dejavu \
     --ignore linux
 }
 
@@ -101,6 +102,10 @@ EOF
     -D $container_path \
     passwd "$container_user"
 
+  sudo sed -i \
+    '/^#.*%wheel ALL=(ALL) ALL/s/^#//' \
+    $container_path/etc/sudoers
+
 }
 
 function startContainer() {
@@ -164,7 +169,7 @@ case "$container_operation" in
     attachContainer
     ;;
 
-  "attachXorg" )
+  "attachX" )
     echo -e "Attaching to container $container_name with Xorg support"
     attachContainerXorg
     ;;
