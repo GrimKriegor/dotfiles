@@ -201,5 +201,5 @@ function! LoadDeps(buffer) abort
 endfunction
 augroup GradleGroup
   autocmd!
-  au BufWrite build.gradle cal gradle#sync()
+  au BufWrite build.gradle call gradle#sync()
 augroup END
