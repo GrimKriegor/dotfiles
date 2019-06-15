@@ -83,10 +83,6 @@ hi TabLineFill ctermfg=Black ctermbg=White
 hi TabLine ctermfg=Blue ctermbg=Black
 hi TabLineSel ctermfg=Red ctermbg=Black
 
-" Splits
-hi VertSplit ctermfg=Black ctermbg=White
-set fillchars+=vert:\ 
-
 " Buffers
 set hidden
 nmap <leader>bl :ls<CR>
@@ -95,15 +91,22 @@ nmap <leader>k :bprevious<CR>
 nmap <leader>bc :enew<cr>
 nmap <leader>bq :bp <BAR> bd #<CR>
 
+" Splits
+hi VertSplit ctermfg=Black ctermbg=White
+set fillchars+=vert:\ 
+
+" Location list
+noremap <leader>lo :lopen<CR>
+noremap <leader>lc :lclose<CR>
+
+" Preview windows
+noremap <leader>pc :pclose<CR>
+
 " Navigating with guides
 inoremap ;;<Space> <Esc>/<++><Enter>"_c4l
 vnoremap ;;<Space> <Esc>/<++><Enter>"_c4l
 map ;;<Space> <Esc>/<++><Enter>"_c4l
 inoremap ;gui <++>
-
-" Lists
-noremap <leader>lo :lopen<CR>
-noremap <leader>lc :lclose<CR>
 
 """
 """ Utilities
