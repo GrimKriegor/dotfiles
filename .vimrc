@@ -192,3 +192,14 @@ let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
 
 " vim-android
 let g:android_sdk_path = "/opt/android-sdk"
+let g:gradle_daemon=1
+let g:gradle_sync_on_load=0
+let g:gradle_show_signs=0
+function! LoadDeps(buffer) abort
+  call gradle#sync()
+  return extend(gradle#classPaths(), android#classPaths())
+endfunction
+augroup GradleGroup
+  autocmd!
+  au BufWrite build.gradle cal gradle#sync()
+augroup END
