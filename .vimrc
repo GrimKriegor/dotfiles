@@ -185,16 +185,16 @@ nnoremap <Leader>gr :ALEFindReferences<CR>
 nnoremap <Leader>gd :ALEHover<CR>
 nnoremap <Leader>gs :ALESymbolSearch<CR>
 let g:ale_completion_enabled = 1
-let g:ale_set_balloons=1
+let g:ale_set_balloons = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
 
 " vim-android
-let g:android_sdk_path = "/opt/android-sdk"
-let g:gradle_daemon=1
-let g:gradle_sync_on_load=0
-let g:gradle_show_signs=0
+let g:android_sdk_path = expand("$ANDROID_HOME")
+let g:gradle_daemon = 1
+let g:gradle_sync_on_load = 0
+let g:gradle_show_signs = 0
 function! LoadDeps(buffer) abort
   call gradle#sync()
   return extend(gradle#classPaths(), android#classPaths())
