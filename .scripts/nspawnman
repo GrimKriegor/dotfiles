@@ -19,8 +19,12 @@ function bootstrapArch() {
     "$container_path" \
     base \
     sudo \
+    vim \
     ttf-dejavu \
     --ignore linux
+  sudo sed -i \
+    "/\[multilib\]/,/Include/"'s/^#//' \
+    "$container_path/etc/pacman.conf"
 }
 
 function installContainer() {
