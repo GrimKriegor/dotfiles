@@ -12,8 +12,8 @@ if grep -q -r \
   "android" \
   "$project_path"
 then
-    echo "$linter_android"
-    exit 0
+  echo "$linter_android"
+  exit 0
 fi
 
 echo "$linter_java"

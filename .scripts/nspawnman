@@ -14,13 +14,27 @@ container_storage_directory="$HOME/.nspawn"
 container_path="$container_storage_directory/$container_name"
 container_user="$(whoami)"
 
-function installContainer() {
-  mkdir -p "$container_path"
-  sudo pacstrap -i -M -c -d \
+function bootstrapArch() {
+  sudo pacstrap -i -c -d \
     "$container_path" \
     base \
     sudo \
+    vim \
+    ttf-dejavu \
     --ignore linux
+  sudo sed -i \
+    "/\[multilib\]/,/Include/"'s/^#//' \
+    "$container_path/etc/pacman.conf"
+}
+
+function installContainer() {
+  container_distro="$1"
+  mkdir -p "$container_path"
+  case "$container_distro" in
+    "arch" )
+      bootstrapArch
+      ;;
+  esac
 
   sudo bash -c "cat >| $container_path/etc/asound.conf" <<EOF
 pcm.!default {
@@ -92,6 +106,10 @@ EOF
     -D $container_path \
     passwd "$container_user"
 
+  sudo sed -i \
+    '/^#.*%wheel ALL=(ALL) ALL/s/^#//' \
+    $container_path/etc/sudoers
+
 }
 
 function startContainer() {
@@ -135,8 +153,9 @@ function runCommandXorg() {
 case "$container_operation" in
 
   "install" )
-    echo -e "Installing container $container_name"
-    installContainer
+    container_distro="$3"
+    echo -e "Installing distro $container_distro on container $container_name"
+    installContainer "$container_distro"
     ;;
 
   "start" )
@@ -154,7 +173,7 @@ case "$container_operation" in
     attachContainer
     ;;
 
-  "attachXorg" )
+  "attachX" )
     echo -e "Attaching to container $container_name with Xorg support"
     attachContainerXorg
     ;;
