@@ -1,2 +1,2 @@
-" Syntastic
-let g:syntastic_javascript_checkers = ['eslint']
+" ALE
+let b:ale_linters = {'javascript': ['tsserver', 'eslint']}
