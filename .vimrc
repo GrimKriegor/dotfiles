@@ -99,6 +99,10 @@ set fillchars+=vert:\
 noremap <leader>lo :lopen<CR>
 noremap <leader>lc :lclose<CR>
 
+" Quickfix list
+noremap <leader>co :copen<CR>
+noremap <leader>cc :cclose<CR>
+
 " Preview windows
 noremap <leader>pc :pclose<CR>
 
@@ -128,12 +132,12 @@ hi CursorLine cterm=NONE ctermbg=233
 nnoremap <Leader>c :set cursorline!<CR>
 
 " Copy and paste on X clipboard
-map <leader>cc :w !xsel -i -b<CR>
-map <leader>cp :w !xsel -i -p<CR>
-map <leader>cs :w !xsel -i -s<CR>
-map <leader>pp :r!xsel -p<CR>
-map <leader>ps :r!xsel -s<CR>
-map <leader>pb :r!xsel -b<CR>
+map <leader>xcc :w !xsel -i -b<CR>
+map <leader>xcp :w !xsel -i -p<CR>
+map <leader>xcs :w !xsel -i -s<CR>
+map <leader>xpp :r!xsel -p<CR>
+map <leader>xps :r!xsel -s<CR>
+map <leader>xpb :r!xsel -b<CR>
 
 " Spell-check:
 hi clear SpellBad
@@ -199,10 +203,12 @@ let g:gradle_daemon = 1
 let g:gradle_sync_on_load = 0
 let g:gradle_show_signs = 0
 function! LoadDeps(buffer) abort
-  call gradle#sync()
+  if !gradle#isGradleDepsCached()
+    call gradle#sync()
+  endif
   return extend(gradle#classPaths(), android#classPaths())
 endfunction
 augroup GradleGroup
   autocmd!
-  au BufWrite build.gradle call gradle#sync()
+  au BufWrite build.gradle* call gradle#sync()
 augroup END
