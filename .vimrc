@@ -186,6 +186,9 @@ map <C-n> :NERDTreeToggle<CR>
 " Tagbar
 nmap <F8> :TagbarToggle<CR>
 
+" auto-pairs
+let g:AutoPairsShortcutToggle = '<Leader>p'
+
 " ALE
 nnoremap <Leader>gt :ALEGoToDefinition<CR>
 nnoremap <Leader>gr :ALEFindReferences<CR>
