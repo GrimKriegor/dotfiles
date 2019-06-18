@@ -212,3 +212,11 @@ augroup GradleGroup
   autocmd!
   au BufWrite build.gradle* call gradle#sync()
 augroup END
+
+" indentLine
+let g:indentLine_char = '┊'
+let g:indentLine_color_term = 234
+let g:indentLine_concealcursor = 'inc'
+let g:indentLine_conceallevel = 1
+set list lcs=tab:\┊\
+highlight SpecialKey ctermfg=234

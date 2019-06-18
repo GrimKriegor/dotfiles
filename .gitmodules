@@ -46,3 +46,9 @@
 [submodule ".vim/pack/plugins/start/vim-android"]
 	path = .vim/pack/plugins/start/vim-android
 	url = https://github.com/hsanson/vim-android.git
+[submodule ".vim/pack/plugins/start/indentLine"]
+	path = .vim/pack/plugins/start/indentLine
+	url = https://github.com/Yggdroot/indentLine.git
+[submodule ".vim/pack/plugins/start/CamelCaseMotion"]
+	path = .vim/pack/plugins/start/CamelCaseMotion
+	url = https://github.com/bkad/CamelCaseMotion.git
