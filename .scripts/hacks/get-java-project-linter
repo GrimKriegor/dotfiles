@@ -1,6 +1,6 @@
 #!/bin/bash
 
-linter_android="javalsp"
+linter_android="javalsp android"
 linter_java="eclipselsp"
 
 project_path="$PWD"
