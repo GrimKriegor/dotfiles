@@ -88,8 +88,8 @@ set hidden
 nmap <leader>bl :ls<CR>
 nmap <leader>j :bnext<CR>
 nmap <leader>k :bprevious<CR>
-nmap <leader>bc :enew<cr>
-nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bn :enew<cr>
+nmap <leader>bc :bp <BAR> bd #<CR>
 
 " Splits
 hi VertSplit ctermfg=Black ctermbg=White
