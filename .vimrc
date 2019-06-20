@@ -202,8 +202,7 @@ let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
 
 " vim-android
 let g:android_sdk_path = expand("$ANDROID_HOME")
-let g:gradle_daemon = 1
-let g:gradle_sync_on_load = 0
+let g:gradle_loclist_show = 0
 let g:gradle_show_signs = 0
 function! LoadDeps(buffer) abort
   if !gradle#isGradleDepsCached()
