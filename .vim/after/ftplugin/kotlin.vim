@@ -5,5 +5,5 @@ setlocal shiftwidth=4
 setlocal expandtab
 
 " ALE
-let b:ale_linters = {'kotlin': ['languageserver']}
+let g:ale_linters = {'kotlin': ['ktlint', 'languageserver', 'android']}
 let g:ale_kotlin_languageserver_executable = 'kotlin-language-server'
