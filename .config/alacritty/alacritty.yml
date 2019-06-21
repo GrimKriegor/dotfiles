@@ -11,7 +11,7 @@ window:
     y: 2
   dynamic_padding: false
   decorations: none
-  start_maximized: false
+  window.startup_mode: window
 
 scrolling:
   history: 10000
@@ -45,9 +45,9 @@ font:
     y: 0
   use_thin_strokes: false
 
-render_timer: false
+debug.render_timer: false
 
-persistent_logging: false
+debug.persistent_logging: false
 
 draw_bold_text_with_bright_colors: false
 
