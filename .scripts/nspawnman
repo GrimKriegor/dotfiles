@@ -154,6 +154,10 @@ case "$container_operation" in
 
   "install" )
     container_distro="$3"
+    if [[ -z "$container_distro" ]]; then
+      echo -e "No distro specified."
+      exit 1
+    fi
     echo -e "Installing distro $container_distro on container $container_name"
     installContainer "$container_distro"
     ;;
