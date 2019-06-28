@@ -33,7 +33,8 @@ function bootstrapArch() {
     sudo \
     vim \
     ttf-dejavu \
-    --ignore linux
+    --ignore linux \
+    --ignore linux-firmware
   sudo sed -i \
     "/\[multilib\]/,/Include/"'s/^#//' \
     "$container_path/etc/pacman.conf"
