@@ -40,7 +40,16 @@ function bootstrapArch() {
     "$container_path/etc/pacman.conf"
   sudo sed -i \
     "s/^#Server/Server/g" \
-    "$container_path/etc/pacman.d/mirrorlist"
+    "$containor_path/etc/pacman.d/mirrorlist"
+  sudo systemd-nspawn \
+    -D $container_path \
+    pacman-key --init
+  sudo systemd-nspawn \
+    -D $container_path \
+    pacman-key --populate archlinux
+  sudo systemd-nspawn \
+    -D $container_path \
+    pacman -Sy
 }
 
 function installContainer() {
