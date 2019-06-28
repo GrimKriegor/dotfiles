@@ -26,7 +26,7 @@ function bootstrapArch() {
     -O "$mirrorlist"
   sed -i "s,/etc/pacman.d/mirrorlist,$mirrorlist,g" "$pacman_conf"
   sed -i "s/^#Server/Server/g" "$mirrorlist"
-  sudo pacstrap -i -c -d \
+  sudo pacstrap -i -G -M -d \
     -C "$pacman_conf" \
     "$container_path" \
     base \
@@ -38,6 +38,9 @@ function bootstrapArch() {
   sudo sed -i \
     "/\[multilib\]/,/Include/"'s/^#//' \
     "$container_path/etc/pacman.conf"
+  sudo sed -i \
+    "s/^#Server/Server/g" \
+    "$container_path/etc/pacman.d/mirrorlist"
 }
 
 function installContainer() {
