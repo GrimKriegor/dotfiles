@@ -40,7 +40,7 @@ function bootstrapArch() {
     "$container_path/etc/pacman.conf"
   sudo sed -i \
     "s/^#Server/Server/g" \
-    "$containor_path/etc/pacman.d/mirrorlist"
+    "$container_path/etc/pacman.d/mirrorlist"
   sudo systemd-nspawn \
     -D $container_path \
     pacman-key --init
