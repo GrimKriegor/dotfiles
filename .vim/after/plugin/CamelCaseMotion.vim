@@ -1,2 +1,0 @@
-call camelcasemotion#CreateMotionMappings('<leader>')
-

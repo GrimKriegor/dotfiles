@@ -216,3 +216,6 @@ let g:indentLine_concealcursor = 'inc'
 let g:indentLine_conceallevel = 1
 set list lcs=tab:\▏\
 highlight SpecialKey ctermfg=234
+
+" CamelCaseMotion
+let g:camelcasemotion_key = '<leader>'
