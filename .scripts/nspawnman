@@ -5,7 +5,7 @@
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2019
 
-set -e
+#set -e
 
 container_operation="$1"
 container_name="$2"
@@ -17,7 +17,10 @@ container_user="$(whoami)"
 function bootstrapDebianBased() {
   version="$1"
   mirrorlist="$2"
-  sudo debootstrap "$version" "$container_path" "$mirrorlist"
+  sudo debootstrap \
+    "$version" \
+    "$container_path" \
+    "$mirrorlist"
 }
 
 function bootstrapDebian() {
@@ -28,6 +31,12 @@ function bootstrapDebian() {
 function bootstrapTrisquel() {
   version="$1"
   mirrorlist="http://archive.trisquel.info/trisquel"
+  bootstrapDebianBased "$version" "$mirrorlist"
+}
+
+function bootstrapUbuntu() {
+  version="$1"
+  mirrorlist="http://archive.ubuntu.com/ubuntu/"
   bootstrapDebianBased "$version" "$mirrorlist"
 }
 
@@ -77,6 +86,7 @@ function installContainer() {
     "arch"     ) bootstrapArch ;;
     "debian"   ) bootstrapDebian "$container_distro_version" ;;
     "trisquel" ) bootstrapTrisquel "$container_distro_version" ;;
+    "ubuntu"   ) bootstrapUbuntu "$container_distro_version" ;;
     *          ) echo "$container_distro is not a supported distro"; exit 1 ;;
   esac
 
