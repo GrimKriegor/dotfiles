@@ -14,6 +14,23 @@ container_storage_directory="$HOME/.nspawn"
 container_path="$container_storage_directory/$container_name"
 container_user="$(whoami)"
 
+function bootstrapDebianBased() {
+  version="$1"
+  mirrorlist="$2"
+  sudo debootstrap "$version" "$container_path" "$mirrorlist"
+}
+
+function bootstrapDebian() {
+  version="$1"
+  bootstrapDebianBased "$version"
+}
+
+function bootstrapTrisquel() {
+  version="$1"
+  mirrorlist="http://archive.trisquel.info/trisquel"
+  bootstrapDebianBased "$version" "$mirrorlist"
+}
+
 function bootstrapArch() {
   pacman_conf="/tmp/nspawnman/arch-pacman.conf"
   mirrorlist="/tmp/nspawnman/arch-mirrorlist"
@@ -54,11 +71,13 @@ function bootstrapArch() {
 
 function installContainer() {
   container_distro="$1"
+  container_distro_version="$2"
   mkdir -p "$container_path"
   case "$container_distro" in
-    "arch" )
-      bootstrapArch
-      ;;
+    "arch"     ) bootstrapArch ;;
+    "debian"   ) bootstrapDebian "$container_distro_version" ;;
+    "trisquel" ) bootstrapTrisquel "$container_distro_version" ;;
+    *          ) echo "$container_distro is not a supported distro"; exit 1 ;;
   esac
 
   sudo bash -c "cat >| $container_path/etc/asound.conf" <<EOF
@@ -181,12 +200,17 @@ case "$container_operation" in
 
   "install" )
     container_distro="$3"
+    container_distro_version="$4"
+    container_distro_version_string="$container_distro"
     if [[ -z "$container_distro" ]]; then
       echo -e "No distro specified."
       exit 1
     fi
-    echo -e "Installing distro $container_distro on container $container_name"
-    installContainer "$container_distro"
+    if [[ ! -z "$container_distro_version" ]]; then
+      container_distro_version_string="$container_distro $container_distro_version"
+    fi
+    echo -e "Installing distro $container_distro_version_string on container $container_name"
+    installContainer "$container_distro" "$container_distro_version"
     ;;
 
   "start" )
