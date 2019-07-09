@@ -139,23 +139,30 @@ EOF
     -D $container_path \
     passwd root
 
+  sudo sed -i \
+    '/^#.*%wheel ALL=(ALL) ALL/s/^#//' \
+    $container_path/etc/sudoers
+
+  echo -e "\nCreating additional groups"
+  additional_user_groups=( "optical" "storage" "wheel" "power" )
+  for group in "${additional_user_groups[@]}"; do
+    sudo systemd-nspawn \
+      -D $container_path \
+      /usr/sbin/groupadd "$group" 2>&1 >/dev/null | true
+  done
+
   echo -e "\nCreating a new unprivileged user named $container_user"
   sudo systemd-nspawn \
     -D $container_path \
-    useradd -m \
-    -g users \
-    -G audio,lp,optical,storage,video,wheel,games,power \
-    -s /bin/bash "$container_user"
+    /usr/sbin/useradd -m \
+      -g users \
+      -G audio,lp,optical,storage,video,wheel,games,power \
+      -s /bin/bash "$container_user"
 
   echo -e "\nDefine a password for the unprivileged user:"
   sudo systemd-nspawn \
     -D $container_path \
     passwd "$container_user"
-
-  sudo sed -i \
-    '/^#.*%wheel ALL=(ALL) ALL/s/^#//' \
-    $container_path/etc/sudoers
-
 }
 
 function startContainer() {
