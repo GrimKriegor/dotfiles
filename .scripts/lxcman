@@ -1,0 +1,56 @@
+#!/bin/bash
+
+# A way to make managing my lxc containers less troublesome
+#
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+set -e
+
+container_operation="$1"
+container_name="$2"
+container_storage_directory="$HOME/.lxc"
+container_path="$container_storage_directory/$container_name"
+container_user="$(whoami)"
+
+function systemInstall() {
+  sudo bash -c "cat >| /etc/lxc/default.conf" <<EOF
+lxc.net.0.type = veth
+lxc.net.0.link = lxcbr0
+lxc.net.0.flags = up
+lxc.net.0.hwaddr = 00:16:3e:xx:xx:xx
+EOF
+  sudo bash -c "cat >| /etc/default/lxc-net" <<EOF
+E_LXC_BRIDGE="true"
+LXC_BRIDGE="lxcbr0"
+LXC_ADDR="10.0.3.1"
+LXC_NETMASK="255.255.255.0"
+LXC_NETWORK="10.0.3.0/24"
+LXC_DHCP_RANGE="10.0.3.2,10.0.3.254"
+LXC_DHCP_MAX="253"
+EOF
+  sudo systemctl enable lxc
+  sudo systemctl enable lxc-net
+  sudo systemctl restart lxc
+  sudo systemctl restart lxc-net
+}
+
+function commandPassthrough() {
+  [[ ! -z "$container_name" ]] && \
+    container_name_cmd="-n $container_name"
+  eval sudo \
+    lxc-"$container_operation" \
+    --lxcpath="$container_storage_directory" \
+    "$container_name_cmd" \
+    "${@:3}"
+}
+
+case "$container_operation" in
+  "install" )
+    systemInstall
+  ;;
+  * )
+    commandPassthrough "$@"
+  ;;
+esac
+
