@@ -21,7 +21,7 @@ lxc.net.0.flags = up
 lxc.net.0.hwaddr = 00:16:3e:xx:xx:xx
 EOF
   sudo bash -c "cat >| /etc/default/lxc-net" <<EOF
-E_LXC_BRIDGE="true"
+USE_LXC_BRIDGE="true"
 LXC_BRIDGE="lxcbr0"
 LXC_ADDR="10.0.3.1"
 LXC_NETMASK="255.255.255.0"
