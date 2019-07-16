@@ -35,6 +35,26 @@ EOF
   sudo systemctl restart lxc-net
 }
 
+function findBusDeviceIdByVendorModel() {
+  vendor_model_id="$1"
+  echo $(lsusb | \
+    grep "$vendor_model_id" | \
+    sed 's/://g' | \
+    awk '{print $2 "/" $4}')
+}
+
+function addUsbDevice() {
+  vendor_model_id="$1"
+  bus_device_id=$(findBusDeviceIdByVendorModel "$vendor_model_id")
+  bus_device_path="/dev/bus/usb/$bus_device_id"
+  echo "Attaching USB $vendor_model_id to $container_name as $bus_device_path"
+  sudo lxc-device \
+    --lxcpath="$container_storage_directory" \
+    -n "$container_name" \
+    add \
+    "$bus_device_path"
+}
+
 function commandPassthrough() {
   [[ ! -z "$container_name" ]] && \
     container_name_cmd="-n $container_name"
@@ -48,6 +68,9 @@ function commandPassthrough() {
 case "$container_operation" in
   "install" )
     systemInstall
+  ;;
+"usb" )
+    addUsbDevice "$3"
   ;;
   * )
     commandPassthrough "$@"
