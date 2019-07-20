@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# SharePasta
+# Leverages the `share` script to quickly share text
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+set -e
+
+export DISPLAY=:0
+
+operation="$1"
+file_name="$(cat /dev/urandom | \
+  tr -dc 'a-zA-Z0-9' | \
+  fold -w 32 | \
+  head -n 1)"
+file_location="/tmp/$file_name.txt"
+
+case "$operation" in
+  "clipboard" )
+    clipboard_content="$(xclip -o)"
+    echo "$clipboard_content" > "$file_location"
+  ;;
+esac
+
+$TERMINAL -e $EDITOR $file_location
+share $file_location
