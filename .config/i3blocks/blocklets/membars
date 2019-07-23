@@ -10,7 +10,7 @@ bar_array=( "▁" "▂" "▃" "▄" "▅" "▆" "▇" "█" )
 bar_array_size=${#bar_array[@]}
 bar_array_step=$(( 100 / $bar_array_size ))
 bar_spacing=" "
-color="${COLOR:-#888}"
+color="${COLOR:-#666}"
 
 function get_bar() {
   usage="$1"
