@@ -1,0 +1,75 @@
+#!/bin/bash
+
+set -e
+
+CONFIG_DIR="$HOME/.config/dock-handler"
+UDEV_RULES_FILE="/etc/udev/rules.d/81-dock-handler.rules"
+PID_FILE="/tmp/dock-handler-$USER"
+
+[[ ! -d "$CONFIG_DIR" ]] && \
+  mkdir -p "$CONFIG_DIR" \
+  && touch "$dock_hook" "$undock_hook"
+
+function createPidFile() {
+  #trap removePidFile HUP INT TERM
+  touch "$PID_FILE"
+}
+
+function removePidFile() {
+  rm "$PID_FILE"
+}
+
+function checkPidFile() {
+  if [[ -f "$PID_FILE" ]]; then
+    time_pid_file_modification=$(stat -c %Y $PID_FILE)
+    time_current=$(date +%s)
+    time_difference=$((time_current - time_pid_file_modification));
+    if ((time_difference >= 10)); then
+      removePidFile
+    else
+      echo -e "Another instance of dock-handler is already running"
+      exit 10
+    fi
+  fi
+}
+
+function reloadUdevRules() {
+  sudo udevadm control --reload-rules
+  sudo udevadm trigger
+}
+
+function install() {
+  user="$USER"
+  script_path="$(realpath $0)"
+  sudo bash -c "cat >| $UDEV_RULES_FILE" <<EOF
+SUBSYSTEM=="usb", ACTION=="add|remove", ENV{PRODUCT}=="17ef/100a/0", ENV{DISPLAY}=":0", ENV{XAUTHORITY}="/home/$user/.Xauthority", RUN+="$(which su) $user -c $script_path"
+EOF
+  reloadUdevRules
+}
+
+function uninstall() {
+  sudo rm "$UDEV_RULES_FILE"
+  reloadUdevRules
+}
+
+function runHook() {
+  hook="$1"
+  hook_fullpath="$CONFIG_DIR/$hook.hook"
+  logger -t dock-handler "Running hook $hook from $hook_fullpath"
+  export XAUTHORITY=/home/$USER/.Xauthority
+  export DISPLAY=":0"
+  [[ -f "$hook_fullpath" ]] && \
+    chmod +x "$hook_fullpath"
+    bash "$hook_fullpath" #2>&1 >/dev/null
+}
+
+checkPidFile
+createPidFile
+operation="${ACTION:-$1}"
+case "$operation" in
+  "install"           ) install        ;;
+  "uninstall"         ) uninstall      ;;
+  "dock"   | "add"    ) runHook dock   ;;
+  "undock" | "remove" ) runHook undock ;;
+  *                   ) runHook "$2"   ;;
+esac
