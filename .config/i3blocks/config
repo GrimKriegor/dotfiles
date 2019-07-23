@@ -26,6 +26,14 @@ markup=pango
 command=date '+%b %d - %H:%M'
 interval=5
 
+[volume-pulseaudio]
+command=SUBSCRIBE=1 LONG_FORMAT='${SYMB}' MUTED_COLOR=#444444 $SCRIPT_DIR/volume-pulseaudio
+interval=persist
+signal=1
+markup=pango
+separator=false
+separator_block_width=10
+
 [muttmail]
 command=$SCRIPT_DIR/muttmail
 interval=60
