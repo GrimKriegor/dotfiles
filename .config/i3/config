@@ -519,9 +519,6 @@ exec --no-startup-id xautolock -time 5 -locker 'powerhandler lock'
 # Conky
 exec --no-startup-id conky --config=$HOME/.conky/conkyrc
 
-# Pulse Audio Systray
-exec --no-startup-id pasystray
-
 # Blueman applet
 exec --no-startup-id blueman-applet
 
