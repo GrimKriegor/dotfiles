@@ -11,6 +11,11 @@ command=sleep .25; xdotool getwindowfocus getwindowname
 interval=repeat
 min_width=0
 
+[bandwidth]
+command=$SCRIPT_DIR/multibandwidth -i '' -o ''
+markup=pango
+interval=5
+
 [cpubars]
 command=$SCRIPT_DIR/cpubars2
 interval=persist
