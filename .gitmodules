@@ -52,3 +52,6 @@
 [submodule ".vim/pack/plugins/start/CamelCaseMotion"]
 	path = .vim/pack/plugins/start/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion.git
+[submodule ".scripts/external/temp-throttle"]
+	path = .scripts/external/temp-throttle
+	url = https://github.com/Sepero/temp-throttle.git
