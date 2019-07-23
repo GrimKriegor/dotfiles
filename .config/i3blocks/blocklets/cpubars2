@@ -1,0 +1,47 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+#
+# Originally by Rouji
+# https://github.com/Rouji/dotfiles
+#
+# Changes from upstream:
+# - Remove usage percentage
+# - Add delimiter
+# - Change cycle duration
+
+from time import sleep
+
+col = '<span foreground="{}">{}</span>'
+bars = [chr(ord('▁')+i) for i in range(8)]
+bars[6] = col.format('orange', bars[6])
+bars[7] = col.format('red', bars[7])
+def format(cpus: list) -> str:
+    '''first cpu in the list is overall usage'''
+    return '{}'.format(' '.join(bars[int(c*7)] for c in cpus[1:]))
+
+bar_spacing=" "
+last = iter(lambda: [0]*10, None)
+while True:
+    with open('/proc/stat', 'r') as s:
+        current = []
+        for l in s.readlines():
+            if not l.startswith('cpu'):
+                continue
+            val = [int(v) for v in l.split()[1:]]
+            total = sum(val[:7])
+            active = total - val[3] - val[4]
+            current.append((total, active))
+
+        if not last:
+            last = current.copy()
+            continue
+
+        perc = [
+            (c[1] - l[1])/(c[0] - l[0])
+            if c[0]-l[0] > 0 else 0
+            for c, l in zip(current, last)
+        ]
+        print(format(perc), flush=True)
+
+        last = current
+        sleep(2)

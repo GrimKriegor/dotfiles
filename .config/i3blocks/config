@@ -12,8 +12,9 @@ interval=repeat
 min_width=0
 
 [cpubars]
-command=$SCRIPT_DIR/cpubars
-interval=2
+command=$SCRIPT_DIR/cpubars2
+interval=persist
+markup=pango
 separator=false
 separator_block_width=4
 
