@@ -23,4 +23,10 @@ function get_bar() {
 load=$(free | grep Mem | awk '{print $3/$2 * 100.0}' | cut -d . -f 1)
 bar=$(get_bar $load)
 
+if (( $load >=90 )); then
+  color="#FF0000"
+elif (( $load >=75 && $load < 90 )); then
+  color="#FFFF00"
+fi
+
 echo "<span color=\"$color\">$bar</span>"
