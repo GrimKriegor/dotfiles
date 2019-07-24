@@ -1,6 +1,6 @@
 #!/bin/bash
 
-t_warn=${1:-80}
+t_warn=${1:-82}
 t_crit=${2:-95}
 
 # sorting temp values for all cores
@@ -17,7 +17,7 @@ else
 fi
 
 # elements output for JSON (short text, full text, color)
-echo "${t_curr[0]}C"
-echo "${t_curr[0]}C"
+echo "🌡 ${t_curr[0]}C"
+echo "🌡 ${t_curr[0]}C"
 echo "$color"
 exit
