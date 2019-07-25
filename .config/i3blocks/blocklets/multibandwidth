@@ -44,6 +44,7 @@ path="/dev/shm/$(basename $0)"
 
 # grabbing data for each adapter.
 for device in /sys/class/net/*; do
+  [[ $(echo $device | grep 'lo\|vir*\|veth*\|lxc*') ]] && continue
   read _rx < "${device}/statistics/rx_bytes"
   read _tx < "${device}/statistics/tx_bytes"
   rx_sum=$(($rx_sum + $_rx))
