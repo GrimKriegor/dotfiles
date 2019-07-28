@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# An easy way to push keys to multiple servers
+
+servers="
+hkp://pool.sks-keyservers.net
+hkp://pgp.mit.edu
+"
+
+for server in $servers; do
+  gpg \
+    --keyserver $server \
+    --send-key "$@"
+done
