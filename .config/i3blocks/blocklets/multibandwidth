@@ -82,6 +82,7 @@ tx_rate=$(( $tx_diff / $time_diff ))
 
 function rateToOutput() {
   rate="$1"
+  label="$2"
   if hash bc 2>/dev/null && [[ "$rate" -gt 1048576 ]]; then
     rate_k=$(( $rate >> 10 ))
     value=$(echo "scale=1; $rate_k/1024" | bc)
@@ -99,9 +100,9 @@ function rateToOutput() {
     unit="b"
     color="#666666"
   fi
-  echo -n "<span color=\"$color\">$INLABEL</span>$value$unit"
+  echo -n "<span color=\"$color\">$label</span>$value$unit"
 }
 
-rateToOutput "$rx_rate"
+rateToOutput "$rx_rate" "$INLABEL"
 echo -n " "
-rateToOutput "$tx_rate"
+rateToOutput "$tx_rate" "$OUTLABEL"
