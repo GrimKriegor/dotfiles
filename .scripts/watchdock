@@ -1,0 +1,39 @@
+#!/bin/bash
+
+set -e
+
+check_interval="${1:-5}"
+dock_display="${2:-HDMI2}"
+
+function isDocked() {
+  test $(xrandr | grep -w "connected" | awk -F'[ + ]' '{print $1}' | grep "$dock_display") && \
+    return 0
+  return 1
+}
+
+function checkState() {
+  if isDocked; then
+    echo "dock"
+  else
+    echo "undock"
+  fi
+}
+
+function switchMode() {
+  mode="$1"
+  echo "Switching to mode: $mode"
+  dock-handler "$mode" 2>&1 >/dev/null
+}
+
+current_state="$(checkState)"
+previous_state="$current_state"
+echo "Initial mode: $current_state"
+
+while true; do
+  current_state="$(checkState)"
+  [[ "$current_state" != "$previous_state" ]] && \
+    switchMode "$current_state"
+  previous_state="$current_state"
+  sleep $check_interval
+done
+
