@@ -1,0 +1,2 @@
+nmcli radio wifi on
+displayselect "Laptop"

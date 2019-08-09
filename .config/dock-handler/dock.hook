@@ -1,0 +1,2 @@
+nmcli radio wifi off
+displayselect "Dock HDMI"
