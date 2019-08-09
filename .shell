@@ -28,6 +28,7 @@ alias kc='kubectl'
 alias ka='sudo kubeadm'
 alias kn='kubens'
 alias kx='kubectx'
+alias ydl='youtube-dl'
 
 #------------------------------
 # Variables
