@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# Run dock related hooks
+# either manually or via udev events
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
 set -e
 
 CONFIG_DIR="$HOME/.config/dock-handler"

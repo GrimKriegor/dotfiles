@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Watch out for docking events
+# and run dock-handler accordingly
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+#
+# Usage:
+# $ watchdock [interval] [dock display]
+
 set -e
 
 check_interval="${1:-5}"
