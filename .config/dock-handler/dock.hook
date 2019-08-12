@@ -1,2 +1,3 @@
 nmcli radio wifi off
 displayselect "Dock HDMI"
+setxkbmap -layout us -option -option caps:swapescape -option compose:paus
