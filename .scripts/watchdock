@@ -8,8 +8,6 @@
 # Usage:
 # $ watchdock [interval] [dock display]
 
-set -e
-
 check_interval="${1:-5}"
 dock_display="${2:-HDMI2}"
 
@@ -30,12 +28,14 @@ function checkState() {
 function switchMode() {
   mode="$1"
   echo "Switching to mode: $mode"
+  notify-send "watchdock" "Switching to mode: $mode"
   dock-handler "$mode" 2>&1 >/dev/null
 }
 
 current_state="$(checkState)"
 previous_state="$current_state"
 echo "Initial mode: $current_state"
+notify-send "watchdock" "Initializing in mode: $current_state"
 
 while true; do
   current_state="$(checkState)"
