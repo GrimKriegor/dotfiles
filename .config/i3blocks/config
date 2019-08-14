@@ -16,6 +16,15 @@ command=$SCRIPT_DIR/multibandwidth -i '' -o ''
 markup=pango
 interval=5
 
+[disk-io]
+command=$SCRIPT_DIR/disk-io -S -P 0 -w 0 -t 4 -L ' ' -T '50000'
+interval=persist
+markup=pango
+
+[cputemp]
+command=$SCRIPT_DIR/cputemp
+interval=10
+
 [cpubars]
 command=$SCRIPT_DIR/cpubars2
 interval=persist
