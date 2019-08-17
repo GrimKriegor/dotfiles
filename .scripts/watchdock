@@ -10,11 +10,18 @@
 
 check_interval="${1:-5}"
 dock_display="${2:-HDMI2}"
+dock_test_script="$HOME/.config/dock-handler/check-dock"
 
 function isDocked() {
-  test $(xrandr | grep -w "connected" | awk -F'[ + ]' '{print $1}' | grep "$dock_display") && \
-    return 0
-  return 1
+  if [[ -f $dock_test_script ]]; then
+    test $(bash dock_test_script) && \
+      return 0
+    return 1
+  else
+    test $(xrandr | grep -w "connected" | awk -F'[ + ]' '{print $1}' | grep "$dock_display") && \
+      return 0
+    return 1
+  fi
 }
 
 function checkState() {
