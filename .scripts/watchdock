@@ -10,7 +10,7 @@
 
 check_interval="${1:-5}"
 dock_display="${2:-HDMI2}"
-dock_test_script="$HOME/.config/dock-handler/check-dock"
+dock_test_script="$HOME/.config/dock-handler/check"
 
 function isDocked() {
   if [[ -f $dock_test_script ]]; then
@@ -26,9 +26,9 @@ function isDocked() {
 
 function checkState() {
   if isDocked; then
-    echo "dock"
+    echo "desktop"
   else
-    echo "undock"
+    echo "laptop"
   fi
 }
 

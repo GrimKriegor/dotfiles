@@ -72,9 +72,9 @@ checkPidFile
 createPidFile
 operation="${ACTION:-$1}"
 case "$operation" in
-  "install"           ) install        ;;
-  "uninstall"         ) uninstall      ;;
-  "dock"   | "add"    ) runHook dock   ;;
-  "undock" | "remove" ) runHook undock ;;
-  *                   ) runHook "$2"   ;;
+  "install"                       ) install        ;;
+  "uninstall"                     ) uninstall      ;;
+  "dock"   | "add"    | "desktop" ) runHook dock   ;;
+  "undock" | "remove" | "laptop"  ) runHook undock ;;
+  *                               ) runHook "$2"   ;;
 esac
