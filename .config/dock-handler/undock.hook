@@ -1,2 +1,3 @@
 nmcli radio wifi on
 displayselect "Laptop"
+pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
