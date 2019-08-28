@@ -19,6 +19,9 @@ elif [[ -z "$file" ]]; then
   echo "No file specified."
   echo "$HELP_TEXT"
   exit 1
+elif [[ ! -f "$file" ]]; then
+  echo "No such file \"$file\"."
+  exit 1
 fi
 
 CONFIG_DIR=$HOME/.config/quickshare
