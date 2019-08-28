@@ -8,8 +8,12 @@ set -e
 
 HELP_TEXT="$(basename $0) <remote> <file>"
 
-remote="$1"
-file="$2"
+remote="default"
+file="$1"
+if [[ $# -ne 1 ]]; then
+  remote="$1"
+  file="$2"
+fi
 
 if [[ -z "$remote" ]]; then
   echo "No remote specified."
