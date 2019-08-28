@@ -47,7 +47,9 @@ case "$METHOD" in
     ssh -q -p$PORT $USER@$MACHINE chmod 755 \"$REMOTE_PUBLIC_DIR/${filename}\"
   ;;
   sftp )
-    sftp -i $SSH_KEY -P$PORT $USER@$MACHINE <<< "put ${filename} /public/"
+    sftp -q -i $SSH_KEY -P$PORT $USER@$MACHINE <<< \
+      "put ${filename} /public/" \
+      > /dev/null
   ;;
   * )
     echo "No valid method specified in the config."
