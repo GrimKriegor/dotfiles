@@ -1,48 +1,50 @@
 #!/bin/bash
 
-#################################################
-# Quick file share                              #
-# by Grim Kriegor (grimkriegor@krutt.org)       #
-#################################################
-# Last Revision: Aug 2017
-#################################################
+# Quick file share
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2017
 
 set -e
 
-#Config
-CONFIG_FILE="$HOME/.config/quick-file-share.conf"
+HELP_TEXT="$(basename $0) <remote> <file>"
 
-if [ -f "$CONFIG_FILE" ]; then
-  source "$CONFIG_FILE"
+remote="$1"
+file="$2"
+
+if [[ -z "$remote" ]]; then
+  echo "No remote specified."
+  echo "$HELP_TEXT"
+  exit 1
+elif [[ -z "$file" ]]; then
+  echo "No file specified."
+  echo "$HELP_TEXT"
+  exit 1
+fi
+
+CONFIG_DIR=$HOME/.config/quickshare
+[[ -d "$CONFIG_DIR" ]] || mkdir "$CONFIG_DIR"
+
+config_file="$CONFIG_DIR/$remote.conf"
+if [ -f "$config_file" ]; then
+  source "$config_file"
 else
-  echo -e "No config found. Generating new one.\nEdit \"$CONFIG_FILE\" to add your credentials."
+  echo -e "No config found for remote "$remote". Generating new one.\nEdit \"$config_file\" to add your credentials."
   CONFIG_FILE_SKEL="USER=\"$(whoami)\"\nMACHINE=\"changeme\"\nPORT=\"22\"\nMETHOD=\"scp\"\nPREFIX=\"https://change.me/path/\"\nREMOTE_PUBLIC_DIR=\"/var/www/$USER/path\"\nSSH_KEY=\"\""
-  echo -e "$CONFIG_FILE_SKEL" > "$CONFIG_FILE"
-  chmod 640 "$CONFIG_FILE"
+  echo -e "$CONFIG_FILE_SKEL" > "$config_file"
+  chmod 640 "$config_file"
   exit 0
 fi
 
-#Check filename
-if [ "$1" != "" ]; then
-  FILE="$1"
-else
-  exit 0
-fi
-
-#Encode URL
-FILENAME=$(basename "$FILE")
-FILENAME_ENC=$(echo $FILENAME | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/ /%09/g' -e 's/!/%21/g' -e 's/"/%22/g' -e 's/#/%23/g' -e 's/\$/%24/g' -e 's/\&/%26/g' -e 's/'\''/%27/g' -e 's/(/%28/g' -e 's/)/%29/g' -e 's/\*/%2a/g' -e 's/+/%2b/g' -e 's/,/%2c/g' -e 's/-/%2d/g' -e '#s/\./%2e/g' -e 's/\//%2f/g' -e 's/:/%3a/g' -e 's/;/%3b/g' -e 's//%3e/g' -e 's/?/%3f/g' -e 's/@/%40/g' -e 's/\[/%5b/g' -e 's/\\/%5c/g' -e 's/\]/%5d/g' -e 's/\^/%5e/g' -e 's/_/%5f/g' -e 's/`/%60/g' -e 's/{/%7b/g' -e 's/|/%7c/g' -e 's/}/%7d/g' -e 's/~/%7e/g' -e 's/      /%09/g')
-
-#Upload
-echo "Uploading $FILE"
+filename=$(basename "$file")
+filename_encoded=$(echo $filename | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/ /%09/g' -e 's/!/%21/g' -e 's/"/%22/g' -e 's/#/%23/g' -e 's/\$/%24/g' -e 's/\&/%26/g' -e 's/'\''/%27/g' -e 's/(/%28/g' -e 's/)/%29/g' -e 's/\*/%2a/g' -e 's/+/%2b/g' -e 's/,/%2c/g' -e 's/-/%2d/g' -e '#s/\./%2e/g' -e 's/\//%2f/g' -e 's/:/%3a/g' -e 's/;/%3b/g' -e 's//%3e/g' -e 's/?/%3f/g' -e 's/@/%40/g' -e 's/\[/%5b/g' -e 's/\\/%5c/g' -e 's/\]/%5d/g' -e 's/\^/%5e/g' -e 's/_/%5f/g' -e 's/`/%60/g' -e 's/{/%7b/g' -e 's/|/%7c/g' -e 's/}/%7d/g' -e 's/~/%7e/g' -e 's/      /%09/g')
 
 case "$METHOD" in
   scp )
-    scp -q -P$PORT "$FILE" $USER@$MACHINE:$REMOTE_PUBLIC_DIR
-    ssh -q -p$PORT $USER@$MACHINE chmod 755 \"$REMOTE_PUBLIC_DIR/${FILENAME}\"
+    scp -q -P$PORT "$file" $USER@$MACHINE:$REMOTE_PUBLIC_DIR
+    ssh -q -p$PORT $USER@$MACHINE chmod 755 \"$REMOTE_PUBLIC_DIR/${filename}\"
   ;;
   sftp )
-    sftp -i $SSH_KEY -P$PORT $USER@$MACHINE <<< "put ${FILENAME} /public/"
+    sftp -i $SSH_KEY -P$PORT $USER@$MACHINE <<< "put ${filename} /public/"
   ;;
   * )
     echo "No valid method specified in the config."
@@ -50,8 +52,7 @@ case "$METHOD" in
   ;;
 esac
 
-
-#Send notifications and copy paste url
-echo "$PREFIX/$FILENAME_ENC"
-notify-send "File avaliable at" "$PREFIX/$FILENAME_ENC"
-echo -n "$PREFIX/$FILENAME_ENC" | xclip -selection clipboard
+url="$PREFIX/$filename_encoded"
+echo "$url"
+notify-send "File uploaded" "$url"
+echo -n "$url" | xclip -selection clipboard
