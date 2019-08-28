@@ -48,7 +48,8 @@ case "$METHOD" in
   ;;
   sftp )
     sftp -q -i $SSH_KEY -P$PORT $USER@$MACHINE <<< \
-      "put ${filename} /public/" \
+      "put ${filename} /public/
+      chmod 755 /public/${filename}" \
       > /dev/null
   ;;
   * )
