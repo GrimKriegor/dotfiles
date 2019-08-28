@@ -55,3 +55,6 @@
 [submodule ".scripts/external/temp-throttle"]
 	path = .scripts/external/temp-throttle
 	url = https://github.com/Sepero/temp-throttle.git
+[submodule ".scripts/external/adb-sync"]
+	path = .scripts/external/adb-sync
+	url = https://github.com/google/adb-sync.git
