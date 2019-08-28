@@ -24,4 +24,4 @@ case "$operation" in
 esac
 
 $TERMINAL -e $EDITOR $file_location
-share $file_location
+quickshare default $file_location

@@ -17,7 +17,7 @@ do
 
   # Share
   "C-s")
-    share "$file" ;;
+    quickshare default "$file" ;;
 
   esac
 done
