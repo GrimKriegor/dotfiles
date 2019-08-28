@@ -16,7 +16,7 @@ if [ -f "$CONFIG_FILE" ]; then
   source "$CONFIG_FILE"
 else
   echo -e "No config found. Generating new one.\nEdit \"$CONFIG_FILE\" to add your credentials."
-  CONFIG_FILE_SKEL="USER=\"$(whoami)\"\nMACHINE=\"changeme\"\nPORT=\"22\"\nMETHOD=\"scp\"\nPREFIX=\"https://change.me/path/\"\nREMOTE_PUBLIC_DIR=\"/var/www/$USER/path\""
+  CONFIG_FILE_SKEL="USER=\"$(whoami)\"\nMACHINE=\"changeme\"\nPORT=\"22\"\nMETHOD=\"scp\"\nPREFIX=\"https://change.me/path/\"\nREMOTE_PUBLIC_DIR=\"/var/www/$USER/path\"\nSSH_KEY=\"\""
   echo -e "$CONFIG_FILE_SKEL" > "$CONFIG_FILE"
   chmod 640 "$CONFIG_FILE"
   exit 0
@@ -35,8 +35,21 @@ FILENAME_ENC=$(echo $FILENAME | sed -e 's/%/%25/g' -e 's/ /%20/g' -e 's/ /%09/g'
 
 #Upload
 echo "Uploading $FILE"
-scp -q -P$PORT "$FILE" $USER@$MACHINE:$REMOTE_PUBLIC_DIR
-ssh -q -p$PORT $USER@$MACHINE chmod 755 \"$REMOTE_PUBLIC_DIR/${FILENAME}\"
+
+case "$METHOD" in
+  scp )
+    scp -q -P$PORT "$FILE" $USER@$MACHINE:$REMOTE_PUBLIC_DIR
+    ssh -q -p$PORT $USER@$MACHINE chmod 755 \"$REMOTE_PUBLIC_DIR/${FILENAME}\"
+  ;;
+  sftp )
+    sftp -i $SSH_KEY -P$PORT $USER@$MACHINE <<< "put ${FILENAME} /public/"
+  ;;
+  * )
+    echo "No valid method specified in the config."
+    exit 1
+  ;;
+esac
+
 
 #Send notifications and copy paste url
 echo "$PREFIX/$FILENAME_ENC"
