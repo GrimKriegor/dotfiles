@@ -37,10 +37,6 @@ command=$SCRIPT_DIR/membars
 interval=5
 markup=pango
 
-[cputemp]
-command=$SCRIPT_DIR/cputemp
-interval=10
-
 [time]
 command=date '+%b %d - %H:%M'
 interval=5
