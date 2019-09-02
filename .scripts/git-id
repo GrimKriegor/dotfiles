@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# git-id
+# Makes it quick and easy to switch between git identitities
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+set -e
+
+CONFIG_FOLDER="$HOME/.config/git-id"
+CONFIG_SKEL="\
+user_name=
+user_email=
+proxy=
+"
+
+function usernameToId() {
+  echo "$@" | awk '{print tolower($0)}'
+}
+
+function hasConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  if [[ -f "$user_config" ]]; then
+    echo "true"
+  fi
+}
+
+function createConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  [[ -d $CONFIG_FOLDER ]] || mkdir -p "$CONFIG_FOLDER"
+  echo -e "$CONFIG_SKEL" > "$user_config"
+  echo -e "Creating config for: $user_id"
+  eval "$EDITOR" "$user_config"
+}
+
+function loadConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  source "$user_config"
+}
+
+function applyConfig() {
+  git config http.proxy "$proxy"
+  git config user.name "$user_name"
+  git config user.email "$user_email"
+  echo -e "Locally applied config for: $user_id"
+}
+
+function getId() {
+  user_name="$(git config user.name)"
+  user_id="$(usernameToId $user_name)"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  if [[ $(hasConfigFile $user_id) ]]; then
+    cat "$user_config"
+  else
+    echo -e "No known ID found being used in this project"
+  fi
+}
+
+function setId() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  if [[ $(hasConfigFile $user_id) ]]; then
+    loadConfigFile "$user_id"
+    applyConfig
+  else
+    createConfigFile "$user_id"
+    loadConfigFile "$user_id"
+    applyConfig
+  fi
+}
+
+if [[ "$1" == "" ]]; then
+  getId
+else
+  setId "$1"
+fi
