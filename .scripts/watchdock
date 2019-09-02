@@ -41,7 +41,8 @@ function switchMode() {
 
 current_state="$(checkState)"
 previous_state="$current_state"
-echo "Initial mode: $current_state"
+dock-handler "$current_state" 2>&1 >/dev/null
+echo "Initializing in mode: $current_state"
 notify-send "watchdock" "Initializing in mode: $current_state"
 
 while true; do
