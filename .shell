@@ -16,6 +16,7 @@ export PATH="$(du "$HOME/.scripts/" --exclude ".scripts/external" | cut -f2 | tr
 #------------------------------
 [[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
 alias x='startx'
+alias ssh='TERM=xterm-256color ssh'
 alias ddd='sudo dd status=progress'
 alias sc='sudo systemctl'
 alias p='sudo pacman'
