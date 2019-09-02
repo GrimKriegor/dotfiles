@@ -1,7 +1,7 @@
 !! generic
 *foreground:       #dddddd
 *foreground_bold:  #a8a19f
-*cursor:           #a8a19f
+!*cursor:           #a8a19f
 *background:       #000000
 ! black
 *color0:           #1b1918
