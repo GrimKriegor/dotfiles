@@ -272,10 +272,18 @@ bindsym $mod+Shift+t mode "$mode_gaps"
 # Terminal scratchpad
 exec --no-startup-id $term -t ScratchpadTerminal
 for_window [title="^ScratchpadTerminal$"] floating enable
-for_window [title="^ScratchpadTerminal$"] resize set 625 400
+for_window [title="^ScratchpadTerminal$"] resize set 800 600
 for_window [title="^ScratchpadTerminal$"] move scratchpad
 for_window [title="^ScratchpadTerminal$"] border pixel 5
 bindsym $mod+Shift+Return [title="^ScratchpadTerminal$"] scratchpad show; [title="^ScratchpadTerminal$"] move position center
+
+# Terminal scratchpad 2
+exec --no-startup-id $term -t ScratchpadTerminal2
+for_window [title="^ScratchpadTerminal2$"] floating enable
+for_window [title="^ScratchpadTerminal2$"] resize set 625 400
+for_window [title="^ScratchpadTerminal2$"] move scratchpad
+for_window [title="^ScratchpadTerminal2$"] border pixel 5
+bindsym $mod+Shift+BackSpace [title="^ScratchpadTerminal2$"] scratchpad show; [title="^ScratchpadTerminal2$"] move position center
 
 # Arithmetic scratchpad
 exec --no-startup-id $term -t ScratchpadMath -e calc -d
