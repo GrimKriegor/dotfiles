@@ -35,8 +35,18 @@ config_file="$CONFIG_DIR/$remote.conf"
 if [ -f "$config_file" ]; then
   source "$config_file"
 else
-  echo -e "No config found for remote "$remote". Generating new one.\nEdit \"$config_file\" to add your credentials."
-  CONFIG_FILE_SKEL="USER=\"$(whoami)\"\nMACHINE=\"changeme\"\nPORT=\"22\"\nMETHOD=\"scp\"\nPREFIX=\"https://change.me/path/\"\nREMOTE_PUBLIC_DIR=\"/var/www/$USER/path\"\nSSH_KEY=\"\""
+  echo -e "
+No config found for remote "$remote". Generating new one.
+Edit \"$config_file\" to add your credentials."
+  CONFIG_FILE_SKEL="\
+USER=\"$(whoami)\"
+MACHINE=\"changeme\"
+PORT=\"22\"
+METHOD=\"scp\"
+PREFIX=\"https://change.me/path/\"
+REMOTE_PUBLIC_DIR=\"/var/www/$USER/path\"
+SSH_KEY=\"\"
+"
   echo -e "$CONFIG_FILE_SKEL" > "$config_file"
   chmod 640 "$config_file"
   exit 0
