@@ -106,3 +106,4 @@ function rateToOutput() {
 rateToOutput "$rx_rate" "$INLABEL"
 echo -n " "
 rateToOutput "$tx_rate" "$OUTLABEL"
+echo
