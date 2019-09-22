@@ -194,6 +194,7 @@ nnoremap <Leader>gt :ALEGoToDefinition<CR>
 nnoremap <Leader>gr :ALEFindReferences<CR>
 nnoremap <Leader>gd :ALEHover<CR>
 nnoremap <Leader>gs :ALESymbolSearch<CR>
+nnoremap <Leader>gR :ALERename<CR>
 let g:ale_completion_enabled = 1
 let g:ale_set_balloons = 1
 let g:ale_sign_error = 'E'
