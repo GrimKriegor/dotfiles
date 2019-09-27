@@ -16,8 +16,8 @@ TEMPORARY_MUSIC_LOCATION="/tmp/playlist"
 while read line; do
   song=$(echo $line | awk -F "/" '{print $NF}')
   path="$DESKTOP_MUSIC_LOCATION/$line"
-  cp "$path" "$TEMPORARY_MUSIC_LOCATION/"
+  ln -sf "$path" "$TEMPORARY_MUSIC_LOCATION/"
 done <"$PLAYLIST_LOCATION/$PLAYLIST.m3u"
-adb-sync --delete "$TEMPORARY_MUSIC_LOCATION/" "$MOBILE_MUSIC_LOCATION"
+adb-sync --copy-links --delete "$TEMPORARY_MUSIC_LOCATION/" "$MOBILE_MUSIC_LOCATION"
 rm -rf "$TEMPORARY_MUSIC_LOCATION"
 adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard/Music
