@@ -6,10 +6,10 @@
 
 set -e
 
-PLAYLIST="Mobile"
+PLAYLIST="${1:-Mobile}"
 PLAYLIST_LOCATION="$HOME/.cache/mpd/playlists"
 DESKTOP_MUSIC_LOCATION="$HOME/Music"
-MOBILE_MUSIC_LOCATION="/sdcard/Music/Playlist"
+MOBILE_MUSIC_LOCATION="/sdcard/Music/$PLAYLIST"
 TEMPORARY_MUSIC_LOCATION="/tmp/playlist"
 
 [[ -d "$TEMPORARY_MUSIC_LOCATION" ]] || mkdir -p "$TEMPORARY_MUSIC_LOCATION"
