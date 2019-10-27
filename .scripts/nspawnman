@@ -4,6 +4,11 @@
 #
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2019
+#
+# Setup inspired by:
+# Running Steam in a systemd-nspawn container
+# http://ludiclinux.com/Nspawn-Steam-Container/
+# CC BY-SA - Drew <uoou@posteo.net>
 
 #set -e
 
