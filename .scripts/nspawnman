@@ -118,6 +118,7 @@ DeviceAllow=/dev/shm rw
 DeviceAllow=/dev/nvidia0 rw
 DeviceAllow=/dev/nvidiactl rw
 DeviceAllow=/dev/nvidia-modeset rw
+DeviceAllow=char-drm rwm
 DeviceAllow=char-usb_device rwm
 DeviceAllow=char-input rwm
 DeviceAllow=char-alsa rwm
