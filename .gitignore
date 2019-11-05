@@ -32,3 +32,6 @@ __pycache__
 .config/davwizard
 .config/khal
 .config/khard
+
+# Weechat
+.weechat/
