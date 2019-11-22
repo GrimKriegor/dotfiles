@@ -482,7 +482,7 @@ bar {
     separator_symbol        "|"
     workspace_buttons       yes
     strip_workspace_numbers yes
-    font pango:DejaVu Sans, Awesome 10
+    font pango:DejaVu Sans, FontAwesome4 10
 
     colors {
         background  #000000
