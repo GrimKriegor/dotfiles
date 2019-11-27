@@ -87,7 +87,7 @@ function rateToOutput() {
     rate_k=$(( $rate >> 10 ))
     value=$(echo "scale=1; $rate_k/1024" | bc)
     unit="M"
-    if [[ "$rate_k" -gt 100000 ]];
+    if [[ "$rate_k" -gt 12500 ]];
       then color="#FF0000"
       else color="#00FF00"
     fi
