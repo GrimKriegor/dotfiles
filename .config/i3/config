@@ -307,7 +307,7 @@ bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $t
 # Float, sticky, resize and corner window
 bindsym $mod+Shift+o floating toggle; sticky toggle; exec corner-window top_right 25
 
-# Invert window class colors via Compton
+# Invert window class colors via Picom
 bindsym $mod+Shift+i exec --no-startup-id invert-window-color
 
 
@@ -513,7 +513,7 @@ exec --no-startup-id synclient TouchpadOff=1
 exec_always --no-startup-id set-wallpaper
 
 # Composite manager
-exec --no-startup-id compton --xrender-sync-fence
+exec --no-startup-id picom --xrender-sync-fence
 
 # Unclutter
 exec --no-startup-id unclutter
