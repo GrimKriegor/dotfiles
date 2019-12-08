@@ -12,14 +12,34 @@ check_interval="${1:-5}"
 dock_display="${2:-HDMI2}"
 dock_test_script="$HOME/.config/dock-handler/check"
 
+function getDisplays() {
+  echo $(xrandr | grep -w "connected" | awk -F'[ +  ]' '{print $1}')
+}
+
+function getPowerSources() {
+  echo $(ls -1 /sys/class/power_supply)
+}
+
+function isLaptop() {
+  if [[ \
+    $(getDisplays | grep "LVDS") || \
+    $(getPowerSources | grep "BAT") \
+  ]]; then
+    return 0
+  fi
+  return 1
+}
+
 function isDocked() {
   if [[ -f $dock_test_script ]]; then
-    test $(bash dock_test_script) && \
+    if [[ $(bash $dock_test_script) ]]; then
       return 0
+    fi
     return 1
   else
-    test $(xrandr | grep -w "connected" | awk -F'[ + ]' '{print $1}' | grep "$dock_display") && \
+    if [[ $(getDisplays | grep "$dock_display") ]]; then
       return 0
+    fi
     return 1
   fi
 }
@@ -38,6 +58,11 @@ function switchMode() {
   notify-send "watchdock" "Switching to mode: $mode"
   dock-handler "$mode" 2>&1 >/dev/null
 }
+
+if ! isLaptop; then
+  echo "Not a laptop, gracefully aborting..."
+  exit 0
+fi
 
 current_state="$(checkState)"
 previous_state="$current_state"
