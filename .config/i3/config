@@ -532,3 +532,6 @@ exec --no-startup-id blueman-applet
 
 # MPD
 exec --no-startup-id mpd
+
+# watchdock
+exec --no-startup-id watchdock
