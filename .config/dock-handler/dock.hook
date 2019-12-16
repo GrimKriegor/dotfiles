@@ -1,4 +1,9 @@
+#!/bin/bash
+
+if grep -q 'open' /proc/acpi/button/lid/LID/state
+  then displayselect 'Laptop | Dock HDMI'
+  else displayselect 'Dock HDMI'
+fi
 nmcli radio wifi off
-displayselect "Dock HDMI"
 pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo
 setxkbmap -layout us -option -option caps:swapescape -option compose:paus

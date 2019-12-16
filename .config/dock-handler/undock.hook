@@ -1,3 +1,5 @@
-nmcli radio wifi on
+#!/bin/bash
+
 displayselect "Laptop"
+nmcli radio wifi on
 pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
