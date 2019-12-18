@@ -126,6 +126,7 @@ DeviceAllow=/dev/nvidia-modeset rw
 DeviceAllow=char-drm rwm
 DeviceAllow=char-usb_device rwm
 DeviceAllow=char-input rwm
+DeviceAllow=char-hidraw rwm
 DeviceAllow=char-alsa rwm
 ExecStart=
 ExecStart=/usr/bin/systemd-nspawn -D $container_path --quiet --keep-unit --boot
@@ -144,6 +145,7 @@ Bind=/dev/shm
 #Bind=/dev/nvidiactl
 #Bind=/dev/nvidia-modeset
 Bind=/dev/input
+#Bind=/dev/hidraw0
 Bind=/run/user/1000/pulse:/run/user/host/pulse
 #Bind=/dev/snd
 EOF
