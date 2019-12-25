@@ -1,10 +1,10 @@
+" Compile document:
+     inoremap <buffer> <F5> <Esc>:!make<space><c-r>%<Enter>a
+     nnoremap <buffer> <F5> :!make<space><c-r>%<Enter>
+
 " Word count:
      map <buffer> <F3> :w !detex \| wc -w<CR>
      inoremap <buffer> <F3> <Esc>:w !detex \| wc -w<CR>
-
-" Compile document using xelatex:
-     inoremap <buffer> <F5> <Esc>:!xelatex<space><c-r>%<Enter>a
-     nnoremap <buffer> <F5> :!xelatex<space><c-r>%<Enter>
 
 " Snippets
      inoremap <buffer> ;fr \begin{frame}<Enter>\frametitle{}<Enter><Enter><++><Enter><Enter>\end{frame}<Enter><Enter><++><Esc>6kf}i
