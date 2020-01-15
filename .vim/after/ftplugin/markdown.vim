@@ -12,3 +12,6 @@
     inoremap <buffer> ;3 ###<Space><Enter><++><Esc>kA
     inoremap <buffer> ;l --------<Enter>
     map <buffer> <F5> :!pandoc<space><C-r>%<space>-o<space><C-r>%.pdf<Enter><Enter>
+
+" Tables
+let g:table_mode_corner='|'
