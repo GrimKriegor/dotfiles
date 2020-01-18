@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Tap into the microphone of a machine you control
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2018
+
+host="$1"
+device="$2"
+proxy="$3"
+
+[ -z "$host"    ] && host="localhost"
+[ -z "$device"  ] && device="default"
+[ ! -z "$proxy" ] && proxy_string="ssh -t $proxy"
+
+eval \
+  "$proxy_string" \
+  "ssh $host \
+    arecord -f dat -D $device | \
+    aplay -f dat"
+
