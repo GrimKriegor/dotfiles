@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Check the memory footprint of a process
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+process="$1"
+pid="$(pidof -x $process | awk '{print $1}')"
+
+if [[ -z $pid ]]; then
+  echo -e "Could not find PID of \"$process\""
+  exit 1
+fi
+
+cat "/proc/$pid/smaps" | \
+  grep -i pss |  \
+  awk '{Total+=$2} END {print Total/1024" MB"}'
+
