@@ -58,3 +58,6 @@
 [submodule ".scripts/external/adb-sync"]
 	path = .scripts/external/adb-sync
 	url = https://github.com/google/adb-sync.git
+[submodule ".vim/pack/plugins/start/vim-table-mode"]
+	path = .vim/pack/plugins/start/vim-table-mode
+	url = https://github.com/dhruvasagar/vim-table-mode.git
