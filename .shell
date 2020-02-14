@@ -37,8 +37,8 @@ alias share='quickshare'
 #------------------------------
 export TERMINAL="alacritty"
 export EDITOR="vim"
-export FILEMAN="ranger"
-export FILEMAN_GUI="pcmanfm"
+export FILEMANAGER="nnn"
+export MAILER="neomutt"
 [[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
 
 #------------------------------
