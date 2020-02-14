@@ -8,7 +8,7 @@
 set $mod Mod4
 
 # Default terminal
-set $term --no-startup-id alacritty
+set $term --no-startup-id $TERMINAL
 
 # i3-gaps
 for_window [class="^.*"] border pixel 0
@@ -55,7 +55,7 @@ bindsym Mod1+Tab exec rofi -show window
 bindsym $mod+t exec $term
 
 # open a file manager window
-bindsym $mod+y exec --no-startup-id $term -e ranger
+bindsym $mod+y exec --no-startup-id $term -e $FILEMANAGER
 bindsym $mod+Shift+y exec --no-startup-id pcmanfm
 
 # open a music player window
@@ -63,7 +63,7 @@ bindsym $mod+m exec --no-startup-id $term -e $music -S visualizer
 bindsym $mod+Shift+m exec --no-startup-id $term -e $music
 
 # open an email client window
-bindsym $mod+semicolon exec --no-startup-id $term -e neomutt
+bindsym $mod+semicolon exec --no-startup-id $term -e $MAILER
 bindsym $mod+Shift+semicolon exec --no-startup-id $term -e mailcal
 
 # change focus
@@ -302,7 +302,7 @@ for_window [title="^ScratchpadNotepad$"] border pixel 5
 bindsym $mod+Shift+p [title="^ScratchpadNotepad$"] scratchpad show; [title="^ScratchpadNotepad$"] move position center
 
 # Luke Smith's meme bunker
-bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec $term -e ranger
+bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec $term -e $FILEMAN
 
 # Float, sticky, resize and corner window
 bindsym $mod+Shift+o floating toggle; sticky toggle; exec corner-window top_right 25
