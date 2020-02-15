@@ -1,0 +1,23 @@
+#!/usr/bin/env sh
+
+export NNN_BMS="\
+l:~/Library;\
+p:~/Pictures;\
+C:~/Pictures/Camera;\
+S:~/Pictures/Screenshots;\
+W:~/Pictures/Wallpapers;\
+m:~/Music;\
+c:~/Development;\
+d:~/Download;\
+D:~/Download/External;\
+t:~/Temporary;\
+T:~/.local/share/Trash/files;\
+"
+
+export NNN_PLUG="\
+s:-_quickshare default \$nnn*;\
+p:-_less -iR \$nnn*;\
+"
+
+export NNN_TRASH=1
+

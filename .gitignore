@@ -17,6 +17,11 @@ __pycache__
 .config/ranger/tagged
 .config/ranger/bookmarks
 
+# nnn
+.config/nnn/.selection
+.config/nnn/.history*
+.config/nnn/sessions
+
 # MPD
 .config/mpd/state
 
