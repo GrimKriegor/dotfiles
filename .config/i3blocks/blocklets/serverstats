@@ -1,0 +1,67 @@
+#!/bin/bash
+
+set -e
+
+SERVER_SYMBOL=""
+CIRCLE_FULL=""
+CIRCLE_EMPTY=""
+CIRCLE_EMPTY_NOTCH=""
+CIRCLE_CROSS=""
+CIRCLE_CHECK=""
+CIRCLE_EXCLAMATION=""
+
+SERVER_LIST_FILE=~/.serverstats
+
+output=""
+
+function getServerStatus() {
+  address="$1"
+  ping -c1 ${address} > /dev/null 2>&1
+  if [ ${?} -eq 0 ]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+function getServerStatusSymbol() {
+  status="$1"
+  name="$2"
+  if [ $status == "on" ]; then
+    #echo "$(tput setaf 2)$CIRCLE_FULL $name$(tput sgr0)"
+    echo "$CIRCLE_CHECK $name"
+  else
+    #echo "$(tput setaf 1)$CIRCLE_CROSS $name$(tput sgr0)"
+    echo "$CIRCLE_EXCLAMATION $name"
+  fi
+}
+
+function getServerData() {
+  address="$1"
+}
+
+OLDIFS=$IFS
+IFS=,
+[ ! -f $SERVER_LIST_FILE ] && { echo "$SERVER_LIST_FILE file not found"; exit 99; }
+while read name address type; do
+  [[ $name =~ ^-.* ]] && output+="\\$name\n" && continue
+  [[ -z $name ]] && output+="\n" && continue
+  [[ $type == "server" ]] && server_count=$(($server_count+1))
+  if getServerStatus $address; then
+    [[ $type == "server" ]] && server_online_count=$(($server_online_count+1))
+    output+="$(getServerStatusSymbol on $name) $(getServerData $address)\n"
+  else
+    output+="$(getServerStatusSymbol off $name)\n"
+  fi
+done < $SERVER_LIST_FILE
+IFS=$OLDIFS
+
+if [[ $server_online_count != $server_count ]]; then
+  echo "$CIRCLE_EMPTY_NOTCH"
+else
+  echo "$CIRCLE_FULL"
+fi
+
+case "$BLOCK_BUTTON" in
+  1) notify-send -t 10000 "Server status" "\n$output" ;;
+esac

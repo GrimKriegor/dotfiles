@@ -63,4 +63,10 @@ interval=30
 separator=false
 separator_block_width=12
 
+[serverstats]
+command=$SCRIPT_DIR/serverstats
+interval=300
+separator=false
+separator_block_width=12
+
 [tray]
