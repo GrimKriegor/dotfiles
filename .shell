@@ -30,7 +30,7 @@ alias ka='sudo kubeadm'
 alias kn='kubens'
 alias kx='kubectx'
 alias ydl='youtube-dl'
-alias share='quickshare'
+alias share='quickshare default'
 
 #------------------------------
 # Variables
