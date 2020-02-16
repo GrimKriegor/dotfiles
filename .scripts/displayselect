@@ -87,4 +87,3 @@ esac
 
 setxkbmap -option -option caps:swapescape
 set-wallpaper
-sleep 2 && killall -9 conky; conky --quiet --config $HOME/.conky/conkyrc
