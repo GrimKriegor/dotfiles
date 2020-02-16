@@ -40,9 +40,10 @@ function getServerData() {
   address="$1"
 }
 
+[[ ! -f $SERVER_LIST_FILE ]] && exit 0
+
 OLDIFS=$IFS
 IFS=,
-[ ! -f $SERVER_LIST_FILE ] && { echo "$SERVER_LIST_FILE file not found"; exit 99; }
 while read name address type; do
   [[ $name =~ ^-.* ]] && output+="\\$name\n" && continue
   [[ -z $name ]] && output+="\n" && continue
