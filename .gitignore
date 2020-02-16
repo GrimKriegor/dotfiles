@@ -21,6 +21,7 @@ __pycache__
 .config/nnn/.selection
 .config/nnn/.history*
 .config/nnn/sessions
+.config/nnn/.lastd
 
 # MPD
 .config/mpd/state
