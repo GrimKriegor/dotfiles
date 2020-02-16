@@ -2,17 +2,14 @@
 
 set -e
 
-SERVER_SYMBOL=""
 CIRCLE_FULL=""
 CIRCLE_EMPTY=""
 CIRCLE_EMPTY_NOTCH=""
-CIRCLE_CROSS=""
 CIRCLE_CHECK=""
+CIRCLE_CROSS=""
 CIRCLE_EXCLAMATION=""
 
 SERVER_LIST_FILE=~/.serverstats
-
-output=""
 
 function getServerStatus() {
   address="$1"
@@ -40,14 +37,17 @@ function getServerData() {
   address="$1"
 }
 
-[[ ! -f $SERVER_LIST_FILE ]] && exit 0
+[[ ! -f $SERVER_LIST_FILE ]] && \
+  exit 0
 
+output=""
 OLDIFS=$IFS
 IFS=,
 while read name address type; do
-  [[ $name =~ ^-.* ]] && output+="\\$name\n" && continue
-  [[ -z $name ]] && output+="\n" && continue
-  [[ $type == "server" ]] && server_count=$(($server_count+1))
+  [[ $name =~ ^-.* ]] && \
+    output+="\n\\$name\n" && continue
+  [[ $type == "server" ]] && \
+    server_count=$(($server_count+1))
   if getServerStatus $address; then
     [[ $type == "server" ]] && server_online_count=$(($server_online_count+1))
     output+="$(getServerStatusSymbol on $name) $(getServerData $address)\n"
@@ -64,5 +64,5 @@ else
 fi
 
 case "$BLOCK_BUTTON" in
-  1) notify-send -t 10000 "Server status" "\n$output" ;;
+  1) notify-send -t 10000 "Server status" "$output" ;;
 esac
