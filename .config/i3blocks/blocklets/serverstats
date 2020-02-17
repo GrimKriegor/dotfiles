@@ -13,7 +13,7 @@ SERVER_LIST_FILE=~/.serverstats
 
 function getServerStatus() {
   address="$1"
-  ping -c1 ${address} > /dev/null 2>&1
+  ping -c1 -W1 ${address} > /dev/null 2>&1
   if [ ${?} -eq 0 ]; then
     return 0
   else
@@ -57,10 +57,14 @@ while read name address type; do
 done < $SERVER_LIST_FILE
 IFS=$OLDIFS
 
-if [[ $server_online_count != $server_count ]]; then
+if [[ $server_online_count -le 1 ]]; then
+  echo "$CIRCLE_CROSS"
+elif [[ $server_online_count -lt $(expr $server_count/2) ]]; then
+  echo "$CIRCLE_EXCLAMATION"
+elif [[ $server_online_count != $server_count ]]; then
   echo "$CIRCLE_EMPTY_NOTCH"
 else
-  echo "$CIRCLE_FULL"
+  echo "$CIRCLE_EMPTY"
 fi
 
 case "$BLOCK_BUTTON" in
