@@ -44,8 +44,8 @@ output=""
 OLDIFS=$IFS
 IFS=,
 while read name address type; do
-  [[ $name =~ ^-.* ]] && \
-    output+="\n\\$name\n" && continue
+  [[ $name =~ ^#.* ]] && \
+    output+="\n\\${name:2}\n" && continue
   [[ $type == "server" ]] && \
     server_count=$(($server_count+1))
   if getServerStatus $address; then
