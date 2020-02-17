@@ -1,0 +1,28 @@
+#!/usr/bin/env sh
+
+# Reload .Xresources
+xrdb ~/.Xresources &
+
+# Disable touchpad
+synclient TouchpadOff=1 &
+
+# Add wallpaper
+set-wallpaper &
+
+# Composite manager
+picom --xrender-sync-fence &
+
+# Network Manager applet
+nm-applet &
+
+# xautolock
+xautolock -time 5 -locker 'powerhandler lock' &
+
+# Blueman applet
+blueman-applet &
+
+# MPD
+mpd &
+
+# watchdock
+watchdock &

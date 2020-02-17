@@ -18,5 +18,10 @@ if [[ -f ~/.Xmodmap ]]; then
   xmodmap ~/.Xmodmap
 fi
 
+# Load xprofile
+if [[ -f ~/.xprofile ]]; then
+  source ~/.xprofile
+fi
+
 # Boot the desktop environment
 exec i3

@@ -496,39 +496,3 @@ bar {
     }
 }
 
-
-##
-#
-# Startup Programs
-#
-##
-
-# Reload .Xresources
-exec_always --no-startup-id xrdb ~/.Xresources
-
-# Disable touchpad
-exec --no-startup-id synclient TouchpadOff=1
-
-# Add wallpaper
-exec_always --no-startup-id set-wallpaper
-
-# Composite manager
-exec --no-startup-id picom --xrender-sync-fence
-
-# Unclutter
-exec --no-startup-id unclutter
-
-# Network Manager applet
-exec --no-startup-id nm-applet
-
-# xautolock
-exec --no-startup-id xautolock -time 5 -locker 'powerhandler lock'
-
-# Blueman applet
-exec --no-startup-id blueman-applet
-
-# MPD
-exec --no-startup-id mpd
-
-# watchdock
-exec --no-startup-id watchdock
