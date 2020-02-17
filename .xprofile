@@ -3,8 +3,8 @@
 # Reload .Xresources
 xrdb ~/.Xresources &
 
-# Disable touchpad
-synclient TouchpadOff=1 &
+# xautolock
+xautolock -time 5 -locker 'powerhandler lock' &
 
 # Add wallpaper
 set-wallpaper &
@@ -18,14 +18,14 @@ dunst &
 # Network Manager applet
 nm-applet &
 
-# xautolock
-xautolock -time 5 -locker 'powerhandler lock' &
-
 # Blueman applet
 blueman-applet &
 
 # MPD
 mpd &
+
+# Disable touchpad
+synclient TouchpadOff=1 &
 
 # watchdock
 sleep 5 && watchdock &
