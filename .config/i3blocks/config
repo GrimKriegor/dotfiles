@@ -47,7 +47,7 @@ interval=persist
 signal=1
 markup=pango
 separator=false
-separator_block_width=10
+separator_block_width=4
 
 [muttmail]
 command=$SCRIPT_DIR/muttmail
@@ -61,7 +61,7 @@ command=$SCRIPT_DIR/battery
 markup=pango
 interval=30
 separator=false
-separator_block_width=12
+separator_block_width=6
 
 [serverstats]
 command=$SCRIPT_DIR/serverstats
