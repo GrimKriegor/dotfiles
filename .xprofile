@@ -12,6 +12,9 @@ set-wallpaper &
 # Composite manager
 picom --xrender-sync-fence &
 
+# Notification handler
+dunst &
+
 # Network Manager applet
 nm-applet &
 
@@ -25,4 +28,4 @@ blueman-applet &
 mpd &
 
 # watchdock
-watchdock &
+sleep 5 && watchdock &
