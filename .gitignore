@@ -30,8 +30,7 @@ __pycache__
 .config/mpv/watch_later
 
 # Conky
-.conky/conky-private.sed
-.conky/conkyrc
+.conky/
 
 # Mutt and DAV wizards
 .config/mutt
