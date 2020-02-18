@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=Vim (terminal)
+Exec=sh -c "exec $TERMINAL -e vim %f"

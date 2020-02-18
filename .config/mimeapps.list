@@ -1,0 +1,17 @@
+[Default Applications]
+
+# xdg-open will use these settings to determine how to open filetypes.
+# These .desktop entries can also be seen and changed in ~/.local/share/applications/
+
+text/x-shellscript=vim.desktop;
+x-scheme-handler/magnet=transmission-remote-gtk.desktop;
+application/x-bittorrent=transmission-remote-gtk.desktop;
+x-scheme-handler/mailto=neomutt.desktop;
+text/plain=vim.desktop;
+application/postscript=zathura.desktop;
+application/pdf=zathura.desktop;
+image/png=sxiv.desktop;
+image/jpeg=sxiv.desktop;
+image/gif=sxiv.desktop;
+video/x-matroska=mpv.desktop
+inode/directory=nnn.desktop

@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=sxiv (script)
+Exec=gsxiv -- %f

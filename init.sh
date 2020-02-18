@@ -122,5 +122,8 @@ createLinks ".config"
 # Local fonts
 createLinks ".local/share/fonts" ".local/share/fonts/"
 
+# Mimeapps desktop files
+createLinks ".local/share/applications" ".local/share/applications/"
+
 # Base directory
 createLinks

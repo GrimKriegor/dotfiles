@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=nnn (terminal)
+Exec=sh -c "exec $TERMINAL -e nnn %u"
