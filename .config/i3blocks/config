@@ -49,19 +49,19 @@ markup=pango
 separator=false
 separator_block_width=4
 
-[muttmail]
-command=$SCRIPT_DIR/muttmail
-interval=60
-markup=pango
-separator=false
-separator_block_width=12
-
 [battery]
 command=$SCRIPT_DIR/battery
 markup=pango
 interval=30
 separator=false
 separator_block_width=6
+
+[muttmail]
+command=$SCRIPT_DIR/muttmail
+interval=60
+markup=pango
+separator=false
+separator_block_width=12
 
 [serverstats]
 command=$SCRIPT_DIR/serverstats
