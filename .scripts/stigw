@@ -1,0 +1,34 @@
+#!/bin/sh
+
+# stig wrapper
+#
+# Allows the user to mix different profiles with a common config file
+# Expecially useful for keeping sensitive data segregated
+#
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+STIG_CONFIG_DIR="$HOME/.config/stig"
+STIG_CONFIG_FILE="$STIG_CONFIG_DIR/rc"
+STIG_PROFILE_DIR="$STIG_CONFIG_DIR/profile"
+
+profile="$1"
+profile_file="$STIG_PROFILE_DIR/$profile"
+concatenated_config_file="/tmp/grim/stig-$profile"
+
+mkdir -p "$STIG_PROFILE_DIR" 2>/dev/null
+
+if [ -z "$profile" ]; then
+  echo "No profile specified."
+  exit 1
+fi
+
+if [ ! -f "$profile_file" ]; then
+  echo "Profile \"$profile\" does not exist."
+  echo "Edit $profile_file to create it."
+  exit 1
+fi
+
+cat "$STIG_CONFIG_FILE" "$profile_file" > "$concatenated_config_file"
+
+exec stig --rcfile "$concatenated_config_file" "${@:2}"

@@ -40,3 +40,6 @@ __pycache__
 
 # Weechat
 .weechat/
+
+# stig
+.config/stig/profile

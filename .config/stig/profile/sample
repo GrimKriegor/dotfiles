@@ -1,0 +1,8 @@
+# Sample configuration file
+# Run the following command for help
+# $ stig help cfg
+
+set connect.host localhost
+set connect.port 9091
+set connect.user user
+set connect.password password
