@@ -60,7 +60,7 @@ tabs.settinglist.focused      dark blue     on yellow
 tabs.help.unfocused           light green   on dark blue
 tabs.help.focused             dark blue     on light green
 
-$topbar_bg = dark blue
+$topbar_bg = black
 topbar                    light gray    on $topbar_bg
 topbar.host.connected     light green   on $topbar_bg
 topbar.host.connecting    black         on light magenta
@@ -70,7 +70,7 @@ topbar.help.equals        light cyan    on $topbar_bg
 topbar.help.label         light cyan    on $topbar_bg
 topbar.help.space         light cyan    on $topbar_bg
 
-$bottombar_bg = dark gray
+$bottombar_bg = black
 bottombar                             light gray     on $bottombar_bg
 bottombar.important                   light red,bold on $bottombar_bg
 bottombar.marked                      black,bold     on yellow
@@ -108,8 +108,8 @@ helptext            light gray on black
 #helptext.scrollbar  light gray on dark gray
 
 
-$tlist_bg.uf = black
-$tlist_bg.f  = dark gray
+$tlist_bg.uf = #000
+$tlist_bg.f  = black
 torrentlist                                        default              on $tlist_bg.uf
 torrentlist.focused                                default              on $tlist_bg.f
 torrentlist.header                                 light gray,underline on $tlist_bg.uf
