@@ -17,6 +17,7 @@ image/webp=sxiv.desktop;
 inode/directory=nnn.desktop;
 text/html=web-browser.desktop;
 text/plain=vim-terminal.desktop;
+text/x-c=vim-terminal.desktop;
 text/x-shellscript=vim-terminal.desktop;
 video/x-matroska=mpv.desktop;
 x-scheme-handler/magnet=stig.desktop;
