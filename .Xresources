@@ -63,22 +63,6 @@ xscreensaver.passwd.thermometer.width:       8
 ! datestamp format--see the strftime(3) manual page for details
 xscreensaver.dateFormat:                     %I:%M%P %a %b %d, %Y
 
-!! rxvt
-URxvt.intensityStyles:      false
-URxvt.background:           [95]#000000
-URxvt.depth:                32
-URxvt.font:                 xft:monospace:size=10
-URxvt.letterSpace:          -1
-URxvt.scrollBar:            false
-URxvt.cursorColor:          white
-URxvt.perl-ext-common:      default,matcher,resize-font
-URxvt.perl-lib:             $HOME/.scripts
-URxvt.url-launcher:         /usr/bin/xdg-open
-URxvt.matcher.button:       1
-URxvt.resize-font.smaller:  C-Down
-URxvt.resize-font.bigger:   C-Up
-URxvt.colorUL:              #4682B4
-
 !! rofi
 rofi.fullscreen:       true
 rofi.color-enabled:    true
