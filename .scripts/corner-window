@@ -26,10 +26,18 @@ current_window_size_x="$(echo $current_window_geometry | awk '{print $1}')"
 current_window_size_y="$(echo $current_window_geometry | awk '{print $2}')"
 current_window_ratio=$(bc -l <<< "scale=2; $current_window_size_x / $current_window_size_y")
 
+# Bar offset
+BAR_CONFIG="$HOME/.config/i3/config"
+bar_offset=$(cat $BAR_CONFIG | grep '^[ ]*height' | awk '{print $2}')
+bar_position=$(cat $BAR_CONFIG | grep '^[ ]*position' | awk '{print $2}')
+
 
 #
 # Transformation
 #
+
+corner_vertical=$(echo $corner | awk -F "_" '{print $1}')
+corner_horizontal=$(echo $corner | awk -F "_" '{print $2}')
 
 # New size
 new_window_size_x=$(bc -l <<< "scale=2; $display_size_x / $relative_size_delta_absolute")
@@ -37,29 +45,35 @@ new_window_size_y=$(bc -l <<< "scale=2; $new_window_size_x / $current_window_rat
 
 # New position
 case $corner in
-
   "top_left")
     new_window_pos_x="0"
     new_window_pos_y="0"
   ;;
-
   "top_right")
     new_window_pos_x=$(bc -l <<< "scale=1; $display_size_x - $new_window_size_x")
     new_window_pos_y="0"
   ;;
-
   "bottom_left")
     new_window_pos_x="0"
     new_window_pos_y=$(bc -l <<< "scale=1; $display_size_y - $new_window_size_y")
   ;;
-
   "bottom_right")
     new_window_pos_x=$(bc -l <<< "scale=1; $display_size_x - $new_window_size_x")
     new_window_pos_y=$(bc -l <<< "scale=1; $display_size_y - $new_window_size_y")
   ;;
-
 esac
 
+# Add bar offset
+case $corner_vertical in
+  "top")
+    [ $bar_position == "top" ] && \
+      new_window_pos_y=$(bc -l <<< "scale=2; $new_window_pos_y + $bar_offset")
+  ;;
+  "bottom")
+    [ $bar_position == "bottom" ] && \
+      new_window_pos_y=$(bc -l <<< "scale=2; $new_window_pos_y - $bar_offset")
+  ;;
+esac
 
 #
 # Execution
