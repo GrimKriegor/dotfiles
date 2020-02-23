@@ -20,5 +20,7 @@ text/plain=vim-terminal.desktop;
 text/x-c=vim-terminal.desktop;
 text/x-shellscript=vim-terminal.desktop;
 video/x-matroska=mpv.desktop;
+x-scheme-handler/http=web-browser.desktop;
+x-scheme-handler/https=web-browser.desktop;
 x-scheme-handler/magnet=stig.desktop;
 x-scheme-handler/mailto=neomutt.desktop;
