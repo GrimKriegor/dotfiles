@@ -13,6 +13,7 @@ application/x-shellscript=vim-terminal.desktop;
 image/gif=mpv.desktop;
 image/jpeg=sxiv.desktop;
 image/png=sxiv.desktop;
+image/tiff=sxiv.desktop;
 image/webp=sxiv.desktop;
 inode/directory=nnn.desktop;
 text/html=web-browser.desktop;
