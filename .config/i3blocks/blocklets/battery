@@ -7,7 +7,8 @@
 # A battery indicator blocklet script for i3blocks
 
 import re
-from subprocess import check_output
+import os
+from subprocess import check_output, run
 
 status = check_output(['acpi'], universal_newlines=True)
 
@@ -118,6 +119,11 @@ else:
     form =  '<span color="{}">{}%</span>'
     #fulltext += form.format(color(percentleft), percentleft)
     #fulltext += timeleft
+
+status_notification = re.sub(r'Battery ([\d]*): ', '\n- Battery \g<1>\n', status)
+button = bool("BLOCK_BUTTON" in os.environ and os.environ["BLOCK_BUTTON"])
+if button:
+    run(["notify-send", "Battery status", status_notification], check=True)
 
 print(fulltext)
 print(fulltext)
