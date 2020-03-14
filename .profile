@@ -104,7 +104,7 @@ export XZ_OPT="-T 0"
 export JAVA_HOME="/usr/lib/jvm/default"
 
 # Gradle
-export GRADLE_HOME="$HOME/.gradle"
+export GRADLE_HOME="$HOME/.local/share/gradle"
 
 # Android
 export ANDROID_HOME="/opt/android-sdk"
@@ -115,8 +115,5 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Node related paths
-export NODE_PATH="$HOME"/.node_modules
-export NVM_DIR="$HOME"/.nvm
-
-# Include Ruby Gems in PATH
-export PATH=$PATH:$HOME/.gem/ruby/2.5.0/bin
+export NODE_PATH="$HOME"/.local/share/node_modules
+export NVM_DIR="$HOME"/.local/share/nvm
