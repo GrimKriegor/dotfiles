@@ -43,3 +43,6 @@ __pycache__
 
 # stig
 .config/stig/profile
+
+# i3blocks
+.config/serverstats

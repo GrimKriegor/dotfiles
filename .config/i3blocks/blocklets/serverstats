@@ -9,7 +9,7 @@ CIRCLE_CHECK=""
 CIRCLE_CROSS=""
 CIRCLE_EXCLAMATION=""
 
-SERVER_LIST_FILE=~/.serverstats
+SERVER_LIST_FILE=~/.config/serverstats
 
 function getServerStatus() {
   address="$1"
