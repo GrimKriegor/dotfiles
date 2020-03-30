@@ -81,6 +81,9 @@ kubectl () {
 # Program configuration
 #------------------------------
 
+# Default pass directory
+export PASSWORD_STORE_DIR="$HOME/.pass"
+
 # Load nnn configuration
 NNN_CONFIG_FILE="$HOME/.config/nnn/config"
 [ -f "$NNN_CONFIG_FILE" ] && \
