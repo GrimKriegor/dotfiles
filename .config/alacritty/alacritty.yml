@@ -1,5 +1,5 @@
-#env:
-#  TERM: alacritty
+env:
+  WINIT_X11_SCALE_FACTOR: "1"
 
 window:
   # If both are `0`, this setting is ignored.

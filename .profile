@@ -89,9 +89,6 @@ NNN_CONFIG_FILE="$HOME/.config/nnn/config"
 [ -f "$NNN_CONFIG_FILE" ] && \
   source "$NNN_CONFIG_FILE"
 
-# Force HIDPI factor
-export WINIT_HIDPI_FACTOR=1.0
-
 # GTK theme
 export GTK_THEME=numix-black:dark
 
