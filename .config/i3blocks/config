@@ -41,6 +41,13 @@ markup=pango
 command=date '+%b %d - %H:%M'
 interval=5
 
+[microphone]
+command=$SCRIPT_DIR/microphone
+interval=5
+markup=pango
+separator=false
+separator_block_width=12
+
 [volume-pulseaudio]
 command=SUBSCRIBE=1 LONG_FORMAT='${SYMB}' MUTED_COLOR=#444444 $SCRIPT_DIR/volume-pulseaudio
 interval=persist

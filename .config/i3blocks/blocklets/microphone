@@ -1,0 +1,18 @@
+#!/bin/bash
+
+MICROPHONE_ICON=""
+TRAY_ICON="<span color=\"#FF0000\">$MICROPHONE_ICON</span>"
+
+amixer get Capture | \
+  grep -q '\[on\]' \
+  && echo "$MICROPHONE_ICON"
+
+case "$BLOCK_BUTTON" in
+  1)
+    amixer sset Capture toggle > /dev/null
+    notify-send --urgency low \
+      "Microphone" \
+      "Muted"
+  ;;
+esac
+
