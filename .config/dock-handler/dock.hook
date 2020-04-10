@@ -1,8 +1,13 @@
 #!/bin/bash
 
 if grep -q 'open' /proc/acpi/button/lid/LID/state
-  then displayselect 'Laptop | Dock HDMI'
-  else displayselect 'Dock HDMI'
+then
+  displayselect 'Dock HDMI'
+  sleep 2
+  notify-send "dock-handler" "Enabling dual monitor mode"
+  displayselect 'Laptop | Dock HDMI'
+else
+  displayselect 'Dock HDMI'
 fi
 nmcli radio wifi off
 pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo
