@@ -12,6 +12,33 @@ alias dfuu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git 
 export PATH="$(du "$HOME/.scripts/" --exclude ".scripts/external" | cut -f2 | tr '\n' ':' | sed 's|:*$||' | sed 's|\/$||'):$PATH"
 
 #------------------------------
+# Subalias function
+#------------------------------
+subalias() {
+    local cmd body name
+    name="${1%%=*}"
+    cmd="${name%_*}"
+    body="${1#*=}"
+    eval "$cmd"'() {
+        local cmd='"$cmd"' subcmd="$1"
+        if type "${cmd}_${subcmd}" >/dev/null 2>&1; then
+            shift
+            "${cmd}_${subcmd}" "$@"
+        elif type "${cmd}_${subcmd}_subalias" >/dev/null 2>&1; then
+            shift
+            "${cmd}_${subcmd}_subalias" "$@"
+        elif type "${cmd}_subalias" >/dev/null 2>&1; then
+            "${cmd}_subalias" "$@"
+        else
+            command "$cmd" "$@"
+        fi
+    }'
+    if test "$body" != "$1"; then
+        eval "${name}_subalias"'() { '"$body"'; }'
+    fi
+}
+
+#------------------------------
 # Aliases
 #------------------------------
 [[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
@@ -31,6 +58,7 @@ alias kn='kubens'
 alias kx='kubectx'
 alias ydl='youtube-dl'
 alias share='quickshare default'
+subalias git_gud="echo Already gud!"
 
 #------------------------------
 # Variables
