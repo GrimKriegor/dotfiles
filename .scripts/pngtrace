@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# pngtrace
+# Quick way to trace an svg from a png file
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+set -e
+
+file="$1"
+filename="${file%.*}"
+
+convert "$file" "$filename.pnm"
+potrace "$filename.pnm" --svg --output "$filename.svg"
+rm "$filename.pnm"
