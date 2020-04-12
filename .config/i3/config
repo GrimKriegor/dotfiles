@@ -302,7 +302,7 @@ for_window [title="^ScratchpadNotepad$"] border pixel 5
 bindsym $mod+Shift+p [title="^ScratchpadNotepad$"] scratchpad show; [title="^ScratchpadNotepad$"] move position center
 
 # Luke Smith's meme bunker
-bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec $term -e $FILEMAN
+bindsym $mod+Delete exec $truemute ; exec $truepause ; workspace $ws00 ; exec $term -e htop ; exec $term -e $FILEMANAGER
 
 # Float, sticky, resize and corner window
 bindsym $mod+Shift+o floating toggle; sticky toggle; exec corner-window top_right 25
