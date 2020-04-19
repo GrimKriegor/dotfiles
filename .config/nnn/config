@@ -14,6 +14,7 @@ T:~/.local/share/Trash/files;\
 export NNN_PLUG="\
 s:-_quickshare default \$nnn*;\
 w:-_less -iR \$nnn*;\
+p:_|nnn_mpv_sel*;\
 "
 
 export NNN_TRASH=1

@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# nnn_mpv_sel
+# uoou 2018
+
+selection=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
+
+if [ -s "$selection" ]; then
+  echo b
+  list=$(tr '\0' '\n' < "$selection")
+  while read -r item; do
+    if [ -z "$things" ]; then
+      things="\"$item\""
+    else
+      things="$things \"$item\""
+    fi
+  done <<< "$list"
+  echo "$things" | xargs mpv
+fi
