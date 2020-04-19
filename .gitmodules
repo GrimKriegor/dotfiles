@@ -61,3 +61,6 @@
 [submodule ".vim/pack/plugins/start/vim-table-mode"]
 	path = .vim/pack/plugins/start/vim-table-mode
 	url = https://github.com/dhruvasagar/vim-table-mode.git
+[submodule ".config/mpv/scripts/mpv-playlistmanager"]
+	path = .config/mpv/scripts/mpv-playlistmanager
+	url = https://github.com/jonniek/mpv-playlistmanager.git
