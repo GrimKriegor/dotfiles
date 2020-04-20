@@ -1,7 +1,8 @@
 #!/usr/bin/env bash
 
 # nnn_mpv_sel
-# uoou 2018
+# GPLv3 - uoou <uoou@posteo.net>
+# https://gitlab.com/uoou/dotfiles/-/blob/master/stow/bin/home/drew/.local/bin/nnn_mpv_sel
 
 selection=${XDG_CONFIG_HOME:-$HOME/.config}/nnn/.selection
 
