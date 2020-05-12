@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type=Application
+Name=OpenSCAD+Vim
+Exec=scadvim %f
