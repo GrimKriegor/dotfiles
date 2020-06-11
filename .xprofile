@@ -22,7 +22,8 @@ nm-applet &
 blueman-applet &
 
 # MPD
-mpd &
+ps cax | grep -q mpd || \
+  mpd &
 
 # Disable touchpad
 synclient TouchpadOff=1 &
