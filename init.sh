@@ -119,6 +119,9 @@ createLinks ".zprezto/runcoms" "base" "."
 # Config directory
 createLinks ".config"
 
+# User scripts
+createLinks ".local/bin" ".local/bin/"
+
 # Local fonts
 createLinks ".local/share/fonts" ".local/share/fonts/"
 

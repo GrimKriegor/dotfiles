@@ -53,10 +53,10 @@
 	path = .vim/pack/plugins/start/CamelCaseMotion
 	url = https://github.com/bkad/CamelCaseMotion.git
 [submodule ".scripts/external/temp-throttle"]
-	path = .scripts/external/temp-throttle
+	path = .local/bin/scripts/external/temp-throttle
 	url = https://github.com/Sepero/temp-throttle.git
 [submodule ".scripts/external/adb-sync"]
-	path = .scripts/external/adb-sync
+	path = .local/bin/scripts/external/adb-sync
 	url = https://github.com/google/adb-sync.git
 [submodule ".vim/pack/plugins/start/vim-table-mode"]
 	path = .vim/pack/plugins/start/vim-table-mode

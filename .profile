@@ -9,7 +9,7 @@ alias dfuu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git 
 #------------------------------
 # User scripts
 #------------------------------
-export PATH="$(du "$HOME/.scripts/" --exclude ".scripts/external" | cut -f2 | tr '\n' ':' | sed 's|:*$||' | sed 's|\/$||'):$PATH"
+export PATH="$(du "$HOME/.local/bin/scripts/" --exclude ".local/bin/scripts/external" | cut -f2 | tr '\n' ':' | sed 's|:*$||' | sed 's|\/$||'):$PATH"
 
 #------------------------------
 # Subalias function
