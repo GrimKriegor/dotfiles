@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=stig add torrent (terminal)
-Exec=sh -c "stig-terminal add %f; stig-terminal"
+Exec=sh -c "term stigw default add %f; term stigw default"

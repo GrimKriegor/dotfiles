@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=ncpamixer
-Exec=ncpamixer-terminal
+Exec=term ncpamixer

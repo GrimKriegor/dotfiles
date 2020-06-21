@@ -1,4 +1,4 @@
 [Desktop Entry]
 Type=Application
 Name=Vim (terminal)
-Exec=vim-terminal %f
+Exec=term vim %f
