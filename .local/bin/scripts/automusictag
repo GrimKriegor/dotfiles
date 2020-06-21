@@ -1,0 +1,40 @@
+#!/bin/bash
+
+# Tag music files based on their location
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2019
+
+set -e
+
+music_path="$HOME/Music"
+music_realpath="$(realpath $music_path)"
+
+for file in "$@"; do
+
+  file_path="$PWD/$file"
+  file_path_full=$(realpath --relative-to=$music_realpath "$file_path")
+  IFS='/' file_path_array=($file_path_full)
+  IFS=''
+
+  genre=${file_path_array[0]}
+  artist=${file_path_array[1]}
+  if [ ${#file_path_array[@]} -gt 3 ]; then
+    album=${file_path_array[2]}; fi
+  title=${file_path_array[-1]%.*}
+
+  echo File: $file
+  echo Genre: $genre
+  echo Artist: $artist
+  echo Album: $album
+  echo Track $track
+  echo Title: $title
+
+  tag \
+    -g "$genre" \
+    -a "$artist" \
+    -A "$album" \
+    -n "$track" \
+    -t "$title" \
+    "$file"
+
+done
