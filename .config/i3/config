@@ -58,14 +58,6 @@ bindsym $mod+t exec $term
 bindsym $mod+y exec --no-startup-id $term -e $FILEMANAGER
 bindsym $mod+Shift+y exec --no-startup-id pcmanfm
 
-# open a music player window
-bindsym $mod+m exec --no-startup-id $term -e $music -S visualizer
-bindsym $mod+Shift+m exec --no-startup-id $term -e $music
-
-# open an email client window
-bindsym $mod+semicolon exec --no-startup-id $term -e $MAILER
-bindsym $mod+Shift+semicolon exec --no-startup-id $term -e mailcal
-
 # change focus
 bindsym $mod+h focus left
 bindsym $mod+j focus down
