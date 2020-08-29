@@ -52,11 +52,10 @@ bindsym $mod+Shift+space exec rofi -show drun
 bindsym Mod1+Tab exec rofi -show window
 
 # open a terminal window
-bindsym $mod+t exec $term
+bindsym $mod+Return exec $term
 
 # open a file manager window
-bindsym $mod+y exec --no-startup-id $term -e $FILEMANAGER
-bindsym $mod+Shift+y exec --no-startup-id pcmanfm
+bindsym $mod+BackSpace exec --no-startup-id $term -e $FILEMANAGER
 
 # change focus
 bindsym $mod+h focus left
@@ -145,8 +144,8 @@ bindsym $mod+F7 workspace $ws17
 bindsym $mod+F8 workspace $ws18
 
 bindsym $mod+Tab workspace back_and_forth
-bindsym $mod+BackSpace workspace prev_on_output
-bindsym $mod+Return workspace next_on_output
+bindsym $mod+p workspace prev_on_output
+bindsym $mod+n workspace next_on_output
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
