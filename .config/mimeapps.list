@@ -3,6 +3,7 @@
 # xdg-open will use these settings to determine how to open filetypes.
 # These .desktop entries can also be seen and changed in ~/.local/share/applications/
 
+application/json=vim.desktop;
 application/pdf=org.pwmt.zathura.desktop;
 application/postscript=zathura.desktop;
 application/vnd.comicbook+zip=org.pwmt.zathura.desktop;
