@@ -46,3 +46,6 @@ __pycache__
 
 # i3blocks
 .config/serverstats
+
+# Mirage
+.config/mirage/accounts.json
