@@ -48,11 +48,11 @@
         },
         "focusNextMessage": [
             "Ctrl+Down",
-            "Ctrl+J"
+            "Ctrl+N"
         ],
         "focusPreviousMessage": [
             "Ctrl+Up",
-            "Ctrl+K"
+            "Ctrl+P"
         ],
         "focusRoomAtIndex": {
             "01": "Alt+1",
@@ -76,27 +76,25 @@
             "Alt+N"
         ],
         "goToNextMentionedRoom": [
-            "Alt+M"
+            "Ctrl+M"
         ],
         "goToNextRoom": [
-            "Alt+Shift+Down",
-            "Alt+Shift+J"
+            "Ctrl+J"
         ],
         "goToNextUnreadRoom": [
-            "Alt+U"
+            "Ctrl+U"
         ],
         "goToPreviousAccount": [
             "Alt+Shift+N"
         ],
         "goToPreviousMentionedRoom": [
-            "Alt+Shift+M"
+            "Ctrl+Shift+M"
         ],
         "goToPreviousRoom": [
-            "Alt+Shift+Up",
-            "Alt+Shift+K"
+            "Ctrl+K"
         ],
         "goToPreviousUnreadRoom": [
-            "Alt+Shift+U"
+            "Ctrl+Shift+U"
         ],
         "imageViewer": {
             "close": [
@@ -204,11 +202,10 @@
             "Alt+Shift+R"
         ],
         "removeFocusedOrSelectedMessages": [
-            "Ctrl+R",
-            "Alt+Del"
+            "Ctrl+Del"
         ],
         "replyToFocusedOrLastMessage": [
-            "Ctrl+Q"
+            "Ctrl+R"
         ],
         "scrollDown": [
             "Alt+Down",
