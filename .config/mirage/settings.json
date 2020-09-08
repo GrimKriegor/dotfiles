@@ -1,12 +1,12 @@
 {
-    "alertOnMentionForMsec": -1,
-    "alertOnMessageForMsec": 0,
+    "alertOnMentionForMsec": -1.0,
+    "alertOnMessageForMsec": 0.0,
     "alwaysCenterRoomHeader": false,
-    "beUnavailableAfterSecondsIdle": 0,
+    "beUnavailableAfterSecondsIdle": 0.0,
     "clearMemberFilterOnEscape": true,
     "clearRoomFilterOnEnter": true,
     "clearRoomFilterOnEscape": true,
-    "collapseSidePanesUnderWindowWidth": 450,
+    "collapseSidePanesUnderWindowWidth": 450.0,
     "compactMode": false,
     "enableKineticScrolling": true,
     "hideMembershipEvents": true,
@@ -26,7 +26,7 @@
             "Alt+Shift+F"
         ],
         "clearRoomMessages": [
-            "Ctrl+L"
+            "Ctrl+Del"
         ],
         "copyFilesLocalPath": [
             "Ctrl+Shift+C"
@@ -48,11 +48,11 @@
         },
         "focusNextMessage": [
             "Ctrl+Down",
-            "Ctrl+N"
+            "Ctrl+J"
         ],
         "focusPreviousMessage": [
             "Ctrl+Up",
-            "Ctrl+P"
+            "Ctrl+K"
         ],
         "focusRoomAtIndex": {
             "01": "Alt+1",
@@ -79,7 +79,7 @@
             "Ctrl+M"
         ],
         "goToNextRoom": [
-            "Ctrl+J"
+            "Ctrl+L"
         ],
         "goToNextUnreadRoom": [
             "Ctrl+U"
@@ -91,7 +91,7 @@
             "Ctrl+Shift+M"
         ],
         "goToPreviousRoom": [
-            "Ctrl+K"
+            "Ctrl+H"
         ],
         "goToPreviousUnreadRoom": [
             "Ctrl+Shift+U"
@@ -296,20 +296,20 @@
             "Ctrl+="
         ]
     },
-    "kineticScrollingDeceleration": 1500,
-    "kineticScrollingMaxSpeed": 2500,
-    "markRoomReadMsecDelay": 200,
-    "maxMessageCharactersPerLine": 65,
+    "kineticScrollingDeceleration": 1500.0,
+    "kineticScrollingMaxSpeed": 2500.0,
+    "markRoomReadMsecDelay": 200.0,
+    "maxMessageCharactersPerLine": 65.0,
     "media": {
-        "autoHideOSDAfterMsec": 3000,
+        "autoHideOSDAfterMsec": 3000.0,
         "autoLoad": true,
         "autoPlay": false,
         "autoPlayGIF": true,
-        "defaultVolume": 100,
+        "defaultVolume": 100.0,
         "openExternallyOnClick": false,
         "startMuted": false
     },
-    "ownMessagesOnLeftAboveWidth": 895,
+    "ownMessagesOnLeftAboveWidth": 895.0,
     "theme": "Glass.qpl",
     "writeAliases": {}
 }
