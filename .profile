@@ -129,6 +129,10 @@ export QT_QPA_PLATFORMTHEME=qt5ct
 #xz multithread
 export XZ_OPT="-T 0"
 
+# Mozilla
+export MOZ_X11_EGL=1
+export MOZ_WEBRENDER=1
+
 # Java
 export JAVA_HOME="/usr/lib/jvm/default"
 
