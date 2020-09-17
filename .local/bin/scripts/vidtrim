@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Quickly snip clips out of videos
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+input_file="$1"
+start_time="$2"
+end_time="$3"
+output_file_name="${4:-clip_$input_file}"
+
+input_file_ext="${input_file##*.}"
+
+ffmpeg \
+  -i "$input_file" \
+  -ss $start_time \
+  -to $end_time \
+  -c:v copy \
+  -c:a copy \
+  "$output_file_name.$input_file_ext"
