@@ -310,6 +310,6 @@
         "startMuted": false
     },
     "ownMessagesOnLeftAboveWidth": 895.0,
-    "theme": "Glass.qpl",
+    "theme": "Theme.qpl",
     "writeAliases": {}
 }
