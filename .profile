@@ -58,6 +58,7 @@ alias kn='kubens'
 alias kx='kubectx'
 alias ydl='youtube-dl'
 alias share='quickshare default'
+alias xz='xz --verbose'
 subalias git_gud="echo Already gud!"
 
 #------------------------------
