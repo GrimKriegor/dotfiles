@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Quickly concatenate videos
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+set -e
+
+playlist_file="$PWD/vidcat.lst"
+echo -n > "$playlist_file"
+
+file_ext="${1##*.}"
+file_array=($@)
+for file in "${file_array[@]}"; do
+  echo "file '$file'" >> "$playlist_file"
+done
+
+ffmpeg \
+  -f concat \
+  -safe 0 \
+  -i "$playlist_file" \
+  -c copy \
+  concatenated.$file_ext
+
+rm "$playlist_file"
+
+echo "Concatenated: ${file_array[@]}"
