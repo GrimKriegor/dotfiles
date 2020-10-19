@@ -20,7 +20,7 @@ input_file="$1"
 audio_file="$2"
 timestamp_begining="$3"
 timestamp_ending="$4"
-audio_volume_percent="${5:-1}"
+audio_volume_percent="${5:-100}"
 output_file_name="${6:-mixed_$input_file}"
 
 audio_volume_decimal="$(bc -l <<< "scale=2; $audio_volume_percent / 100" | awk '{printf "%.2f\n", $0}')"
@@ -39,3 +39,5 @@ ffmpeg \
     [0:a][a3]amix=inputs=2:duration=first" \
   -map 0:v:0 \
   $output_file_name
+
+echo -e "Mixed in $audio_file | Starting at: ${timestamp_begining} | Duration: ${audio_duration}s | Volume: ${audio_volume_percent}%"
