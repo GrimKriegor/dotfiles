@@ -1,15 +1,25 @@
 #!/bin/bash
 
 # Quickly snip clips out of videos
+#
+# Usage:
+#   vidtrim <input_file> <start_time> <end_time> [output_file]
+# Example:
+#   vidtrim boring_2h_marathon.mkv 1:24:32 1:24:56 poggers_frag_clip.mkv
+#
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2020
 
 input_file="$1"
 start_time="$2"
 end_time="$3"
-output_file_name="${4:-clip_$input_file}"
+output_file="$4"
 
+input_file_name="${input_file%.*}"
 input_file_ext="${input_file##*.}"
+
+[[ -z $output_file ]] && \
+  output_file="clip_$input_file_name.$input_file_ext"
 
 ffmpeg \
   -i "$input_file" \
@@ -17,4 +27,4 @@ ffmpeg \
   -to $end_time \
   -c:v copy \
   -c:a copy \
-  "$output_file_name.$input_file_ext"
+  "$output_file"
