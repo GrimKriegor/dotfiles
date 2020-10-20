@@ -131,7 +131,8 @@ export XZ_OPT="-T 0"
 
 # Mozilla
 export MOZ_X11_EGL=1
-export MOZ_WEBRENDER=1
+export MOZ_ENABLE_WAYLAND=0
+export MOZ_WEBRENDER=0
 
 # Java
 export JAVA_HOME="/usr/lib/jvm/default"
