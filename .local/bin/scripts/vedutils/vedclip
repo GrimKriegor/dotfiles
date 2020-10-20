@@ -3,9 +3,9 @@
 # Quickly snip clips out of videos
 #
 # Usage:
-#   vidtrim <input_file> <start_time> <end_time> [output_file]
+#   vedclip <input_file> <start_time> <end_time> [output_file]
 # Example:
-#   vidtrim boring_2h_marathon.mkv 1:24:32 1:24:56 poggers_frag_clip.mkv
+#   vedclip boring_2h_marathon.mkv 1:24:32 1:24:56 poggers_frag_clip.mkv
 #
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2020

@@ -3,9 +3,9 @@
 # Quickly concatenate videos
 #
 # Usage:
-#   vidcat [video_file...]
+#   vedcat [video_file...]
 # Example:
-#   vidcat intro.mkv content.mkv advertisement.mkv outro.mkv
+#   vedcat intro.mkv content.mkv advertisement.mkv outro.mkv
 #
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2020

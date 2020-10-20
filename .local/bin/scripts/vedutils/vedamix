@@ -3,9 +3,9 @@
 # Mix an audio track into an audio/video file
 #
 # Usage:
-#   vidaudiomix <video_file> <audio_file> <begining> [ending] [audio_volume_percent] [output_file]
+#   vedamix <video_file> <audio_file> <begining> [ending] [audio_volume_percent] [output_file]
 # Example:
-#   vidaudiomix cool_frag_vid.mkv awesome_soundtrack.ogg 0:32 5:45 80 cool_frag_vid_mixed.mkv
+#   vedamix cool_frag_vid.mkv awesome_soundtrack.ogg 0:32 5:45 80 cool_frag_vid_mixed.mkv
 #
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2020
