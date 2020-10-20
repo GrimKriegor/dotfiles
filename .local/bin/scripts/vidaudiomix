@@ -33,6 +33,7 @@ ffmpeg \
   -hwaccel vaapi \
   -i "$input_file" \
   -i "$audio_file" \
+  -c:v copy \
   -filter_complex \
     "[1:0]volume=$audio_volume_decimal[a1];\
     [a1]atrim=duration=$audio_duration[a2];\
