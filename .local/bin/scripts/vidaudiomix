@@ -30,6 +30,7 @@ timestamp_begining_milis="$(($timestamp_begining_seconds * 1000))"
 audio_duration="$(($timestamp_ending_seconds - $timestamp_begining_seconds))"
 
 ffmpeg \
+  -hwaccel vaapi \
   -i "$input_file" \
   -i "$audio_file" \
   -filter_complex \
