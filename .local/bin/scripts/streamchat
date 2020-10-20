@@ -1,0 +1,37 @@
+#!/bin/bash
+
+# Open both video and chat of a livestream on native applications
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2020
+
+set -e
+
+clipboard_contents="$(xclip -selection c -o)"
+url=${1:-$clipboard_contents}
+mode="${2:-best}"
+chat_url="$url/chat"
+
+echo "$url" | grep -q -i 'youtube' \
+  && site="youtube"
+
+case "$site" in
+  "youtube")
+    stream_id=$(youtube-dl --get-id "$url")
+    chat_url="https://www.youtube.com/live_chat?is_popout=1&v=$stream_id" ;;
+esac
+
+notify-send \
+  "${title:-Streaming}" \
+  "${message:-$url}"
+
+$BROWSER \
+  --new-window "$chat_url" \
+  &> /dev/null &
+  #2>&1 >/dev/null &
+
+streamlink \
+  --player mpv \
+  "$url" \
+  "$mode"
+
+
