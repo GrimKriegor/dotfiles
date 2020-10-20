@@ -49,3 +49,5 @@ __pycache__
 
 # Mirage
 .config/mirage/accounts.json
+.config/mirage/.lock
+.config/mirage/.show
