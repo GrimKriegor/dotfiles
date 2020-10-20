@@ -3,17 +3,31 @@
 # Mix an audio track into an audio/video file
 #
 # Usage:
-#   vidaudiomix <video_file> <audio_file> <begining> <ending> [audio_volume_percent] [output_file]
+#   vidaudiomix <video_file> <audio_file> <begining> [ending] [audio_volume_percent] [output_file]
 # Example:
 #   vidaudiomix cool_frag_vid.mkv awesome_soundtrack.ogg 0:32 5:45 80 cool_frag_vid_mixed.mkv
 #
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2020
 
+set -e
+
 function timestampToSeconds() {
   timestamp="$1"
-  seconds=$(echo $timestamp | awk -F: '{ n=0; for(i=NF; i>=1; --i) secs += $i * 60 ^ n++ } END { print secs }')
+  seconds=$(echo $timestamp \
+    | awk -F: '{ n=0; for(i=NF; i>=1; --i) secs += $i * 60 ^ n++ } END { print secs }')
   echo $seconds
+}
+
+function getVideoDuration() {
+  video_file="$1"
+  seconds=$(ffmpeg -i "$video_file" 2>&1 \
+    | grep "Duration" \
+    | cut -d ' ' -f 4 \
+    | sed s/,// \
+    | sed 's@\..*@@g' \
+    | awk '{ split($1, A, ":"); split(A[3], B, "."); print 3600*A[1] + 60*A[2] + B[1] }')
+  echo "$seconds"
 }
 
 input_file="$1"
@@ -22,6 +36,9 @@ timestamp_begining="$3"
 timestamp_ending="$4"
 audio_volume_percent="${5:-100}"
 output_file_name="${6:-mixed_$input_file}"
+
+[[ -z "$timestamp_ending" ]] && \
+  timestamp_ending="$(getVideoDuration "$input_file")"
 
 audio_volume_decimal="$(bc -l <<< "scale=2; $audio_volume_percent / 100" | awk '{printf "%.2f\n", $0}')"
 timestamp_begining_seconds="$(timestampToSeconds $timestamp_begining)"
@@ -32,6 +49,7 @@ audio_duration="$(($timestamp_ending_seconds - $timestamp_begining_seconds))"
 ffmpeg \
   -hwaccel vaapi \
   -i "$input_file" \
+  -stream_loop -1 \
   -i "$audio_file" \
   -c:v copy \
   -filter_complex \
