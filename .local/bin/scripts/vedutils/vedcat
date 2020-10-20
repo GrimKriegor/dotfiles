@@ -1,15 +1,5 @@
 #!/bin/bash
 
-# Quickly concatenate videos
-#
-# Usage:
-#   vedcat [video_file...]
-# Example:
-#   vedcat intro.mkv content.mkv advertisement.mkv outro.mkv
-#
-# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
-# 2020
-
 set -e
 
 playlist_file="$PWD/vidcat.lst"
