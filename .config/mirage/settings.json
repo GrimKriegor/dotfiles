@@ -3,9 +3,11 @@
     "alertOnMessageForMsec": 0.0,
     "alwaysCenterRoomHeader": false,
     "beUnavailableAfterSecondsIdle": 0.0,
+    "centerRoomListOnClick": false,
     "clearMemberFilterOnEscape": true,
     "clearRoomFilterOnEnter": true,
     "clearRoomFilterOnEscape": true,
+    "closeMinimizesToTray": false,
     "collapseSidePanesUnderWindowWidth": 450.0,
     "compactMode": false,
     "enableKineticScrolling": true,
@@ -298,6 +300,7 @@
     },
     "kineticScrollingDeceleration": 1500.0,
     "kineticScrollingMaxSpeed": 2500.0,
+    "lexicalRoomSorting": false,
     "markRoomReadMsecDelay": 200.0,
     "maxMessageCharactersPerLine": 65.0,
     "media": {
@@ -311,5 +314,6 @@
     },
     "ownMessagesOnLeftAboveWidth": 895.0,
     "theme": "Theme.qpl",
-    "writeAliases": {}
+    "writeAliases": {},
+    "zoom": 1.0
 }
