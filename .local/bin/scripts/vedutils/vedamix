@@ -11,12 +11,13 @@ function timestampToSeconds() {
 
 function getVideoDuration() {
   video_file="$1"
-  seconds=$(ffmpeg -i "$video_file" 2>&1 \
-    | grep "Duration" \
-    | cut -d ' ' -f 4 \
-    | sed s/,// \
-    | sed 's@\..*@@g' \
-    | awk '{ split($1, A, ":"); split(A[3], B, "."); print 3600*A[1] + 60*A[2] + B[1] }')
+  seconds=$(ffprobe \
+    -sexagesimal \
+    -v error \
+    -show_entries format=duration \
+    -of default=noprint_wrappers=1:nokey=1 \
+    "$video_file" \
+    | awk -F "." '{print $1}')
   echo "$seconds"
 }
 
