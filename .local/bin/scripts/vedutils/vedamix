@@ -45,7 +45,7 @@ ffmpeg \
   -filter_complex \
     "[1:0]volume=$audio_volume_decimal[a1];\
     [a1]atrim=duration=$audio_duration[a2];\
-    [a2]adelay=$timestamp_begining_milis|$timestamp_begining_milis[a3];\
+    [a2]adelay=delays=$timestamp_begining_milis:all=1[a3];\
     [0:a][a3]amix=inputs=2:duration=first" \
   -map 0:v:0 \
   $output_file_name
