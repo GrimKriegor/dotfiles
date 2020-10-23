@@ -1,15 +1,19 @@
 #!/bin/bash
 
+set -e
+
+source vedcommon
+
 input_file="$1"
 start_time="$2"
 end_time="$3"
 output_file="$4"
 
-input_file_name="${input_file%.*}"
-input_file_ext="${input_file##*.}"
+input_file_name="$(getFilename $input_file)"
+input_file_type="$(getFiletype $input_file)"
 
 [[ -z $output_file ]] && \
-  output_file="clip_$input_file_name.$input_file_ext"
+  output_file="${input_file_name}_clip.${input_file_type}"
 
 ffmpeg \
   -i "$input_file" \

@@ -2,12 +2,17 @@
 
 set -e
 
-playlist_file="$PWD/vidcat.lst"
-echo -n > "$playlist_file"
+source vedcommon
 
-file_ext="${1##*.}"
-file_array=($@)
-for file in "${file_array[@]}"; do
+playlist_file="$PWD/vidcat.lst"
+input_file="$1"
+input_file_name="$(getFilename $input_file)"
+input_file_type="$(getFiletype $input_file)"
+input_file_array=($@)
+output_file="${input_file_name}_concatenated.${input_file_type}"
+
+echo -n > "$playlist_file"
+for file in "${input_file_array[@]}"; do
   echo "file '$file'" >> "$playlist_file"
 done
 
@@ -16,8 +21,8 @@ ffmpeg \
   -safe 0 \
   -i "$playlist_file" \
   -c copy \
-  concatenated.$file_ext
+  $output_file
 
 rm "$playlist_file"
 
-echo "Concatenated: ${file_array[@]}"
+echo "Concatenated: ${input_file_array[@]}" into "$output_file"
