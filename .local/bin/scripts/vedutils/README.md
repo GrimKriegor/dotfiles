@@ -23,6 +23,19 @@ vedclip input_file start_time end_time [output_file]
 vedclip boring_2h_marathon.mkv 1:24:32 1:24:56 poggers_frag_clip.mkv
 ```
 
+## vedclipmulti
+
+Snip multiple clips out of a video in one go
+
+```
+vedclipmulti input_file [(start_time end_time)...]
+```
+
+ Example:
+
+```
+vedclipmulti ds3_4h_invasion.mkv 1:25 2:43 6:01 8:23 10:16
+```
 
 ## vedcat
 

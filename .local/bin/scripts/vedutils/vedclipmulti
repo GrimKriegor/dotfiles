@@ -1,0 +1,26 @@
+#!/bin/bash
+
+set -e
+
+source vedcommon
+
+input_file=(${@:1:1})
+timestamps=(${@:2})
+timestamps_count=${#timestamps[@]}
+input_file_name="$(getFilename $input_file)"
+input_file_type="$(getFiletype $input_file)"
+
+if [ $(( $timestamps_count % 2 )) -ne 0 ]; then
+  input_file_duration="$(getVideoDuration $input_file)"
+  timestamps=(${timestamps[@]} "$input_file_duration")
+fi
+
+for ((i=0; i<${#timestamps[@]}; i=i+2)); do
+  begining=${timestamps[$i]}
+  ending=${timestamps[$i+1]}
+  part="$begining-$ending"
+  vedclip \
+    "$input_file" \
+    "$begining" "$ending" \
+    "${input_file_name}_clip_${part}.${input_file_type}"
+done
