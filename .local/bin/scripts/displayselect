@@ -19,9 +19,14 @@ Laptop | HDMI
 HDMI | Laptop
 Laptop | Dock HDMI
 Dock HDMI | Laptop
+HDMI | Dock HDMI
+Dock HDMI | HDMI
+Dock HDMI | Dock HDMI 2
+Dock HDMI 2 | Dock HDMI
 Mirrored VGA
 Mirrored HDMI
-Mirrored Dock HDMI"
+Mirrored Dock HDMI
+Mirrored Dock HDMI 2"
 
 if [ "$1" == "" ]; then
   menu_option=$(echo -e "$menu" | dmenu -i -p "display")
@@ -67,22 +72,27 @@ function projector() {
 }
 
 case "$menu_option" in
-  "Manual selection")   arandr ;;
-  "Laptop")             exclusive LVDS1 ;;
-  "VGA")                exclusive VGA1 ;;
-  "HDMI")               exclusive HDMI1 ;;
-  "Dock HDMI")          exclusive HDMI2 ;;
-  "Projector")          projector VGA1 ;;
-  "Laptop | VGA")       side_by_side LVDS1 VGA1 ;;
-  "VGA | Laptop")       side_by_side VGA1 LVDS1 ;;
-  "Laptop | HDMI")      side_by_side LVDS1 HDMI1 ;;
-  "HDMI | Laptop")      side_by_side HDMI1 LVDS1 ;;
-  "Laptop | Dock HDMI") side_by_side LVDS1 HDMI2 ;;
-  "Dock HDMI | Laptop") side_by_side HDMI2 LVDS1 ;;
-  "Mirrored VGA")       mirror LVDS1 VGA1 ;;
-  "Mirrored HDMI")      mirror LVDS1 HDMI1 ;;
-  "Mirrored Dock HDMI") mirror LVDS1 HDMI2 ;;
-  *)                    exit 0 ;;
+  "Manual selection")        arandr ;;
+  "Laptop")                  exclusive LVDS1 ;;
+  "VGA")                     exclusive VGA1 ;;
+  "HDMI")                    exclusive HDMI1 ;;
+  "Dock HDMI")               exclusive HDMI2 ;;
+  "Projector")               projector VGA1 ;;
+  "Laptop | VGA")            side_by_side LVDS1 VGA1 ;;
+  "VGA | Laptop")            side_by_side VGA1 LVDS1 ;;
+  "Laptop | HDMI")           side_by_side LVDS1 HDMI1 ;;
+  "HDMI | Laptop")           side_by_side HDMI1 LVDS1 ;;
+  "Laptop | Dock HDMI")      side_by_side LVDS1 HDMI2 ;;
+  "Dock HDMI | Laptop")      side_by_side HDMI2 LVDS1 ;;
+  "HDMI | Dock HDMI")        side_by_side HDMI1 HDMI2 ;;
+  "Dock HDMI | HDMI")        side_by_side HDMI2 HDMI1 ;;
+  "Dock HDMI | Dock HDMI 2") side_by_side HDMI2 HDMI3 ;;
+  "Dock HDMI 2 | Dock HDMI") side_by_side HDMI3 HDMI2 ;;
+  "Mirrored VGA")            mirror LVDS1 VGA1 ;;
+  "Mirrored HDMI")           mirror LVDS1 HDMI1 ;;
+  "Mirrored Dock HDMI")      mirror LVDS1 HDMI2 ;;
+  "Mirrored Dock HDMI 2")    mirror LVDS1 HDMI3 ;;
+  *)                         exit 0 ;;
 esac
 
 setxkbmap -option -option caps:swapescape
