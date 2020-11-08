@@ -64,3 +64,6 @@
 [submodule ".config/mpv/scripts/mpv-playlistmanager"]
 	path = .config/mpv/scripts/mpv-playlistmanager
 	url = https://github.com/jonniek/mpv-playlistmanager.git
+[submodule ".local/bin/scripts/external/vedutils"]
+	path = .local/bin/scripts/external/vedutils
+	url = https://github.com/GrimKriegor/vedutils
