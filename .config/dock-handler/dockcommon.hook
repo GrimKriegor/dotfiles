@@ -1,0 +1,5 @@
+#!/bin/bash
+
+#nmcli radio wifi off
+setxkbmap -layout us -option -option caps:swapescape -option compose:paus
+

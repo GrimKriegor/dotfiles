@@ -51,3 +51,6 @@ __pycache__
 .config/mirage/accounts.json
 .config/mirage/.lock
 .config/mirage/.show
+
+# dock-handler
+.config/dock-handler/dock.hook

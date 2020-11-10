@@ -1,0 +1,7 @@
+#!/bin/bash
+
+DOCK_HANDLER_CFG_DIR="$HOME/.config/dock-handler"
+
+mode="$1"
+ln -srf "$DOCK_HANDLER_CFG_DIR/$mode.hook" "$DOCK_HANDLER_CFG_DIR/dock.hook"
+dock-handler "$mode"

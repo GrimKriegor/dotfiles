@@ -76,5 +76,5 @@ case "$operation" in
   "uninstall"                     ) uninstall      ;;
   "dock"   | "add"    | "desktop" ) runHook dock   ;;
   "undock" | "remove" | "laptop"  ) runHook undock ;;
-  *                               ) runHook "$2"   ;;
+  *                               ) runHook "$1"   ;;
 esac
