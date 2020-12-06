@@ -35,6 +35,7 @@ Sxiv.background:   #000000
 
 !! rofi
 rofi.fullscreen:       true
+rofi.max-history-size: 50
 rofi.color-enabled:    true
 !		       'background',  'border',      'dividing line'
 rofi.color-window:     argb:EE000000, argb:EE000000, argb:00000000
