@@ -67,3 +67,6 @@
 [submodule ".local/bin/scripts/external/vedutils"]
 	path = .local/bin/scripts/external/vedutils
 	url = https://github.com/GrimKriegor/vedutils
+[submodule ".vim/pack/plugins/start/VimFilify"]
+	path = .vim/pack/plugins/start/VimFilify
+	url = https://github.com/CharlesGueunet/VimFilify.git
