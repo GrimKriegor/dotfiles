@@ -11,16 +11,21 @@ Manual selection
 Laptop
 VGA
 HDMI
+DP
 Dock HDMI
 Projector
 Laptop | VGA
 VGA | Laptop
 Laptop | HDMI
 HDMI | Laptop
+Laptop | DP
+DP | Laptop
 Laptop | Dock HDMI
 Dock HDMI | Laptop
 HDMI | Dock HDMI
 Dock HDMI | HDMI
+DP | Dock HDMI
+Dock HDMI | DP
 Dock HDMI | Dock HDMI 2
 Dock HDMI 2 | Dock HDMI
 Mirrored VGA
@@ -76,16 +81,21 @@ case "$menu_option" in
   "Laptop")                  exclusive LVDS1 ;;
   "VGA")                     exclusive VGA1 ;;
   "HDMI")                    exclusive HDMI1 ;;
+  "DP")                      exclusive DP1 ;;
   "Dock HDMI")               exclusive HDMI2 ;;
   "Projector")               projector VGA1 ;;
   "Laptop | VGA")            side_by_side LVDS1 VGA1 ;;
   "VGA | Laptop")            side_by_side VGA1 LVDS1 ;;
   "Laptop | HDMI")           side_by_side LVDS1 HDMI1 ;;
   "HDMI | Laptop")           side_by_side HDMI1 LVDS1 ;;
+  "Laptop | DP")             side_by_side LVDS1 DP1 ;;
+  "DP | Laptop")             side_by_side DP1 LVDS1 ;;
   "Laptop | Dock HDMI")      side_by_side LVDS1 HDMI2 ;;
   "Dock HDMI | Laptop")      side_by_side HDMI2 LVDS1 ;;
   "HDMI | Dock HDMI")        side_by_side HDMI1 HDMI2 ;;
   "Dock HDMI | HDMI")        side_by_side HDMI2 HDMI1 ;;
+  "DP | Dock HDMI")          side_by_side DP1 HDMI2 ;;
+  "Dock HDMI | DP")          side_by_side HDMI2 DP1 ;;
   "Dock HDMI | Dock HDMI 2") side_by_side HDMI2 HDMI3 ;;
   "Dock HDMI 2 | Dock HDMI") side_by_side HDMI3 HDMI2 ;;
   "Mirrored VGA")            mirror LVDS1 VGA1 ;;
