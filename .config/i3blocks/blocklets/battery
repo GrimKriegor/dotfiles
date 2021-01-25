@@ -110,7 +110,8 @@ else:
         timeleft = ""
     elif state == "Unknown":
         #fulltext = FA_QUESTION + " " + FA_BATTERY + " "
-        fulltext = icon(percentleft) + " "
+        #fulltext = icon(percentleft) + " "
+        fulltext = ""
         timeleft = ""
     else:
         #fulltext = FA_LIGHTNING + " " + FA_PLUG + " "
