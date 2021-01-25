@@ -68,7 +68,7 @@ function runHook() {
     bash "$hook_fullpath" #2>&1 >/dev/null
 }
 
-checkPidFile
+#checkPidFile
 createPidFile
 operation="${ACTION:-$1}"
 case "$operation" in
