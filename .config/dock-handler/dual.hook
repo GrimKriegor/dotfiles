@@ -3,5 +3,5 @@
 set -e
 
 source "$HOME/.config/dock-handler/dockcommon.hook"
-displayselect 'Dock HDMI | HDMI'
+displayselect 'Dock HDMI | DP'
 pactl set-card-profile 0 output:hdmi-stereo-extra1+input:analog-stereo
