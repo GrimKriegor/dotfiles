@@ -14,6 +14,7 @@ application/x-partial-download=mpv.desktop;
 application/x-shellscript=vim.desktop;
 audio/mpeg=mpv.desktop;
 audio/x-vorbis+ogg=mpv.desktop;
+audio/x-wav=mpv.desktop
 image/gif=mpv.desktop;
 image/jpeg=sxiv.desktop;
 image/png=sxiv.desktop;
