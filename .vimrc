@@ -164,6 +164,9 @@ map <F7> :<C-U>call MySpellLang()<CR>
 nnoremap <Leader>fg :exec ":Grep ".input("grep: ")<CR>
 nnoremap <Leader>fr :exec ":Rg ".input("ripgrep: ")<CR>
 
+" Omnicomplete
+inoremap <Tab> <C-n>
+
 
 """
 """ Plugin specific
@@ -196,6 +199,7 @@ nnoremap <Leader>gd :ALEHover<CR>
 nnoremap <Leader>gs :ALESymbolSearch<CR>
 nnoremap <Leader>gR :ALERename<CR>
 let g:ale_completion_enabled = 1
+let g:ale_completion_autoimport = 1
 let g:ale_set_balloons = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'

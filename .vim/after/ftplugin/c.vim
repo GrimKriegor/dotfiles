@@ -1,5 +1,5 @@
 " Ale
-let b:ale_linters = {'c': ['cc'], 'cpp': ['cc']}
+let b:ale_linters = {'c': ['ccls'], 'cpp': ['ccls']}
 
 let g:custom_c_linter = Filify#process('.ale_linter', {'default_return':'gcc'})
 let g:ale_c_cc_executable = g:custom_c_linter
