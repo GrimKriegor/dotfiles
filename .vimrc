@@ -176,11 +176,11 @@ inoremap <Tab> <C-n>
 set nocompatible
 filetype plugin on
 let g:vimwiki_ext2syntax = {
-  \ '.Rmd': 'markdown',
-  \ '.rmd': 'markdown',
-  \ '.md': 'markdown',
-  \ '.markdown': 'markdown',
-  \ '.mdown': 'markdown'
+\  '.Rmd': 'markdown',
+\  '.rmd': 'markdown',
+\  '.md': 'markdown',
+\  '.markdown': 'markdown',
+\  '.mdown': 'markdown'
 \}
 
 " NERDTree
@@ -204,6 +204,11 @@ let g:ale_set_balloons = 1
 let g:ale_sign_error = 'E'
 let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
+let g:ale_cpp_ccls_init_options = {
+\  'cache': {
+\    'directory': '/tmp/ccls/cache'
+\  }
+\}
 
 " vim-android
 let g:android_sdk_path = expand("$ANDROID_HOME")
