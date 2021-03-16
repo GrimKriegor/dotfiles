@@ -206,7 +206,7 @@ let g:ale_sign_warning = 'W'
 let g:ale_echo_msg_format = '[%severity%] %s (%code%) [%linter%]'
 let g:ale_cpp_ccls_init_options = {
 \  'cache': {
-\    'directory': '/tmp/ccls/cache'
+\    'directory': expand("$HOME/.cache/ccls")
 \  }
 \}
 
