@@ -48,13 +48,11 @@ markup=pango
 separator=false
 separator_block_width=12
 
-[volume-pulseaudio]
-command=SUBSCRIBE=1 LONG_FORMAT='${SYMB}' MUTED_COLOR=#444444 $SCRIPT_DIR/volume-pulseaudio
-interval=persist
-signal=1
-markup=pango
+[volume-pipewire]
+command=$SCRIPT_DIR/volume-pipewire -F 3
+interval=2
 separator=false
-separator_block_width=4
+separator_block_width=8
 
 [battery]
 command=$SCRIPT_DIR/battery
