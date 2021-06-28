@@ -1,0 +1,23 @@
+#!/bin/bash
+
+set -e
+
+# Quickly upload videos to Streamable.com
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org> 2021
+
+source "$HOME/.config/streamablerc"
+
+code=$(curl \
+  --request POST \
+  --url https://api.streamable.com/upload \
+  --form file=@"$1" \
+  --user $USERNAME:$PASSWORD | \
+  jq '.shortcode' | \
+  perl -pe 's/"//g');
+
+url="https://streamable.com/$code"
+
+echo "$url" | xclip -selection clipboard
+echo "$url"
+
+notify-send "File uploaded to Streamable" "$url"
