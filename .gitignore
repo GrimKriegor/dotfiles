@@ -54,3 +54,6 @@ __pycache__
 
 # dock-handler
 .config/dock-handler/dock.hook
+
+#ncmpcpp
+.config/ncmpcpp/error.log
