@@ -49,7 +49,7 @@ separator=false
 separator_block_width=12
 
 [volume-pipewire]
-command=$SCRIPT_DIR/volume-pipewire -F 3
+command=$SCRIPT_DIR/volume-pipewire -F 3 -f 3
 interval=2
 separator=false
 separator_block_width=8
