@@ -2,5 +2,4 @@
 
 nmcli radio wifi off
 setxkbmap -layout us -option -option caps:swapescape -option compose:paus
-pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
-
+pactl set-card-profile alsa_card.pci-0000_00_1b.0 output:analog-stereo+input:analog-stereo
