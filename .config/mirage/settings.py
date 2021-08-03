@@ -163,7 +163,7 @@ class Chat:
             # added: user IDs, room IDs, or space-separated user + room IDs.
 
             # Send typing notifications everywhere by default:
-            default: bool = True
+            default: bool = False
             # But don't send them for rooms under this account:
             "@account_1:example.org": bool = False
             # Neither send them in this room, regardless of the account used:
