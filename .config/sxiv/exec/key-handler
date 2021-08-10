@@ -3,6 +3,10 @@ while read file
 do
   case "$1" in
 
+  # Copy path
+  "C-c")
+    echo "$file" | xclip -sel clip ;;
+
   # Edit
   "C-e")
     gimp "$file" ;;
