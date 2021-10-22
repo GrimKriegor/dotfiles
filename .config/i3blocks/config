@@ -38,7 +38,7 @@ interval=5
 markup=pango
 
 [time]
-command=date '+%b %d - %H:%M'
+command=$SCRIPT_DIR/datetime
 interval=5
 
 [microphone]

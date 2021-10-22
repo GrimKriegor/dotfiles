@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -e
+
+date '+%b %d - %H:%M'
+
+case "$BLOCK_BUTTON" in
+  1) notify-send "$(date)" "
+$(cal -m '1 month ago')
+$(cal -m)
+$(cal -m +30days)
+    " ;;
+esac
