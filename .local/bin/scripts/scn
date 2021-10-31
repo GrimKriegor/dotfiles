@@ -83,19 +83,19 @@ echo -e "Local Folder:	$MOUNT"
 echo -e "------------>   $MACHINE.$DOMAIN:$PORT\n"
 
 # Check if the machine is in the local network, internet or vpn
-ping -c 3 "$MACHINE.lan" > /dev/null 2>&1
+nc -z "$MACHINE.lan" 22 > /dev/null 2>&1
 if [ $? -eq 0 ]; then
   echo "Found machine on local network"
   ADDRESS="$MACHINE.lan"
   PORT=22
 else
-  ping -c 3 "$MACHINE.$DOMAIN" > /dev/null 2>&1
+  nc -z "$MACHINE.$DOMAIN" $EXTERNALPORT > /dev/null 2>&1
   if [ $? -eq 0 ]; then
     ADDRESS="$MACHINE.$DOMAIN"
     PORT="$EXTERNALPORT"
   else
     echo "Machine not accessible via the Internet, trying the VPN"
-    ping -c 3 "$MACHINE.$VPN" > /dev/null 2>&1
+    nc -z "$MACHINE.$VPN" 22 > /dev/null 2>&1
     if [ $? -eq 0 ]; then
       ADDRESS="$MACHINE.$VPN"
       PORT=22
