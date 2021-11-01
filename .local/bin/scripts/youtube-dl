@@ -1,0 +1,4 @@
+#!/bin/bash
+# Wrapper for using yt-dlp as a drop-in replacement for youtube-dl
+
+eval yt-dlp $@
