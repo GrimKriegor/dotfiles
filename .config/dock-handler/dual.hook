@@ -1,6 +1,5 @@
 #!/bin/bash
 
-set -e
+source "$HOME/.config/dock-handler/common_dock.hook"
 
-source "$HOME/.config/dock-handler/dockcommon.hook"
 displayselect 'Dock HDMI | DP'

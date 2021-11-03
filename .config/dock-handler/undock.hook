@@ -1,5 +1,11 @@
 #!/bin/bash
 
-displayselect "Laptop"
+source "$HOME/.config/dock-handler/common.hook"
+
+displayselect "$DISPLAY_PROFILE_LAPTOP"
+
 nmcli radio wifi on
-pactl set-card-profile 0 output:analog-stereo+input:analog-stereo
+
+pactl set-card-profile \
+  "$SOUNDCARD_ID_LAPTOP" \
+  "$SOUNDCARD_PROFILE_LAPTOP"

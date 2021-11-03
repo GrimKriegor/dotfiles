@@ -1,0 +1,22 @@
+#!/bin/bash
+
+source "$HOME/.config/dock-handler/common.hook"
+
+nmcli radio wifi off
+
+setxkbmap -layout us -option -option caps:swapescape -option compose:paus
+
+sleep 5s
+pactl list cards short | grep "$SOUNDCARD_ID_DOCK" > /dev/null
+if [ $? -eq 0  ]; then
+  pactl set-card-profile \
+    "$SOUNDCARD_ID_LAPTOP" \
+    "off"
+  pactl set-card-profile \
+    "$SOUNDCARD_ID_DOCK" \
+    "$SOUNDCARD_PROFILE_DOCK"
+else
+  pactl set-card-profile \
+    "$SOUNDCARD_ID_LAPTOP" \
+    "$SOUNDCARD_PROFILE_LAPTOP"
+fi
