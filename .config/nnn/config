@@ -5,8 +5,7 @@ l:~/Library;\
 p:~/Pictures;\
 m:~/Music;\
 c:~/Development;\
-d:~/Download;\
-t:~/Temporary;\
+s:~/Staging;\
 D:~/.dotfiles;\
 T:~/.local/share/Trash/files;\
 "
