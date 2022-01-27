@@ -357,26 +357,25 @@ bindsym XF86TouchpadToggle exec --no-startup-id toggletouchpad
 #
 ##
 
-#FOR ALSA/AMIXER
-set $inc --no-startup-id amixer sset Master 2%+
-set $biginc --no-startup-id amixer sset Master 5%+
-set $dec --no-startup-id amixer sset Master 2%-
-set $bigdec --no-startup-id amixer sset Master 5%-
-set $mute --no-startup-id amixer sset Master toggle
-set $truemute --no-startup-id amixer sset Master mute
-set $micmute --no-startup-id amixer sset Capture toggle
+# For PipeWire/PulseAudio
+set $inc      --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+set $biginc   --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+set $dec      --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
+set $bigdec   --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+set $mute     --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ toggle
+set $truemute --no-startup-id pactl set-sink-mute   @DEFAULT_SINK@ 1
+set $micmute  --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # For mpc:
-set $music ncmpcpp
-set $pause --no-startup-id mpc toggle
-set $trupause --no-startup-id mpc pause
-set $next --no-startup-id mpc next
-set $prev --no-startup-id mpc prev
-set $lilfor --no-startup-id mpc seek +10
-set $bigfor --no-startup-id mpc seek +120
-set $lilbak --no-startup-id mpc seek -10
-set $bigbak --no-startup-id mpc seek -120
-set $beg --no-startup-id mpc seek 0%
+set $pause     --no-startup-id mpc toggle
+set $truepause --no-startup-id mpc pause
+set $next      --no-startup-id mpc next
+set $prev      --no-startup-id mpc prev
+set $lilfor    --no-startup-id mpc seek +10
+set $bigfor    --no-startup-id mpc seek +120
+set $lilbak    --no-startup-id mpc seek -10
+set $bigbak    --no-startup-id mpc seek -120
+set $beg       --no-startup-id mpc seek 0%
 
 # Volume keys
 bindsym $mod+plus               exec $inc
