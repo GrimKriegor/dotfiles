@@ -14,6 +14,7 @@ window:
     #y: 0
   dynamic_padding: false
   decorations: none
+  opacity: 0.9
   startup_mode: Windowed
   #title: Alacritty
   #class:
@@ -97,8 +98,6 @@ bell:
   animation: EaseOutExpo
   duration: 0
   color: '0xffffff'
-
-background_opacity: 0.9
 
 selection:
   semantic_escape_chars: ",│`|:\"' ()[]{}<>"
