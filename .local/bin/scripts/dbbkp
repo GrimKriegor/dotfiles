@@ -1,0 +1,40 @@
+#!/bin/bash
+set -e
+
+# Snapshot some important home directories
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2015
+
+date="$(date +"%Y%m%d")"
+
+archive_ext="tar.xz"
+cipher_ext="gpg"
+
+archive_name="databases_${date}"
+archive_name_full="${archive_name}.${archive_ext}"
+archive_name_full_cipher="${archive_name_full}.${cipher_ext}"
+
+tar chf \
+  "$archive_name_full" \
+  "$HOME/.mail" \
+  "$HOME/.calendars" \
+  "$HOME/.contacts"
+
+gpg \
+  --batch \
+  --encrypt \
+  --default-recipient-self \
+  --output "$archive_name_full_cipher" \
+  "$archive_name_full"
+
+checksum=$(md5sum \
+  "$archive_name_full_cipher" \
+  | awk '{print $1}')
+
+archive_name_full_cipher_checksum="${archive_name}_${checksum}.${archive_ext}.${cipher_ext}"
+
+mv \
+  "$archive_name_full_cipher" \
+  "$archive_name_full_cipher_checksum"
+
+rm "$archive_name_full"
