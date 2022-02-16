@@ -55,5 +55,9 @@ __pycache__
 # dock-handler
 .config/dock-handler/dock.hook
 
-#ncmpcpp
+# ncmpcpp
 .config/ncmpcpp/error.log
+
+# newsboat
+.config/newsboat/secrets
+.config/newsboat/full_config

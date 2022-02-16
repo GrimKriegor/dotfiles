@@ -1,0 +1,25 @@
+#!/bin/sh
+
+# newsboat wrapper
+#
+# Concatenates the base config file with secrets
+# before launching
+#
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2021
+
+config_dir="$HOME/.config/newsboat"
+config_base="$config_dir/config"
+config_secrets="$config_dir/secrets"
+config_full="$config_dir/full_config"
+
+cat \
+  "$config_base" \
+  "$config_secrets" \
+  > "$config_full"
+
+newsboat \
+  --config-file="$config_full" \
+  "$@"
+
+rm "$config_full"
