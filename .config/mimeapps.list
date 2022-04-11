@@ -18,6 +18,7 @@ audio/x-vorbis+ogg=mpv.desktop;
 audio/x-wav=mpv.desktop
 image/gif=mpv.desktop;
 image/jpeg=sxiv.desktop;
+image/jxl=sxiv.desktop;
 image/png=sxiv.desktop;
 image/tiff=sxiv.desktop;
 image/webp=sxiv.desktop;
