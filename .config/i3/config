@@ -325,10 +325,11 @@ bindsym $mod+Shift+u mode "$mode_keyboard"
 bindsym Menu exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 
 #Screenshot
+set $screenshot_filepath ~/Pictures/Screenshots/$(date +%Y-%m-%d-%T).png
 exec_always --no-startup-id mkdir -p ~/Pictures/Screenshots
-bindsym Print                   exec --no-startup-id scrot -m -e 'mv $f ~/Pictures/Screenshots'
-bindsym Shift+Print             exec --no-startup-id scrot -m -u -e 'mv $f ~/Pictures/Screenshots'
-bindsym Control+Print           exec --no-startup-id sleep 0.5 && scrot -m -s -e 'mv $f ~/Pictures/Screenshots'
+bindsym Print                   exec --no-startup-id maim -u $screenshot_filepath
+bindsym Shift+Print             exec --no-startup-id maim -u -i $(xdotool getactivewindow) $screenshot_filepath
+bindsym Control+Print           exec --no-startup-id maim -u -s $screenshot_filepath
 
 #Display brighteness
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 5
