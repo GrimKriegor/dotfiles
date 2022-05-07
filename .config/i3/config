@@ -330,6 +330,7 @@ exec_always --no-startup-id mkdir -p ~/Pictures/Screenshots
 bindsym Print                   exec --no-startup-id maim -u $screenshot_filepath
 bindsym Shift+Print             exec --no-startup-id maim -u -i $(xdotool getactivewindow) $screenshot_filepath
 bindsym Control+Print           exec --no-startup-id maim -u -s $screenshot_filepath
+bindsym Control+Shift+Print     exec --no-startup-id maim -u -s | xclip -selection clipboard -t image/png
 
 #Display brighteness
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 5
