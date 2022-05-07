@@ -328,7 +328,7 @@ bindsym Menu exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 exec_always --no-startup-id mkdir -p ~/Pictures/Screenshots
 bindsym Print                   exec --no-startup-id scrot -m -e 'mv $f ~/Pictures/Screenshots'
 bindsym Shift+Print             exec --no-startup-id scrot -m -u -e 'mv $f ~/Pictures/Screenshots'
-bindsym Control+Print           exec --no-startup-id scrot -m -s -e 'mv $f ~/Pictures/Screenshots'
+bindsym Control+Print           exec --no-startup-id sleep 0.5 && scrot -m -s -e 'mv $f ~/Pictures/Screenshots'
 
 #Display brighteness
 bindsym XF86MonBrightnessDown   exec --no-startup-id xbacklight -dec 5
