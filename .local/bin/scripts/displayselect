@@ -83,6 +83,7 @@ case "$menu_option" in
   "HDMI")                    exclusive HDMI1 ;;
   "DP")                      exclusive DP1 ;;
   "Dock HDMI")               exclusive HDMI2 ;;
+  "Dock DP")                 exclusive DP2 ;;
   "Projector")               projector VGA1 ;;
   "Laptop | VGA")            side_by_side LVDS1 VGA1 ;;
   "VGA | Laptop")            side_by_side VGA1 LVDS1 ;;
@@ -92,12 +93,16 @@ case "$menu_option" in
   "DP | Laptop")             side_by_side DP1 LVDS1 ;;
   "Laptop | Dock HDMI")      side_by_side LVDS1 HDMI2 ;;
   "Dock HDMI | Laptop")      side_by_side HDMI2 LVDS1 ;;
+  "Laptop | Dock DP")        side_by_side LVDS1 DP2 ;;
+  "Dock DP | Laptop")        side_by_side DP2 LVDS1 ;;
   "HDMI | Dock HDMI")        side_by_side HDMI1 HDMI2 ;;
   "Dock HDMI | HDMI")        side_by_side HDMI2 HDMI1 ;;
   "DP | Dock HDMI")          side_by_side DP1 HDMI2 ;;
   "Dock HDMI | DP")          side_by_side HDMI2 DP1 ;;
   "Dock HDMI | Dock HDMI 2") side_by_side HDMI2 HDMI3 ;;
   "Dock HDMI 2 | Dock HDMI") side_by_side HDMI3 HDMI2 ;;
+  "DP | Dock DP")            side_by_side DP1 DP2 ;;
+  "Dock DP | DP")            side_by_side DP2 DP1 ;;
   "Mirrored VGA")            mirror LVDS1 VGA1 ;;
   "Mirrored HDMI")           mirror LVDS1 HDMI1 ;;
   "Mirrored Dock HDMI")      mirror LVDS1 HDMI2 ;;
