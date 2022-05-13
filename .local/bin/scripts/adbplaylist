@@ -20,4 +20,5 @@ while read line; do
 done <"$PLAYLIST_LOCATION/$PLAYLIST.m3u"
 adb-sync --delete "$TEMPORARY_MUSIC_LOCATION/" "$MOBILE_MUSIC_LOCATION"
 rm -rf "$TEMPORARY_MUSIC_LOCATION"
+adb root
 adb shell am broadcast -a android.intent.action.MEDIA_MOUNTED -d file:///sdcard/Music
