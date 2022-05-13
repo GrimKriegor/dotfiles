@@ -6,7 +6,7 @@ nmcli radio wifi off
 
 setxkbmap -layout us -option -option caps:swapescape -option compose:paus
 
-sleep 5s
+sleep "$SOUNDCARD_TRANSITION_DELAY"
 pactl list cards short | grep "$SOUNDCARD_ID_DOCK" > /dev/null
 if [ $? -eq 0  ]; then
   pactl set-card-profile \

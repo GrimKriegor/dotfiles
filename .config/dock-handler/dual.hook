@@ -2,4 +2,4 @@
 
 source "$HOME/.config/dock-handler/common_dock.hook"
 
-displayselect 'Dock HDMI | DP'
+displayselect "$DISPLAY_PROFILE_DOCK | $DISPLAY_PROFILE_DOCK_ALT"
