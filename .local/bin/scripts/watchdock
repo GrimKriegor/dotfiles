@@ -9,7 +9,7 @@
 # $ watchdock [interval] [dock display]
 
 check_interval="${1:-5}"
-dock_display="${2:-HDMI2}"
+dock_display="${2:-DP2}"
 dock_test_script="$HOME/.config/dock-handler/check"
 
 function getDisplays() {
