@@ -13,6 +13,7 @@ VGA
 HDMI
 DP
 Dock HDMI
+Dock DP
 Projector
 Laptop | VGA
 VGA | Laptop
@@ -22,12 +23,16 @@ Laptop | DP
 DP | Laptop
 Laptop | Dock HDMI
 Dock HDMI | Laptop
+Laptop | Dock DP
+Dock DP | Laptop
 HDMI | Dock HDMI
 Dock HDMI | HDMI
 DP | Dock HDMI
 Dock HDMI | DP
 Dock HDMI | Dock HDMI 2
 Dock HDMI 2 | Dock HDMI
+DP | Dock DP
+Dock DP | DP
 Mirrored VGA
 Mirrored HDMI
 Mirrored Dock HDMI
