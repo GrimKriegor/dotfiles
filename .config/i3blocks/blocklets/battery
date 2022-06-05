@@ -108,6 +108,9 @@ else:
         #fulltext = FA_PLUG + " "
         fulltext = ""
         timeleft = ""
+    elif state == "Not charging":
+        fulltext = ""
+        timeleft = ""
     elif state == "Unknown":
         #fulltext = FA_QUESTION + " " + FA_BATTERY + " "
         #fulltext = icon(percentleft) + " "
