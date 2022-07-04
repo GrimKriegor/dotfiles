@@ -1,0 +1,62 @@
+#!/bin/bash
+
+# Wrapper for kodi-cli and play-on-kodi
+# For quickly getting videos playing on Kodi
+#
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2022
+
+KODIRC="$HOME/.kodirc"
+
+function getVideoTitle() {
+  title=$(youtube-dl --get-title "$1")
+  echo "$title"
+}
+
+if [ ! -f "$KODIRC" ]; then
+  echo "Kodi config file missing"
+  exit 1
+fi
+
+readarray -t config < "$KODIRC"
+
+server=${config[0]}
+port=${config[1]}
+user=${config[2]}
+password=${config[3]}
+
+args="$@"
+clipboard_contents="$(xclip -selection c -o)"
+type="localvideo"
+
+path="$args"
+if [[ $args == "" ]]; then
+  path="$clipboard_contents"
+fi
+
+echo "$path" | grep -i 'youtube.com\|vimeo.com' \
+  && type=webvideo
+
+case "$type" in
+
+  localvideo )
+    title="Local video"
+    message="$(basename $path)"
+    playonkodi \
+      -i "$(ip -o -4 addr list eth0 | awk '{print $4}' | cut -d/ -f1)" \
+      -s "$server" \
+      -p "$port" \
+      -u "$user" \
+      -P "$password" \
+      "$path"
+  ;;
+
+  webvideo )
+    title="Web video"
+    message="$(getVideoTitle $path)"
+    kodi-cli -y "$path"
+  ;;
+
+esac
+
+notify-send "${title:-Kodi Handler}" "${message:-Nothing to play}"
