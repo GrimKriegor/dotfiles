@@ -157,5 +157,4 @@ export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Node related paths
-export NODE_PATH="$HOME"/.local/share/node_modules
-export NVM_DIR="$HOME"/.local/share/nvm
+export PATH=$PATH:$HOME/.npm-packages/bin
