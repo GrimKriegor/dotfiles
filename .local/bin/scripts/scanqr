@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scrot -s -e 'zbarimg --quiet "$f"; rm  "$f"'
