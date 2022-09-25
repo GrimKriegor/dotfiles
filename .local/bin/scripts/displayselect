@@ -4,6 +4,8 @@
 # GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
 # 2018
 
+SCREENSAVER_PROCESS="i3lock"
+
 display_list=($(xrandr | grep -w "connected\|disconnected" | awk -F'[ +]' '{print $1}'))
 
 menu="\
@@ -81,6 +83,15 @@ function projector() {
     --output LVDS1 --mode 1024x768 --same-as "$projector"
 }
 
+function wait_for_screensaver() {
+  while pgrep $SCREENSAVER_PROCESS
+  do
+    sleep 5
+  done
+}
+
+
+wait_for_screensaver
 case "$menu_option" in
   "Manual selection")        arandr ;;
   "Laptop")                  exclusive LVDS1 ;;
