@@ -158,3 +158,11 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 
 # Node related paths
 export PATH=$PATH:$HOME/.npm-packages/bin
+
+#------------------------------
+# Start Xorg
+#------------------------------
+if [[ -z "$DISPLAY" ]] && [[ $(tty) = "/dev/tty1" ]]; then
+  startx
+  logout
+fi

@@ -1,10 +1,8 @@
 #!/usr/bin/env sh
 
-# Reload .Xresources
-xrdb ~/.Xresources &
-
 # xautolock
 xautolock -time 5 -locker 'powerhandler lock' &
+sleep 4 && powerhandler lock &
 
 # Add wallpaper
 set-wallpaper &
@@ -29,4 +27,4 @@ ps cax | grep -q mpd || \
 synclient TouchpadOff=1 &
 
 # watchdock
-sleep 5 && watchdock &
+sleep 2 && watchdock &
