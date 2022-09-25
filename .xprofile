@@ -2,7 +2,7 @@
 
 # xautolock
 xautolock -time 5 -locker 'powerhandler lock' &
-sleep 4 && powerhandler lock &
+powerhandler lock &
 
 # Add wallpaper
 set-wallpaper &
