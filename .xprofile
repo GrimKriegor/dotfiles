@@ -28,3 +28,7 @@ synclient TouchpadOff=1 &
 
 # watchdock
 sleep 2 && watchdock &
+
+# Machine specific
+[[ -f ~/.xprofile.local  ]] && \
+  sh ~/.xprofile.local
