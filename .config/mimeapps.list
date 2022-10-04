@@ -34,6 +34,7 @@ text/x-csrc=vim.desktop;
 text/x-java=vim.desktop;
 text/x-makefile=vim.desktop;
 text/x-shellscript=vim.desktop;
+text/x-tex=vim.desktop;
 video/x-matroska=mpv.desktop;
 x-scheme-handler/file=nnn.desktop;
 x-scheme-handler/http=web-browser.desktop;
