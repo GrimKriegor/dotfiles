@@ -16,6 +16,7 @@ archive_name_full_cipher="${archive_name_full}.${cipher_ext}"
 
 tar chf \
   "$archive_name_full" \
+  "$HOME/.pass" \
   "$HOME/.mail" \
   "$HOME/.calendars" \
   "$HOME/.contacts"
