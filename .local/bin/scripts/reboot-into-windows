@@ -1,0 +1,14 @@
+#!/bin/bash
+
+set -e
+
+sudo grub-reboot "$( \
+  grep -i 'windows' /boot/grub/grub.cfg \
+  | cut -d"'" -f2 \
+)"
+
+echo 'Rebooting into Windows now...'
+
+sleep 5
+
+sudo reboot
