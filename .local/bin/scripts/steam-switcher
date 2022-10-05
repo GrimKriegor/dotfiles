@@ -1,0 +1,89 @@
+#!/bin/bash
+
+# steam-switcher
+# Quickly switch between Steam accounts and libraries
+# GPLv3 - Grim Kriegor <grimkriegor@krutt.org>
+# 2022
+
+set -e
+
+STEAM_FOLDER="$HOME/.steam"
+STEAM_PID_FILE="$STEAM_FOLDER/steam.pid"
+STEAM_REGISTRY_FILE="$STEAM_FOLDER/registry.vdf"
+STEAM_LIBRARY_FILE="$STEAM_FOLDER/steam/config/libraryfolders.vdf"
+CONFIG_FOLDER="$HOME/.config/steam-switcher"
+CONFIG_SKEL="\
+user_name=
+custom_gamedir=main
+"
+
+function hasConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  if [[ -f "$user_config" ]]; then
+    echo "true"
+  fi
+}
+
+function createConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  [[ -d $CONFIG_FOLDER ]] || mkdir -p "$CONFIG_FOLDER"
+  echo -e "$CONFIG_SKEL" > "$user_config"
+  echo -e "Creating config for user $user_id"
+  eval "$EDITOR" "$user_config"
+}
+
+function loadConfigFile() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  source "$user_config"
+}
+
+function applyConfig() {
+  if [ ! -f $STEAM_REGISTRY_FILE ]; then
+    echo "Steam registry file not found!"
+    exit 1
+  fi
+  sed -i "s/\"AutoLoginUser\"\t\t[^ ]*/\"AutoLoginUser\"\t\t\"${user_name}\"/" $STEAM_REGISTRY_FILE
+  echo -e "Using config for user $user_id"
+}
+
+function setId() {
+  user_id="$1"
+  user_config="$CONFIG_FOLDER"/"$user_id"
+  if [[ $(hasConfigFile $user_id) ]]; then
+    loadConfigFile "$user_id"
+    applyConfig
+  else
+    createConfigFile "$user_id"
+    loadConfigFile "$user_id"
+    applyConfig
+  fi
+}
+
+mkdir -p "$CONFIG_FOLDER"
+steam_pid="$(cat $STEAM_PID_FILE)"
+
+if [[ "$1" == "" ]]; then
+  echo "No user id provided"
+  exit 1
+fi
+
+kill $steam_pid || true
+echo "Waiting for Steam to exit"
+while pgrep --pidfile "$STEAM_PID_FILE"; do sleep 1; done
+
+setId "$1"
+gamedir=$(grep "SteamSwitcher" $HOME/.steam/steam/config/libraryfolders.vdf | cut -d\" -f4)
+if [ -z "$gamedir" ]; then
+  echo "Couldn't find SteamSwitcher library directory"
+  exit 1
+fi
+rm -f "$gamedir/steamapps"
+custom_gamedir_fullpath="$gamedir/$custom_gamedir"
+mkdir -p "$custom_gamedir_fullpath"
+ln -s "$custom_gamedir_fullpath" "$gamedir/steamapps"
+
+echo "Starting Steam..."
+steam > /dev/null 2>&1 &

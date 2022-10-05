@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+accounts=( $(ls $HOME/.config/steam-switcher) )
+
+account=$(printf '%s\n' "${accounts[@]}" | dmenu -p)
+
+steam-switcher "$account"
