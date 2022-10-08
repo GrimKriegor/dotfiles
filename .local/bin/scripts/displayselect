@@ -33,6 +33,7 @@ DP | Dock HDMI
 Dock HDMI | DP
 Dock HDMI | Dock HDMI 2
 Dock HDMI 2 | Dock HDMI
+Dock DP | HDMI
 DP | Dock DP
 Dock DP | DP
 Mirrored VGA
@@ -117,6 +118,7 @@ case "$menu_option" in
   "Dock HDMI | DP")          side_by_side HDMI2 DP1 ;;
   "Dock HDMI | Dock HDMI 2") side_by_side HDMI2 HDMI3 ;;
   "Dock HDMI 2 | Dock HDMI") side_by_side HDMI3 HDMI2 ;;
+  "Dock DP | HDMI")          side_by_side DP2 HDMI1 ;;
   "DP | Dock DP")            side_by_side DP1 DP2 ;;
   "Dock DP | DP")            side_by_side DP2 DP1 ;;
   "Mirrored VGA")            mirror LVDS1 VGA1 ;;
