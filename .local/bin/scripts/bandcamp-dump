@@ -1,0 +1,24 @@
+#!/bin/bash
+set -e
+
+# bandcamp-dump
+# Proof of concept for downloading public discographies
+
+BANDCAMP_URL_LIST="$PWD/bandcamp-dump.lst"
+
+trap "rm $BANDCAMP_URL_LIST" 1 2 3 6
+
+url="$1"
+
+lynx -dump -listonly -nonumbers "$url" | \
+  grep -v "downloading" | \
+  grep "bandcamp.com/track\|album" \
+  > "$BANDCAMP_URL_LIST"
+
+for album in $(cat $BANDCAMP_URL_LIST); do
+  bandcamp-dl \
+    --base-dir="$PWD" \
+    --keep-spaces --keep-upper --embed-art \
+    --template "%{artist}/%{album}/%{track} - %{title}" \
+    $album
+done
