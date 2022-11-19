@@ -7,15 +7,15 @@ XRES=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f1)
 YRES=$(xrandr --current | grep '*' | uniq | awk '{print $1}' | cut -d 'x' -f2)
 
 
-LOCATION=$HOME/Temporary/Screencast
+LOCATION=$HOME/Staging/Screencast
 
 
 mkdir -p $LOCATION
 
-if [ -z "$1" ];then
+if [ -z "$1" ]; then
   echo -e "No destination file specified...\nUsage: screencast <output>.mkv"
 
-elif [ -n "$cast" ];then
+elif [ -n "$cast" ]; then
   echo "Another Screencast session found, please kill it..."
 
 elif [ -n "$1" ] && [ -z "$cast" ];then
