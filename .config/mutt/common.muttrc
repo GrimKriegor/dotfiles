@@ -1,0 +1,37 @@
+# vim: filetype=neomuttrc
+# This is the common mutt config which has the settings that all accounts use
+# For use with mutt-wizard
+
+# Default signature path
+set signature = "~/.config/mutt/accounts/$from.signature"
+
+# Edit headers during message creation
+set edit_headers = yes
+
+# Default PGP behaviour
+set crypt_replysign = yes
+set crypt_replyencrypt = yes
+set crypt_replysignencrypted = yes
+
+# Default movement
+macro index,pager ga "<change-folder>=Archive<enter>" "Go to archive."
+macro index,pager gs "<change-folder>=Sent<enter>" "Go to sent."
+macro index,pager gd "<change-folder>=Drafts<enter>" "Go to drafts."
+macro index,pager gS "<change-folder>=Spam<enter>" "Go to spam."
+macro index,pager gt "<change-folder>=Trash<enter>" "Go to trash."
+
+# Menu for copying or moving messages
+bind index Ca noop
+bind index Cd noop
+bind index Ci noop
+bind index Cj noop
+bind index Cs noop
+bind index Ct noop
+bind index Ma noop
+bind index Md noop
+bind index Mi noop
+bind index Mj noop
+bind index Ms noop
+bind index Mt noop
+macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
+macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
