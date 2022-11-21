@@ -5,6 +5,9 @@
 # Default signature path
 set signature = "~/.config/mutt/accounts/$from.signature"
 
+# Date format
+set date_format="%y/%m/%d %H:%M"
+
 # Edit headers during message creation
 set edit_headers = yes
 
