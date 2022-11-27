@@ -67,13 +67,24 @@ alias xz='xz --verbose'
 subalias git_gud="echo Already gud!"
 
 #------------------------------
+# exp(ort)i(f)i(nstalled) function by Gerivian
+#------------------------------
+expii() {
+  j="$1"; shift
+  for i in "$@"; do
+    command -v "${i%% *}" >/dev/null 2>&1 &&
+    export "$j"="$i" && break
+  done
+}
+
+#------------------------------
 # Variables
 #------------------------------
-export TERMINAL="alacritty"
-export EDITOR="vim"
-export FILEMANAGER="nnn"
-export MAILER="neomutt"
-[[ $(command -v iceweasel) ]] && export BROWSER="iceweasel" || export BROWSER="firefox"
+expii TERMINAL alacritty xterm
+expii EDITOR vim nvim vim.tiny vi
+expii FILEMANAGER nnn pcmanfm
+expii MAILER neomutt mutt
+expii BROWSER iceweasel firefox
 
 #------------------------------
 # Window title
