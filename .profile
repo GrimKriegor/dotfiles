@@ -1,19 +1,24 @@
 #------------------------------
 # .dotfiles operations
 #------------------------------
+
 alias dfc='cd ~/.dotfiles'
 alias dfi='echo "Initializing dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && bash ./init.sh && cd $workdir'
 alias dfu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git pull && cd $workdir'
 alias dfuu='echo "Updating dotfiles" && workdir=$(pwd) && cd ~/.dotfiles && git pull --recurse-submodules && cd $workdir'
 
+
 #------------------------------
 # User scripts
 #------------------------------
+
 export PATH="$(du "$HOME/.local/bin/scripts/" --exclude ".local/bin/scripts/external" | cut -f2 | tr '\n' ':' | sed 's|:*$||' | sed 's|\/$||'):$PATH"
+
 
 #------------------------------
 # Subalias function
 #------------------------------
+
 subalias() {
     local cmd body name
     name="${1%%=*}"
@@ -38,9 +43,11 @@ subalias() {
     fi
 }
 
+
 #------------------------------
 # Aliases
 #------------------------------
+
 [[ -f $HOME/.shell_aliases ]] && source $HOME/.shell_aliases
 alias x='startx'
 alias ssh='TERM=xterm-256color ssh'
@@ -66,9 +73,11 @@ alias share='quickshare default'
 alias xz='xz --verbose'
 subalias git_gud="echo Already gud!"
 
+
 #------------------------------
 # exp(ort)i(f)i(nstalled) function by Gerivian
 #------------------------------
+
 expii() {
   j="$1"; shift
   for i in "$@"; do
@@ -77,24 +86,30 @@ expii() {
   done
 }
 
+
 #------------------------------
 # Variables
 #------------------------------
+
 expii TERMINAL alacritty xterm
 expii EDITOR vim nvim vim.tiny vi
 expii FILEMANAGER nnn pcmanfm
 expii MAILER neomutt mutt
 expii BROWSER iceweasel firefox
 
+
 #------------------------------
 # Window title
 #------------------------------
+
 case $TERM in
   termite|*xterm*|rxvt|rxvt-unicode|rxvt-256color|rxvt-unicode-256color|(dt|k|E)term)
     precmd () {
       print -Pn "\e]0;[%n@%M][%~]%#\a"
     }
-    preexec () { print -Pn "\e]0;[%n@%M][%~]%# ($1)\a" }
+    preexec () {
+      print -Pn "\e]0;[%n@%M][%~]%# ($1)\a"
+    }
     ;;
   screen|screen-256color)
     precmd () {
@@ -108,12 +123,12 @@ case $TERM in
     ;;
 esac
 
+
 #------------------------------
 # Additional autocompletion
 #------------------------------
 
-# kubectl autocompletion for zsh (lazy load)
-kubectl () {
+kubectl() {
     command kubectl $*
     if [[ -z $KUBECTL_COMPLETE ]]
     then
@@ -122,27 +137,28 @@ kubectl () {
     fi
 }
 
+
 #------------------------------
 # Program configuration
 #------------------------------
 
-# Default pass directory
+# pass
 export PASSWORD_STORE_DIR="$HOME/.pass"
 
-# Load nnn configuration
+# nnn
 NNN_CONFIG_FILE="$HOME/.config/nnn/config"
 [ -f "$NNN_CONFIG_FILE" ] && \
   source "$NNN_CONFIG_FILE"
 
-# GTK theme
+# GTK
 export GTK_THEME=numix-black:dark
 
-# Qt theme
+# Qt
 export QT_PLATFORMTHEME=qt5ct
 export QT_PLATFORM_PLUGIN=qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
 
-#xz multithread
+# xz
 export XZ_OPT="-T 0"
 
 # Mozilla
@@ -164,15 +180,17 @@ export PATH=$PATH:$ANDROID_HOME/emulator:$ANDROID_HOME/tools:$ANDROID_HOME/tools
 # Kubernetes
 export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config
 
-# Vagrant provider
+# Vagrant
 export VAGRANT_DEFAULT_PROVIDER=libvirt
 
-# Node related paths
+# Node
 export PATH=$PATH:$HOME/.npm-packages/bin
+
 
 #------------------------------
 # Start Xorg
 #------------------------------
+
 if [[ -z "$DISPLAY" ]] && [[ $(tty) = "/dev/tty1" ]]; then
   startx
   logout
