@@ -328,7 +328,7 @@ bindsym Menu exec --no-startup-id xmodmap -e 'keycode 135 = Super_R'
 set $screenshot_filepath ~/Pictures/Screenshots/$(date +%Y%m%d%H%M%S).png
 exec_always --no-startup-id mkdir -p ~/Pictures/Screenshots
 bindsym Print                   exec --no-startup-id maim -u $screenshot_filepath
-bindsym $mod+Shift+F12          exec --no-startup-id maim -u $screenshot_filepath
+bindsym $mod+F12                exec --no-startup-id maim -u $screenshot_filepath
 bindsym Shift+Print             exec --no-startup-id maim -u -i $(xdotool getactivewindow) $screenshot_filepath
 bindsym Control+Print           exec --no-startup-id maim -u -s $screenshot_filepath
 bindsym Control+Shift+Print     exec --no-startup-id maim -u -s | xclip -selection clipboard -t image/png
