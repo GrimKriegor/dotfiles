@@ -96,6 +96,7 @@ expii EDITOR vim nvim vim.tiny vi
 expii FILEMANAGER nnn pcmanfm
 expii MAILER neomutt mutt
 expii BROWSER iceweasel firefox
+expii LAUNCHER rofi dmenu
 
 
 #------------------------------
