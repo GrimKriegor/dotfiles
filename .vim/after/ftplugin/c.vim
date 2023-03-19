@@ -26,3 +26,7 @@ let g:ale_cpp_clazy_options = g:custom_cpp_options
 let g:ale_cpp_cpplint_options = g:custom_cpp_options
 let g:ale_cpp_flawfinder_options = g:custom_cpp_options
 let g:ale_cpp_gcc_options = g:custom_cpp_options
+
+set expandtab
+set shiftwidth=4
+set softtabstop=4
