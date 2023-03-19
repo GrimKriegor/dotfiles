@@ -16,6 +16,7 @@ TEMPORARY_MUSIC_LOCATION="/tmp/playlist"
 while read line; do
   song=$(echo $line | awk -F "/" '{print $NF}')
   path="$DESKTOP_MUSIC_LOCATION/$line"
+  [[ ! -f "$path" ]] && continue
   cp "$path" "$TEMPORARY_MUSIC_LOCATION/"
 done <"$PLAYLIST_LOCATION/$PLAYLIST.m3u"
 adb-sync --delete "$TEMPORARY_MUSIC_LOCATION/" "$MOBILE_MUSIC_LOCATION"
