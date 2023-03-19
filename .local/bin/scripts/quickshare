@@ -65,6 +65,11 @@ filename_encoded=$(echo $filename | \
   -e 's/`/%60/g' \
   -e 's/      /%09/g')
 
+url="$PREFIX/$filename_encoded"
+echo "$url"
+notify-send "Uploading" "$url"
+echo -n "$url" | xclip -selection clipboard
+
 case "$METHOD" in
   scp )
     scp -q -P$PORT "$file" $USER@$MACHINE:$REMOTE_PUBLIC_DIR
@@ -82,7 +87,4 @@ case "$METHOD" in
   ;;
 esac
 
-url="$PREFIX/$filename_encoded"
-echo "$url"
 notify-send "File uploaded" "$url"
-echo -n "$url" | xclip -selection clipboard
