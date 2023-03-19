@@ -100,7 +100,13 @@ while [ $# -ne 0 ]; do
   # Avoid symlinking desktop environment init files
   -d | --no-desktop )
     echo -e "\nAvoiding desktop environment init files"
-    blacklist=( "${blacklist[@]}" ".xinitrc" )
+    blacklist=( \
+      "${blacklist[@]}" \
+      ".xinitrc" \
+      ".Xresources" \
+      ".xprofile" \
+      ".Xcompose" \
+    )
   ;;
 
   esac
