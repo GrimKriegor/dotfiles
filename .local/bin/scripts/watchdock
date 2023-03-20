@@ -22,7 +22,7 @@ function getPowerSources() {
 
 function isLaptop() {
   if [[ \
-    $(getDisplays | grep "LVDS") || \
+    $(getDisplays | grep "LVDS\|eDP1") || \
     $(getPowerSources | grep "BAT") \
   ]]; then
     return 0
