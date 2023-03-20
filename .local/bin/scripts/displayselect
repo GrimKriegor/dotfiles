@@ -78,12 +78,6 @@ function mirror() {
     --output "$display2" --same-as "$display" --scale-from "$display_resolution"
 }
 
-function projector() {
-  projector="$1"
-  xrandr --output "$projector" --mode 1024x768 \
-    --output LVDS1 --mode 1024x768 --same-as "$projector"
-}
-
 function wait_for_screensaver() {
   while pgrep $SCREENSAVER_PROCESS
   do
@@ -91,27 +85,27 @@ function wait_for_screensaver() {
   done
 }
 
+LAPTOP_DISPLAY=$(echo ${display_list} | grep 'eDP1\|LVDS1')
 
 wait_for_screensaver
 case "$menu_option" in
   "Manual selection")        arandr ;;
-  "Laptop")                  exclusive LVDS1 ;;
+  "Laptop")                  exclusive ${LAPTOP_DISPLAY} ;;
   "VGA")                     exclusive VGA1 ;;
   "HDMI")                    exclusive HDMI1 ;;
   "DP")                      exclusive DP1 ;;
   "Dock HDMI")               exclusive HDMI2 ;;
   "Dock DP")                 exclusive DP2 ;;
-  "Projector")               projector VGA1 ;;
-  "Laptop | VGA")            side_by_side LVDS1 VGA1 ;;
-  "VGA | Laptop")            side_by_side VGA1 LVDS1 ;;
-  "Laptop | HDMI")           side_by_side LVDS1 HDMI1 ;;
-  "HDMI | Laptop")           side_by_side HDMI1 LVDS1 ;;
-  "Laptop | DP")             side_by_side LVDS1 DP1 ;;
-  "DP | Laptop")             side_by_side DP1 LVDS1 ;;
-  "Laptop | Dock HDMI")      side_by_side LVDS1 HDMI2 ;;
-  "Dock HDMI | Laptop")      side_by_side HDMI2 LVDS1 ;;
-  "Laptop | Dock DP")        side_by_side LVDS1 DP2 ;;
-  "Dock DP | Laptop")        side_by_side DP2 LVDS1 ;;
+  "Laptop | VGA")            side_by_side ${LAPTOP_DISPLAY} VGA1 ;;
+  "VGA | Laptop")            side_by_side VGA1 ${LAPTOP_DISPLAY} ;;
+  "Laptop | HDMI")           side_by_side ${LAPTOP_DISPLAY} HDMI1 ;;
+  "HDMI | Laptop")           side_by_side HDMI1 ${LAPTOP_DISPLAY} ;;
+  "Laptop | DP")             side_by_side ${LAPTOP_DISPLAY} DP1 ;;
+  "DP | Laptop")             side_by_side DP1 ${LAPTOP_DISPLAY} ;;
+  "Laptop | Dock HDMI")      side_by_side ${LAPTOP_DISPLAY} HDMI2 ;;
+  "Dock HDMI | Laptop")      side_by_side HDMI2 ${LAPTOP_DISPLAY} ;;
+  "Laptop | Dock DP")        side_by_side ${LAPTOP_DISPLAY} DP2 ;;
+  "Dock DP | Laptop")        side_by_side DP2 ${LAPTOP_DISPLAY} ;;
   "HDMI | Dock HDMI")        side_by_side HDMI1 HDMI2 ;;
   "Dock HDMI | HDMI")        side_by_side HDMI2 HDMI1 ;;
   "DP | Dock HDMI")          side_by_side DP1 HDMI2 ;;
@@ -121,10 +115,10 @@ case "$menu_option" in
   "Dock DP | HDMI")          side_by_side DP2 HDMI1 ;;
   "DP | Dock DP")            side_by_side DP1 DP2 ;;
   "Dock DP | DP")            side_by_side DP2 DP1 ;;
-  "Mirrored VGA")            mirror LVDS1 VGA1 ;;
-  "Mirrored HDMI")           mirror LVDS1 HDMI1 ;;
-  "Mirrored Dock HDMI")      mirror LVDS1 HDMI2 ;;
-  "Mirrored Dock HDMI 2")    mirror LVDS1 HDMI3 ;;
+  "Mirrored VGA")            mirror ${LAPTOP_DISPLAY} VGA1 ;;
+  "Mirrored HDMI")           mirror ${LAPTOP_DISPLAY} HDMI1 ;;
+  "Mirrored Dock HDMI")      mirror ${LAPTOP_DISPLAY} HDMI2 ;;
+  "Mirrored Dock HDMI 2")    mirror ${LAPTOP_DISPLAY} HDMI3 ;;
   *)                         exit 0 ;;
 esac
 
