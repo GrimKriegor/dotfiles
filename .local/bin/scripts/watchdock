@@ -9,7 +9,7 @@
 # $ watchdock [interval] [dock display]
 
 check_interval="${1:-5}"
-dock_display="${2:-HDMI2}"
+dock_display="${2:-DP1}"
 dock_test_script="$HOME/.config/dock-handler/check"
 
 function getDisplays() {
@@ -37,7 +37,7 @@ function isDocked() {
     fi
     return 1
   else
-    if [[ $(getDisplays | grep "$dock_display") ]]; then
+    if [[ $(getDisplays | grep -w "${dock_display}") ]]; then
       return 0
     fi
     return 1
