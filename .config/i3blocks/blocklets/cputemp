@@ -1,7 +1,7 @@
 #!/bin/bash
 
-t_warn=${1:-82}
-t_crit=${2:-95}
+t_warn=${1:-60}
+t_crit=${2:-85}
 
 # sorting temp values for all cores
 t_curr=($(sensors -u coretemp-isa-0000 | awk '/input/{ printf "%d\n", $2 }' | sort -r))
