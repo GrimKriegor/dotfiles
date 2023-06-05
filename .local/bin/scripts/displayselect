@@ -87,7 +87,7 @@ function wait_for_screensaver() {
 
 LAPTOP_DISPLAY=$(echo ${display_list} | grep 'eDP1\|LVDS1')
 
-wait_for_screensaver
+#wait_for_screensaver
 case "$menu_option" in
   "Manual selection")        arandr ;;
   "Laptop")                  exclusive ${LAPTOP_DISPLAY} ;;
