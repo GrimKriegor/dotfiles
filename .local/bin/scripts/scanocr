@@ -1,0 +1,3 @@
+#!/bin/sh
+
+scrot -s -e 'tesseract -l eng "$f" -; rm  "$f"'
