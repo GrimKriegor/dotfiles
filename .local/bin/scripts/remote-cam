@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# Tap into the camera of a machine you control
+# GPLv3 - Grim Kriegor <grim@kriegor.net>
+# 2023
+
+host="$1"
+device="$2"
+proxy="$3"
+
+[ -z "$host"    ] && host="localhost"
+[ -z "$device"  ] && device="video0"
+[ ! -z "$proxy" ] && proxy_string="ssh -t $proxy"
+
+eval \
+  "$proxy_string" \
+  "ssh $host \
+    'ffmpeg -i /dev/$device -c:v libx264 -c:a aac -b:v 1M -b:a 150k -f mpegts -' | \
+    mpv -"
+
