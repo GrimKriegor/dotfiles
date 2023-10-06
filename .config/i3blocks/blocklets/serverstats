@@ -44,6 +44,8 @@ output=""
 OLDIFS=$IFS
 IFS=,
 while read name address type; do
+  [[ $name =~ ^// ]] && \
+    continue
   [[ $name =~ ^#.* ]] && \
     output+="\n\\${name:2}\n" && continue
   [[ $type == "server" ]] && \
