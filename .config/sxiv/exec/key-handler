@@ -15,6 +15,10 @@ do
   "C-h")
     cp "$file" ~ ;;
 
+  # Bump to top
+  "C-b")
+    mv "$file" "00_$(basename $file)" ;;
+
   # Rotate 90 degrees
   "C-r")
     convert -rotate 90 "$file" "$file" ;;
