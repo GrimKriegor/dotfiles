@@ -42,3 +42,4 @@ x-scheme-handler/http=web-browser.desktop;
 x-scheme-handler/https=web-browser.desktop;
 x-scheme-handler/magnet=stig.desktop;
 x-scheme-handler/mailto=neomutt.desktop;
+x-scheme-handler/prusaslicer=PrusaSlicerURLProtocol.desktop
