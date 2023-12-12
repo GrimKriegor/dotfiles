@@ -21,7 +21,7 @@ elif [ -n "$cast" ]; then
 elif [ -n "$1" ] && [ -z "$cast" ];then
   export cast=true
 
-  ffmpeg -f alsa -ac 2 -i pulse \
+  ffmpeg -f alsa -ac 2 -i default \
   -f x11grab -r 30 -s $XRES:$YRES -i :0.0 \
   -c:a libvorbis \
   -c:v libx264 \
