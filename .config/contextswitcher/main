@@ -1,0 +1,25 @@
+#!/bin/bash
+
+GUEST="${1:-kersthor}"
+
+# Input
+killall input-leaps
+input-leaps \
+  -f --name ${HOST} --disable-client-cert-checking \
+  -c /home/grim/.config/input-leap/default.conf --address :24800 \
+  &
+renice -n -10 -p $(pidof input-leap{s,c})
+ssh ${GUEST} renice -n -10 -p $(pidof input-leap{s,c})
+
+# Sound
+pactl unload-module module-native-protocol-tcp
+pactl load-module module-native-protocol-tcp
+ssh ${GUEST} pactl unload-module module-tunnel-sink
+ssh ${GUEST} pactl load-module module-tunnel-sink server=tcp:${HOST}
+
+# Storage
+mkdir -p ~/Anchor/${GUEST}
+umount ~/Anchor/${GUEST}
+sshfs -o transform_symlinks,follow_symlinks \
+  ${GUEST}:${HOME} \
+  ~/Anchor/${GUEST}
