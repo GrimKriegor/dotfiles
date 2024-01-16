@@ -4,10 +4,23 @@ set -e
 
 date '+%b %d - %H:%M'
 
+function print_date_from_timezone {
+  timezone="$1"
+  env TZ="$timezone" date +"$timezone\n %H:%M (%A)\n"
+}
+
 case "$BLOCK_BUTTON" in
   1) notify-send "$(date)" "
 $(cal -m '1 month ago')
 $(cal -m)
 $(cal -m +30days)
+    " ;;
+  3) notify-send "Timezones" "
+$(print_date_from_timezone "Europe/Lisbon")
+$(print_date_from_timezone "Europe/Berlin")
+$(print_date_from_timezone "Europe/Kiev")
+$(print_date_from_timezone "America/Sao_Paulo")
+$(print_date_from_timezone "America/Chicago")
+$(print_date_from_timezone "Asia/Kolkata")
     " ;;
 esac
