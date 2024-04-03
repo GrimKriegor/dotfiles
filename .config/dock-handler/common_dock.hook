@@ -2,7 +2,7 @@
 
 source "$HOME/.config/dock-handler/common.hook"
 
-nmcli radio wifi off
+#nmcli radio wifi off
 
 setxkbmap -layout us -option -option caps:swapescape -option compose:paus
 
@@ -19,4 +19,7 @@ else
   pactl set-card-profile \
     "$SOUNDCARD_ID_LAPTOP" \
     "$SOUNDCARD_PROFILE_LAPTOP"
+  pactl set-card-profile \
+    "$SOUNDCARD_ID_DOCK" \
+    "off"
 fi
