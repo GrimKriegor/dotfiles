@@ -1,6 +1,6 @@
 #!/bin/bash
 
-HOST="$(hostname)"
+HOST="$(< /etc/hostname)"
 GUEST="${1:-kersthor}"
 
 # Input
