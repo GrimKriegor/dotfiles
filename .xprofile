@@ -30,5 +30,6 @@ synclient TouchpadOff=1 &
 sleep 2 && watchdock &
 
 # Machine specific
-[[ -f ~/.xprofile.local  ]] && \
-  sh ~/.xprofile.local
+xprofile_local="$HOME/.config/xprofile/$(hostname)"
+[[ -f "$xprofile_local" ]] &&
+  sh "$xprofile_local"
