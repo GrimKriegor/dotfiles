@@ -1,5 +1,6 @@
 #!/bin/bash
 
+HOST="$(hostname)"
 GUEST="${1:-kersthor}"
 
 # Input
