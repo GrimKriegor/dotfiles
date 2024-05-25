@@ -187,6 +187,10 @@ export VAGRANT_DEFAULT_PROVIDER=libvirt
 # Node
 export PATH=$PATH:$HOME/.npm-packages/bin
 
+# vedutils
+export PATH=$PATH:$HOME/.local/bin/scripts/external/vedutils/vedutils
+export PATH=$PATH:$HOME/.local/bin/scripts/external/vedutils/contrib
+
 
 #------------------------------
 # Start Xorg
