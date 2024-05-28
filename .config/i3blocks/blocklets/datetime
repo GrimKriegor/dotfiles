@@ -22,5 +22,6 @@ $(print_date_from_timezone "Europe/Kiev")
 $(print_date_from_timezone "America/Sao_Paulo")
 $(print_date_from_timezone "America/Chicago")
 $(print_date_from_timezone "Asia/Kolkata")
+$(print_date_from_timezone "Asia/Tokyo")
     " ;;
 esac
