@@ -6,8 +6,8 @@ xrandr \
   --output DisplayPort-2 --off \
   --output HDMI-A-0 --off
 
-input-leapc -n kersthor velok &
-renice -n -10 -p $(pidof input-leap{s,c})
+barrierc -n kersthor velok &
+renice -n -10 -p $(pidof barrier{s,c})
 
 setxkbmap $(setxkbmap -query | grep "^layout:" | awk -F ": *" '{print $2}')
 DISPLAY=:0 numlockx on
