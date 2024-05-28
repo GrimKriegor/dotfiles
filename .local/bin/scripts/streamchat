@@ -25,6 +25,7 @@ notify-send \
   "${message:-$url}"
 
 $BROWSER \
+  -P stream \
   --new-window "$chat_url" \
   &> /dev/null &
   #2>&1 >/dev/null &
