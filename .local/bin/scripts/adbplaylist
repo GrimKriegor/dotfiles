@@ -8,7 +8,7 @@ set -e
 
 PLAYLIST="${1:-Mobile}"
 PLAYLIST_LOCATION="$HOME/.cache/mpd/playlists"
-DESKTOP_MUSIC_LOCATION="$HOME/Music"
+DESKTOP_MUSIC_LOCATION="$HOME/Library/Music"
 MOBILE_MUSIC_LOCATION="/sdcard/Music/$PLAYLIST"
 TEMPORARY_MUSIC_LOCATION="/tmp/playlist"
 

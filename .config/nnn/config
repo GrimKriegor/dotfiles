@@ -3,7 +3,7 @@
 export NNN_BMS="\
 l:~/Library;\
 p:~/Pictures;\
-m:~/Music;\
+m:~/Library/Music;\
 c:~/Development;\
 s:~/Staging;\
 D:~/.dotfiles;\

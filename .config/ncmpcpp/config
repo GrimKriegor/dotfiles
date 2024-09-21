@@ -1,6 +1,6 @@
 mpd_host                              = 127.0.0.1
 mpd_port                              = 6600
-mpd_music_dir                         = ~/Music
+mpd_music_dir                         = ~/Library/Music
 mpd_connection_timeout                = 5
 visualizer_fifo_path                  = /tmp/mpd.fifo
 visualizer_output_name                = fifo output

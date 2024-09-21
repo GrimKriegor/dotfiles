@@ -6,7 +6,7 @@
 
 set -e
 
-music_path="$HOME/Music"
+music_path="$HOME/Library/Music"
 music_realpath="$(realpath $music_path)"
 
 for file in "$@"; do
