@@ -38,3 +38,5 @@ bind index Ms noop
 bind index Mt noop
 macro index C "<copy-message>?<toggle-mailboxes>" "copy a message to a mailbox"
 macro index M "<save-message>?<toggle-mailboxes>" "move a message to a mailbox"
+
+set print_command="muttprint -P A4 --footrule -p - | ps2pdf - $HOME/email.pdf"
