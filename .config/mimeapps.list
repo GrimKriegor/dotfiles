@@ -15,6 +15,7 @@ application/x-shellscript=vim.desktop;
 audio/flac=mpv.desktop
 audio/mpeg=mpv.desktop;
 audio/x-vorbis+ogg=mpv.desktop;
+audio/x-opus+ogg=mpv.desktop
 audio/x-wav=mpv.desktop
 image/gif=mpv.desktop;
 image/jpeg=sxiv.desktop;
