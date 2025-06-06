@@ -2,7 +2,7 @@
 set -e
 
 # bandcamp-dump
-# Proof of concept for downloading public discographies
+# Proof of concept for downloading public discographies.
 
 if [ -z "$1" ]; then
   echo "Usage: $0 <bandcamp_url>"
@@ -22,11 +22,13 @@ lynx -dump -listonly -nonumbers "$url" | \
   grep "bandcamp.com/track\|album" | \
 while read -r item_url; do
   if [[ "$item_url" == */track/* ]]; then
-    if ! curl -s "$item_url" | grep -q '<div class="tralbumData tralbum-credits">'; then
+    html_content=$(curl -s "$item_url")
+
+    if ! echo "$html_content" | sed -n '/<div class="tralbumData tralbum-credits">/,/<\/div>/p' | grep -q -E 'from[[:space:]]+<a href="/album/'; then
       echo "-> Adding track: $item_url"
       echo "$item_url" >> "$BANDCAMP_URL_LIST"
     else
-      echo "-> Ignoring track (has credits): $item_url"
+      echo "-> Ignoring track (part of an album): $item_url"
     fi
   else
     echo "-> Adding album: $item_url"
