@@ -4,21 +4,53 @@ set -e
 # bandcamp-dump
 # Proof of concept for downloading public discographies
 
-BANDCAMP_URL_LIST="$PWD/bandcamp-dump.lst"
-
-trap "rm $BANDCAMP_URL_LIST" 1 2 3 6
+if [ -z "$1" ]; then
+  echo "Usage: $0 <bandcamp_url>"
+  exit 1
+fi
 
 url="$1"
 
+BANDCAMP_URL_LIST=$(mktemp)
+
+trap 'rm -f "$BANDCAMP_URL_LIST"' EXIT
+
+echo "Fetching and filtering URLs from: $url"
+
 lynx -dump -listonly -nonumbers "$url" | \
   grep -v "downloading" | \
-  grep "bandcamp.com/track\|album" \
-  > "$BANDCAMP_URL_LIST"
+  grep "bandcamp.com/track\|album" | \
+while read -r item_url; do
+  if [[ "$item_url" == */track/* ]]; then
+    if ! curl -s "$item_url" | grep -q '<div class="tralbumData tralbum-credits">'; then
+      echo "-> Adding track: $item_url"
+      echo "$item_url" >> "$BANDCAMP_URL_LIST"
+    else
+      echo "-> Ignoring track (has credits): $item_url"
+    fi
+  else
+    echo "-> Adding album: $item_url"
+    echo "$item_url" >> "$BANDCAMP_URL_LIST"
+  fi
+done
 
-for album in $(cat $BANDCAMP_URL_LIST); do
+echo "----------------------------------------"
+echo "Starting download process..."
+echo "----------------------------------------"
+
+if [ ! -s "$BANDCAMP_URL_LIST" ]; then
+    echo "No items to download after filtering."
+    exit 0
+fi
+
+for album in $(cat "$BANDCAMP_URL_LIST"); do
   bandcamp-dl \
     --base-dir="$PWD" \
     --keep-spaces --keep-upper --embed-art \
     --template "%{artist}/%{album}/%{track} - %{title}" \
-    $album
+    "$album"
 done
+
+echo "----------------------------------------"
+echo "Download complete."
+echo "----------------------------------------"
