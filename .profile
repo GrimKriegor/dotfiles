@@ -93,6 +93,7 @@ expii() {
 
 expii TERMINAL alacritty xterm
 expii EDITOR vim nvim vim.tiny vi
+expii VISUAL vim nvim vim.tiny vi
 expii FILEMANAGER nnn pcmanfm
 expii MAILER neomutt mutt
 expii BROWSER iceweasel firefox
