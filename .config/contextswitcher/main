@@ -16,7 +16,9 @@ ssh ${GUEST} renice -n -10 -p $(pidof barrier{s,c})
 pactl unload-module module-native-protocol-tcp
 pactl load-module module-native-protocol-tcp
 ssh ${GUEST} pactl unload-module module-tunnel-sink
+ssh ${GUEST} pactl unload-module module-tunnel-source
 ssh ${GUEST} pactl load-module module-tunnel-sink server=tcp:${HOST}
+#ssh ${GUEST} pactl load-module module-tunnel-source server=tcp:${HOST}
 
 # Storage
 mkdir -p ~/Anchor/${GUEST}
