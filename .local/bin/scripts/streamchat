@@ -9,30 +9,49 @@ set -e
 clipboard_contents="$(xclip -selection c -o)"
 url=${1:-$clipboard_contents}
 mode="${2:-best}"
-chat_url="$url/chat"
 
-echo "$url" | grep -q -i 'youtube' \
-  && site="youtube"
-
-case "$site" in
-  "youtube")
+case "${url}" in
+  *twitch.tv* )
+    platform="Twitch"
+    stream_id=$(echo ${url} | sed 's|.*twitch.tv/\(.*\)|\1|g')
+    chat_url="${url}/chat"
+    chat_software="chatterino"
+  ;;
+  *youtube.com* )
+    platform="YouTube"
     stream_id=$(youtube-dl --get-id "$url")
-    chat_url="https://www.youtube.com/live_chat?is_popout=1&v=$stream_id" ;;
+    chat_url="https://www.youtube.com/live_chat?is_popout=1&v=${stream_id}"
+  ;;
+  *kick.com* )
+    platform="KICK"
+    stream_id=$(echo ${url} | sed 's|.*kick.com/\(.*\)|\1|g')
+    chat_url="https://kick.com/popout/${stream_id}/chat"
+  ;;
+  * )
+    echo "Unsupported platform."
+    exit 1
+  ;;
 esac
 
 notify-send \
-  "${title:-Streaming}" \
+  "${title:-Streaming ${platform} @${stream_id}}" \
   "${message:-$url}"
 
-$BROWSER \
-  -P stream \
-  --new-window "$chat_url" \
-  &> /dev/null &
-  #2>&1 >/dev/null &
+case "${chat_software}" in
+  "chatterino" )
+    chatterino -c t:${stream_id} \
+      &> /dev/null &
+  ;;
+  * )
+    $BROWSER \
+      -P stream \
+      --new-window "${chat_url}" \
+      &> /dev/null &
+      #2>&1 >/dev/null &
+  ;;
+esac
 
 streamlink \
   --player mpv \
-  "$url" \
+  "${url}" \
   "$mode"
-
-
