@@ -23,6 +23,10 @@ do
   "C-r")
     convert -rotate 90 "$file" "$file" ;;
 
+  # Rotate 180 degrees
+  "C-t")
+    convert -rotate 180 "$file" "$file" ;;
+
   # Set as wallpaper
   "C-w")
     set-wallpaper "$file" ;;
