@@ -19,7 +19,7 @@ case "${url}" in
   ;;
   *youtube.com* )
     platform="YouTube"
-    stream_id=$(youtube-dl --get-id "$url")
+    stream_id=$(youtube-dl --cookies-from-browser chromium --get-id "$url")
     chat_url="https://www.youtube.com/live_chat?is_popout=1&v=${stream_id}"
   ;;
   *kick.com* )
@@ -43,15 +43,14 @@ case "${chat_software}" in
       &> /dev/null &
   ;;
   * )
-    $BROWSER \
-      -P stream \
-      --new-window "${chat_url}" \
-      &> /dev/null &
-      #2>&1 >/dev/null &
+    chromium \
+      --new-window --app="${chat_url}" \
+      2>&1 >/dev/null &
   ;;
 esac
 
 streamlink \
+  --default-stream "720p,480p,best" \
   --player mpv \
   "${url}" \
   "$mode"
